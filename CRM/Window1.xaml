@@ -1,0 +1,78 @@
+﻿<Window x:Name="TaskWindow" x:Class="CRM.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Company name CRM system" Height="423" Width="731.625">
+    <Grid>
+        <ToolBar HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="34" Width="704">
+            <Button Content="CONTACTS" Height="28" VerticalAlignment="Top" Width="75" Margin="0,1,0,0"/>
+            <Button Content="CONTRACTS" Height="28" VerticalAlignment="Top" Width="75"/>
+            <Separator Height="29" Margin="0" VerticalAlignment="Top" Width="20" Background="#FFF1F3F5"/>
+            <Button Content="NEW TASK" Height="29" VerticalAlignment="Top" Width="75"/>
+            <Button Content="CALENDAR" Height="29" VerticalAlignment="Top" Width="75"/>
+            <Separator Height="29" Margin="0" VerticalAlignment="Top" Width="20" Background="#FFF1F3F5"/>
+            <ComboBox Name="clientList" VerticalAlignment="Top" Height="22" Margin="0,5,0,-5">
+                <ComboBoxItem IsSelected="True">
+                    <TextBlock >CLIENTS LIST</TextBlock>
+                </ComboBoxItem>
+                <TextBlock>Huawai Nexus</TextBlock>
+                <TextBlock>Microsoft</TextBlock>
+            </ComboBox>
+            <ComboBox Name="employeesList" VerticalAlignment="Top" Height="22" Margin="0,5,0,-3">
+                <ComboBoxItem IsSelected="True">
+                    <TextBlock >EMPLOYEES LIST</TextBlock>
+                </ComboBoxItem>
+                <TextBlock>John Doe</TextBlock>
+                <TextBlock>Ben Clark</TextBlock>
+            </ComboBox>
+        </ToolBar>
+        <StatusBar HorizontalAlignment="Left" Height="26" Margin="0,366,0,0" VerticalAlignment="Top" Width="724"/>
+        <TabControl HorizontalAlignment="Left" Height="271" Margin="154,80,0,0" VerticalAlignment="Top" Width="560">
+            <TabItem Header="Today" Margin="-2,-2,-2,2">
+                <ListBox Name="lbTaskToday">
+                    <!--<TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Today Tasks" />-->
+                    <ListBoxItem Background="LightGray">LG Nexus 5X</ListBoxItem>
+                    <ListBoxItem>Huawei Nexus 6P</ListBoxItem>
+                    <ListBoxItem Background="LightGray">iPhone 6S</ListBoxItem>
+                    <ListBoxItem>iPhone 6S Plus</ListBoxItem>
+                    <ListBoxItem Background="LightGray">Аsus Zenphone 2</ListBoxItem>
+                    <ListBoxItem>Microsoft Lumia 950</ListBoxItem>
+                </ListBox>
+
+            </TabItem>
+            <TabItem Header="Week">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Month">
+                <Grid Background="#FFE5E5E5"/>
+
+            </TabItem>
+            <TabItem Header="Year">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <Label Content="Don Pedro" HorizontalAlignment="Left" Margin="0,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.053,0.154" Width="102" FontSize="16" FontWeight="Bold" Foreground="#FF0D54B9"/>
+        <Label Content="TASKS" HorizontalAlignment="Left" Margin="154,44,0,0" VerticalAlignment="Top" Width="65" FontSize="16"/>
+        <TreeView Margin="2,80,0,89" HorizontalAlignment="Left" Width="147">
+            <TextBox>TreeView</TextBox>
+            <TreeViewItem Header="Departaments" Width="270">
+                <TreeViewItem Header="Dep 1" />
+                <TreeViewItem Header="Dep 2" />
+                <TreeViewItem Header="Dep 3" />
+                <TreeViewItem Header="Dep 4" />
+            </TreeViewItem>
+            <TreeViewItem Header="Documents" Width="268">
+                <TreeViewItem Header="C-языки">
+                    <TreeViewItem Header="C#" />
+                    <TreeViewItem Header="C/C++" />
+                    <TreeViewItem Header="Java" />
+                </TreeViewItem>
+                <TreeViewItem Header="Basic">
+                    <TreeViewItem Header="Visual Basic" />
+                    <TreeViewItem Header="VB.Net" />
+                    <TreeViewItem Header="PureBasic" />
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+
+    </Grid>
+</Window>
