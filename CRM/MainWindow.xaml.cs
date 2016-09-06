@@ -27,7 +27,7 @@ namespace CRM
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Window2 taskWindow = new Window2();
+            Window1 taskWindow = new Window1();
             taskWindow.Show();
 
         }

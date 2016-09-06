@@ -61,15 +61,15 @@
                 <TreeViewItem Header="Dep 4" />
             </TreeViewItem>
             <TreeViewItem Header="Documents" Width="268">
-                <TreeViewItem Header="C-языки">
-                    <TreeViewItem Header="C#" />
-                    <TreeViewItem Header="C/C++" />
-                    <TreeViewItem Header="Java" />
+                <TreeViewItem Header="Doc 1">
+                    <TreeViewItem Header="1" />
+                    <TreeViewItem Header="2" />
+                    <TreeViewItem Header="3" />
                 </TreeViewItem>
-                <TreeViewItem Header="Basic">
-                    <TreeViewItem Header="Visual Basic" />
-                    <TreeViewItem Header="VB.Net" />
-                    <TreeViewItem Header="PureBasic" />
+                <TreeViewItem Header="Doc 2">
+                    <TreeViewItem Header="1" />
+                    <TreeViewItem Header="2" />
+                    <TreeViewItem Header="3" />
                 </TreeViewItem>
             </TreeViewItem>
         </TreeView>
