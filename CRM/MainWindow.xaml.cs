@@ -27,8 +27,9 @@ namespace CRM
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Window2 taskWindow = new Window2();
-            taskWindow.Show();
+           // Window2 taskWindow = new Window2();
+           // taskWindow.Show();
+            MessageBox.Show("kuku");
 
         }
     }
