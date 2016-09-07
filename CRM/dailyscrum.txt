@@ -5,3 +5,8 @@ Nazar
 1/ to finisn creating main tables (tasks, contacts, clients) with data
 2/ create and finish at least 1 window in xamo
 3/ ask Gregory how to manage conflicts in SourceTree 
+
+Valeriy
+1) Finished: DB tables Employee, Departament, Position; panels main form;
+2) Didn't finished ToolBar, Menu
+3) Finish Main Form 
