@@ -1,0 +1,24 @@
+<TabControl Grid.Column="2" HorizontalAlignment="Left" Height="473" Margin="10,10,0,0" VerticalAlignment="Top" Width="850">
+                    <TabItem Header="Today" Margin="-2,-2,-2,2">
+                        <ListBox Name="lbTaskToday">
+                            <!--<TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Today Tasks" />-->
+                            <ListBoxItem Background="LightGray">LG Nexus 5X</ListBoxItem>
+                            <ListBoxItem>Huawei Nexus 6P</ListBoxItem>
+                            <ListBoxItem Background="LightGray">iPhone 6S</ListBoxItem>
+                            <ListBoxItem>iPhone 6S Plus</ListBoxItem>
+                            <ListBoxItem Background="LightGray">?sus Zenphone 2</ListBoxItem>
+                            <ListBoxItem>Microsoft Lumia 950</ListBoxItem>
+                        </ListBox>
+
+                    </TabItem>
+                    <TabItem Header="Week">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                    <TabItem Header="Month">
+                        <Grid Background="#FFE5E5E5"/>
+
+                    </TabItem>
+                    <TabItem Header="Year">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                </TabControl>
