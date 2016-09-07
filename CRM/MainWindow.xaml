@@ -1,7 +1,7 @@
 ﻿<Window x:Class="CRM.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Company name CRM system" Height="155" Width="306">
+        Title="Company name CRM system" Height="155" Width="321" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="106,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="106,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
