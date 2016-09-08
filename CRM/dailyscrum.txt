@@ -3,7 +3,7 @@ September 7, 2016
 Nazar
 
 1/ to finisn creating main tables (tasks, contacts, clients) with data
-2/ create and finish at least 1 window in xamo
+2/ create and finish at least 1 window in xaml
 3/ ask Gregory how to manage conflicts in SourceTree 
 
 Valeriy
@@ -15,9 +15,22 @@ September 8, 2016
 
 Valeriy
 
-1) Finished - basics elements Main Form (panels, nemus, side and top toolBars);
+1) Finished - basics elements Main Form (panels, menus, side and top toolBars);
 	    - GetAllEmployees,AddEmployees,GetAllTasks,AddTasks in Database class;
 	    - tested GetAllEmployees,AddEmployees methods.
 2) Didn't finished  added tasks information to MainForm
-3) Finished  addition tasks information to Main Form, add to database functions:
+3) to finish  addition tasks information to Main Form, add to database functions:
   GetAllClients,AddClients.
+
+
+Nazar
+
+1/ Finisned:
+- creating main tables (tasks, contacts, clients) with data;
+- created Trello and inserted tasks
+
+2/ ToDoList: 
+- create and finish at least 1 window in xamo - Task manager with all functionality (methods and GUI form)
+
+3/ Ask 
+- Didn't ask Gregory how to manage conflicts in SourceTree 
