@@ -22,7 +22,5 @@ namespace CRM
         public string Email { get; set; }
         public string WebPage { get; set; }
         public DateTime FirstContacted { get; set; }
-
-
     }
 }

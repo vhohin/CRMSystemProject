@@ -20,15 +20,41 @@ namespace CRM
     /// </summary>
     public partial class MainWindow : Window
     {
+        Database db;
         public MainWindow()
         {
+            try
+            {
+                db = new Database();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Fatal error: unable coonect to database" + e.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+                //throw e;
+            }
             InitializeComponent();
+            try
+            {
+                List<Employees> list = db.GetAllEmployees();
+                /*dgEmployees.ItemsSource = list;
+                dgEmployees.Items.Refresh();*/
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+                //throw e;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            Window2 taskWindow = new Window2();
+            //db.AddEmployees();
+            //dgEmployees.Items.Refresh();
+            MainForm taskWindow = new MainForm();
             taskWindow.Show();
             this.Close();
 

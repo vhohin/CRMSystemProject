@@ -10,22 +10,23 @@ namespace CRM
     class Database
     {
         //Data Source=ipd8.database.windows.net;Initial Catalog=crm;Integrated Security=False;User ID=ipd8abbott;Password=Abbott2000;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
-        const string CONN_STRING = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=F:\BitBuckets\CRMGroupProject\CRM\CRMDB.mdf;Integrated Security=True;Connect Timeout=30";
+        const string CONN_STRING = @"Data Source=ipd8.database.windows.net;Initial Catalog=crm;Integrated Security=False;User ID=ipd8abbott;Password=Abbott2000;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         private SqlConnection conn;
         public Database()
         {
             conn = new SqlConnection(CONN_STRING);
             conn.Open();
         }
-
+//**************************************************************************
+//      EMPLOYEES
+//****************************************************************************
         public List<Employees> GetAllEmployees()
-        {
-            //throw new NotImplementedException();            
+        {          
             List<Employees> list = new List<Employees>();
             SqlCommand cmd = new SqlCommand("Select * From Employees", conn);
             using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
             {
-                if (reader.Read())
+                if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
@@ -46,7 +47,7 @@ namespace CRM
                         int departmentID = reader.GetInt32(reader.GetOrdinal("DepartmentID"));
                         int importance = reader.GetInt32(reader.GetOrdinal("Importance"));
                         string description = reader.GetString(reader.GetOrdinal("Description"));
-                        Employees em = new Employees { EmployeeId = id, FirstName = firstName, MiddleName = middleName
+                        Employees em = new Employees { EmployeeId = id,UserName=userName, FirstName = firstName, MiddleName = middleName
                             , LastName = lastName, Address = address, Location = location, Country = country, ZipCode = zipCode
                             , DOB = dob, Phone = phone, HireDate = hireDate, PositionID = positionID, DepartmentID = departmentID
                             , Importance = importance, Description = description};
@@ -56,5 +57,88 @@ namespace CRM
             }
             return list;
         }
+        public void AddEmployees(Employees em)
+        {
+            using (SqlCommand cmd = new SqlCommand("Insert Into Employees (UserName, Password, FirstName, MiddleName, LastName, Address, Location, Country, ZipCode, DOB, Phone, HireDate, PositionID, DepartmentID, Importance, Description) VALUES (@userName, @password, @firstName, @middleName, @lastName, @address, @location, @country, @zipCode, @dob, @phone, @hireDate, @positionID, @departmentID, @importance, @description)"))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@userName", em.UserName);
+                cmd.Parameters.AddWithValue("@password", em.Password);
+                cmd.Parameters.AddWithValue("@firstName", em.FirstName);
+                cmd.Parameters.AddWithValue("@middleName", em.MiddleName);
+                cmd.Parameters.AddWithValue("@lastName", em.LastName);
+                cmd.Parameters.AddWithValue("@address", em.Address);
+                cmd.Parameters.AddWithValue("@location", em.Location);
+                cmd.Parameters.AddWithValue("@country", em.Country);
+                cmd.Parameters.AddWithValue("@zipCode", em.ZipCode);
+                cmd.Parameters.AddWithValue("@dob", em.DOB);
+                cmd.Parameters.AddWithValue("@phone", em.Phone);
+                cmd.Parameters.AddWithValue("@hireDate", em.HireDate);
+                cmd.Parameters.AddWithValue("@positionID", em.PositionID);
+                cmd.Parameters.AddWithValue("@departmentID", em.DepartmentID);
+                cmd.Parameters.AddWithValue("@importance", em.Importance);
+                cmd.Parameters.AddWithValue("@description", em.Description);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        //**************************************************************************
+        //      TASKS
+        //****************************************************************************
+        public List<Tasks> GetAllTasks()
+        {
+            List<Tasks> list = new List<Tasks>();
+            SqlCommand cmd = new SqlCommand("Select * From Tasks", conn);
+            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("TaskId"));
+                        int employeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
+                        string nameTask = reader.GetString(reader.GetOrdinal("NameTask"));
+                        string description = reader.GetString(reader.GetOrdinal("Description"));
+                        DateTime startDate = reader.GetDateTime(reader.GetOrdinal("StartDate"));
+                        DateTime endDate = reader.GetDateTime(reader.GetOrdinal("EndDate"));
+                        string informationNotes = reader.GetString(reader.GetOrdinal("InformationNotes"));
+                        string status = reader.GetString(reader.GetOrdinal("Status"));
+                        string taskType = reader.GetString(reader.GetOrdinal("TaskType"));
+                        string priority = reader.GetString(reader.GetOrdinal("Priority"));
+                        string reminder = reader.GetString(reader.GetOrdinal("Reminder"));
+                        int clientId = reader.GetInt32(reader.GetOrdinal("ClientId"));
+
+                        Tasks t = new Tasks{ TaskId = id, EmployeeId = employeeId, NameTask = nameTask, Description = description
+                            , StartDate = startDate, EndDate = endDate, InformationNotes = informationNotes, Status = status
+                            , TaskType = taskType, Priority = priority, Reminder = reminder, ClientId = clientId };
+                        list.Add(t);
+                    }
+                }
+            }
+            return list;
+        }
+        public void AddTasks(Tasks t)
+        {
+            using (SqlCommand cmd = new SqlCommand("Insert Into Tasks (EmployeeId, NameTask, Description, StartDate, EndDate, InformationNotes, Status, TaskType, Priority, Reminder, ClientId) VALUES (@employeeId, @nameTask, @description, @startDate, @endDate, @informationNotes, @status, @taskType, @priority, @reminder, @clientId)"))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@employeeId", t.EmployeeId);
+                cmd.Parameters.AddWithValue("@nameTask", t.NameTask);
+                cmd.Parameters.AddWithValue("@description", t.Description);
+                cmd.Parameters.AddWithValue("@startDate", t.StartDate);
+                cmd.Parameters.AddWithValue("@endDate", t.EndDate);
+                cmd.Parameters.AddWithValue("@informationNotes", t.InformationNotes);
+                cmd.Parameters.AddWithValue("@status", t.Status);
+                cmd.Parameters.AddWithValue("@taskType", t.TaskType);
+                cmd.Parameters.AddWithValue("@priority", t.Priority);
+                cmd.Parameters.AddWithValue("@reminder", t.Reminder);
+                cmd.Parameters.AddWithValue("@clientId", t.ClientId);                
+                cmd.ExecuteNonQuery();
+            }
+        }
+        //**************************************************************************
+        //      
+        //****************************************************************************
     }
 }
