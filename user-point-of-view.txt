@@ -1,0 +1,24 @@
+
+1)User story:
+  1.User story: I want to create Employees in DB
+  2. Steps break down:
+	* Add class Employees
+	* Add table Employees 
+	* Add method GetListEmployees()
+
+2)User story:
+  1.User story: I want to get list Employees
+  2. Steps break down:
+	* Add ListView to form
+	* Add to ListView Binding to ListView
+	* Add method LoadListEmployees() to ListView
+	* Verify how it work
+
+3)User story:
+  1.User story: I want add new Window to project
+  2. Steps break down:
+	* Create new Window
+	* Change properties what I need
+	* Add basic elements what I need
+	* Add boutton to main form to open new Window
+	* Verify how it work
