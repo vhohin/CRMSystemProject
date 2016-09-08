@@ -1,0 +1,42 @@
+﻿<Window x:Name="wNewClient" x:Class="CRM.NewClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="New Client Addition" Height="574.3" Width="593" WindowStartupLocation="CenterOwner" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="NEW   CLIENT" HorizontalAlignment="Left" Margin="229,0,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Client Name" HorizontalAlignment="Left" Margin="16,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Contact Name" HorizontalAlignment="Left" Margin="299,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Address" HorizontalAlignment="Left" Margin="16,113,0,0" VerticalAlignment="Top"/>
+        <Label Content="City" HorizontalAlignment="Left" Margin="16,171,0,0" VerticalAlignment="Top"/>
+        <Label Content="Country" HorizontalAlignment="Left" Margin="170,171,0,0" VerticalAlignment="Top"/>
+        <Label Content="Postal Code" HorizontalAlignment="Left" Margin="474,171,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone" HorizontalAlignment="Left" Margin="16,237,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="16,361,0,0" VerticalAlignment="Top"/>
+        <Label Content="Commercial" HorizontalAlignment="Left" Margin="16,461,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fax" HorizontalAlignment="Left" Margin="322,245,0,0" VerticalAlignment="Top"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="16,296,0,0" VerticalAlignment="Top"/>
+        <Label Content="Web" HorizontalAlignment="Left" Margin="322,304,0,0" VerticalAlignment="Top"/>
+        <Label Content="First Contact" HorizontalAlignment="Left" Margin="322,460,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbClientName" Height="23" Margin="16,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
+        <TextBox x:Name="tbContactName" HorizontalAlignment="Left" Height="23" Margin="299,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
+        <TextBox x:Name="tbAddress" HorizontalAlignment="Left" Height="23" Margin="16,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538"/>
+        <TextBox x:Name="tbCity" HorizontalAlignment="Left" Height="23" Margin="16,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
+        <TextBox x:Name="tbCountry" HorizontalAlignment="Left" Height="23" Margin="170,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
+        <TextBox x:Name="tbLocation" HorizontalAlignment="Left" Height="23" Margin="322,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
+        <TextBox x:Name="tbPostalCode" HorizontalAlignment="Left" Height="23" Margin="474,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+        <Label Content="Location" HorizontalAlignment="Left" Margin="322,171,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" Height="23" Margin="16,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
+        <TextBox x:Name="tbFax" HorizontalAlignment="Left" Height="23" Margin="322,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+        <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Height="23" Margin="16,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
+        <TextBox x:Name="tbWeb" HorizontalAlignment="Left" Height="23" Margin="322,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+        <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="55" Margin="16,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538"/>
+        <RadioButton x:Name="rbYesCommercial" GroupName="commercial" Content="YES" Checked="RadioButton_Checked" HorizontalAlignment="Left" Margin="112,466,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbNoCommercial" GroupName="commercial" Content="NO" Checked="RadioButton_Checked" HorizontalAlignment="Left" Margin="218,466,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpFirstContact" HorizontalAlignment="Left" Margin="413,461,0,0" VerticalAlignment="Top" Width="141"/>
+        <Button x:Name="btAdd" Content="ADD" HorizontalAlignment="Left" Margin="16,505,0,0" VerticalAlignment="Top" Width="160" Foreground="#FF055905" Click="btAdd_Click"/>
+        <Button x:Name="btClear" Content="CLEAR" HorizontalAlignment="Left" Margin="206,505,0,0" VerticalAlignment="Top" Width="160" Foreground="#FFC11919" Click="btClear_Click"/>
+        <Button x:Name="btClose" Content="CLOSE" HorizontalAlignment="Left" Margin="394,505,0,0" VerticalAlignment="Top" Width="160" Foreground="#FFC11919" Click="btClose_Click"/>
+
+
+    </Grid>
+</Window>

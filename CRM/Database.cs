@@ -17,11 +17,11 @@ namespace CRM
             conn = new SqlConnection(CONN_STRING);
             conn.Open();
         }
-//**************************************************************************
-//      EMPLOYEES
-//****************************************************************************
+        //**************************************************************************
+        //      EMPLOYEES
+        //****************************************************************************
         public List<Employees> GetAllEmployees()
-        {          
+        {
             List<Employees> list = new List<Employees>();
             SqlCommand cmd = new SqlCommand("Select * From Employees", conn);
             using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
@@ -47,10 +47,28 @@ namespace CRM
                         int departmentID = reader.GetInt32(reader.GetOrdinal("DepartmentID"));
                         int importance = reader.GetInt32(reader.GetOrdinal("Importance"));
                         string description = reader.GetString(reader.GetOrdinal("Description"));
-                        Employees em = new Employees { EmployeeId = id,UserName=userName, FirstName = firstName, MiddleName = middleName
-                            , LastName = lastName, Address = address, Location = location, Country = country, ZipCode = zipCode
-                            , DOB = dob, Phone = phone, HireDate = hireDate, PositionID = positionID, DepartmentID = departmentID
-                            , Importance = importance, Description = description};
+                        Employees em = new Employees
+                        {
+                            EmployeeId = id,
+                            UserName = userName,
+                            FirstName = firstName,
+                            MiddleName = middleName
+                            ,
+                            LastName = lastName,
+                            Address = address,
+                            Location = location,
+                            Country = country,
+                            ZipCode = zipCode
+                            ,
+                            DOB = dob,
+                            Phone = phone,
+                            HireDate = hireDate,
+                            PositionID = positionID,
+                            DepartmentID = departmentID
+                            ,
+                            Importance = importance,
+                            Description = description
+                        };
                         list.Add(em);
                     }
                 }
@@ -108,9 +126,23 @@ namespace CRM
                         string reminder = reader.GetString(reader.GetOrdinal("Reminder"));
                         int clientId = reader.GetInt32(reader.GetOrdinal("ClientId"));
 
-                        Tasks t = new Tasks{ TaskId = id, EmployeeId = employeeId, NameTask = nameTask, Description = description
-                            , StartDate = startDate, EndDate = endDate, InformationNotes = informationNotes, Status = status
-                            , TaskType = taskType, Priority = priority, Reminder = reminder, ClientId = clientId };
+                        Tasks t = new Tasks
+                        {
+                            TaskId = id,
+                            EmployeeId = employeeId,
+                            NameTask = nameTask,
+                            Description = description
+                            ,
+                            StartDate = startDate,
+                            EndDate = endDate,
+                            InformationNotes = informationNotes,
+                            Status = status
+                            ,
+                            TaskType = taskType,
+                            Priority = priority,
+                            Reminder = reminder,
+                            ClientId = clientId
+                        };
                         list.Add(t);
                     }
                 }
@@ -133,12 +165,81 @@ namespace CRM
                 cmd.Parameters.AddWithValue("@taskType", t.TaskType);
                 cmd.Parameters.AddWithValue("@priority", t.Priority);
                 cmd.Parameters.AddWithValue("@reminder", t.Reminder);
-                cmd.Parameters.AddWithValue("@clientId", t.ClientId);                
+                cmd.Parameters.AddWithValue("@clientId", t.ClientId);
                 cmd.ExecuteNonQuery();
             }
         }
         //**************************************************************************
-        //      
+        //      Clients
         //****************************************************************************
+        public List<Clients> GetAllClients()
+        {
+            List<Clients> list = new List<Clients>();
+            SqlCommand cmd = new SqlCommand("Select * From Clients", conn);
+            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("ClientId"));
+                        string clientName = reader.GetString(reader.GetOrdinal("ClientName"));
+                        string contactName = reader.GetString(reader.GetOrdinal("ContactName"));
+                        string address = reader.GetString(reader.GetOrdinal("Address"));
+                        string city = reader.GetString(reader.GetOrdinal("City"));
+                        string location = reader.GetString(reader.GetOrdinal("Location"));
+                        string country = reader.GetString(reader.GetOrdinal("Country"));
+                        string postalCode = reader.GetString(reader.GetOrdinal("PostalCode"));
+                        string phone = reader.GetString(reader.GetOrdinal("Phone"));
+                        string description = reader.GetString(reader.GetOrdinal("Description"));
+                        int intCommercial = reader.GetInt32(reader.GetOrdinal("Commercial"));
+                        bool commercial = true;
+                        if (intCommercial == 0)
+                        {
+                            commercial = false;
+                        }
+                        string fax = reader.GetString(reader.GetOrdinal("Fax"));
+                        string email = reader.GetString(reader.GetOrdinal("Email"));
+                        string webPage = reader.GetString(reader.GetOrdinal("WebPage"));
+                        DateTime firstContacted = reader.GetDateTime(reader.GetOrdinal("FirstContacted"));                       
+
+                        Clients cl = new Clients{ClientId = id, ClientName = clientName, ContactName = contactName, Address = address
+                            , City = city, Location = location, Country = country, PostalCode = postalCode, Phone = phone, Description = description
+                            , Commercial = commercial, Fax = fax, Email = email, WebPage = webPage, FirstContacted = firstContacted};
+                        list.Add(cl);
+                    }
+                }
+            }
+            return list;
+        }
+        public void AddClients(Clients cl)
+        {
+            using (SqlCommand cmd = new SqlCommand("Insert Into Clients (ClientName, ContactName, Address, City, Location, Country, PostalCode, Phone, Description, Commercial, Fax, Email,WebPage,FirstContacted) VALUES (@clientName, @contactName, @address, @city, @location, @country, @postalCode, @phone, @description, @commercial, @fax, @email,@webPage,@firstContacted)"))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@clientName", cl.ClientName);
+                cmd.Parameters.AddWithValue("@contactName", cl.ContactName);
+                cmd.Parameters.AddWithValue("@address", cl.Address);
+                cmd.Parameters.AddWithValue("@city", cl.City);
+                cmd.Parameters.AddWithValue("@location", cl.Location);
+                cmd.Parameters.AddWithValue("@country", cl.Country);
+                cmd.Parameters.AddWithValue("@postalCode", cl.PostalCode);
+                cmd.Parameters.AddWithValue("@phone", cl.Phone);
+                cmd.Parameters.AddWithValue("@description", cl.Description);
+                cmd.Parameters.AddWithValue("@commercial", cl.Commercial);
+                cmd.Parameters.AddWithValue("@fax", cl.Fax);
+                cmd.Parameters.AddWithValue("@email", cl.Email);
+                cmd.Parameters.AddWithValue("@webPage", cl.WebPage);
+                cmd.Parameters.AddWithValue("@firstContacted", cl.FirstContacted);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        //**************************************************************************
+        //     
+        //****************************************************************************
+
+
+
     }
 }
