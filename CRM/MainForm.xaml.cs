@@ -57,6 +57,9 @@ namespace CRM
         }
         private void btNewTasks_Click(object sender, RoutedEventArgs e)
         {
+            NewTaskForm newTaskWindow = new NewTaskForm();
+            newTaskWindow.Owner = this;
+            newTaskWindow.Show();
 
         }
         private void btNewContact_Click(object sender, RoutedEventArgs e)
