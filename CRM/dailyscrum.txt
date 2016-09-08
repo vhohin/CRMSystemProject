@@ -10,3 +10,14 @@ Valeriy
 1) Finished: DB tables Employee, Departament, Position; panels main form;
 2) Didn't finished ToolBar, Menu
 3) Finish Main Form 
+
+September 8, 2016
+
+Valeriy
+
+1) Finished - basics elements Main Form (panels, nemus, side and top toolBars);
+	    - GetAllEmployees,AddEmployees,GetAllTasks,AddTasks in Database class;
+	    - tested GetAllEmployees,AddEmployees methods.
+2) Didn't finished  added tasks information to MainForm
+3) Finished  addition tasks information to Main Form, add to database functions:
+  GetAllClients,AddClients.
