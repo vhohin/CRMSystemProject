@@ -24,6 +24,50 @@ namespace CRM
             InitializeComponent();
         }
 
+        private void listTaskType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ((ComboBoxItem)listTaskType.SelectedItem).Content;
+            if (item == null)
+            {
+                return;
+            }
+
+            //MessageBox.Show(item.ToString());
+        }
+
+        private void listStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ((ComboBoxItem)listStatus.SelectedItem).Content;
+            if (item == null)
+            {
+                return;
+            }
+
+            //MessageBox.Show(item.ToString());
+        }
+
+        private void listPriority_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ((ComboBoxItem)listPriority.SelectedItem).Content;
+            if (item == null)
+            {
+                return;
+            }
+
+            //MessageBox.Show(item.ToString());
+        }
+
+        private void listReminder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ((ComboBoxItem)listReminder.SelectedItem).Content;
+            if (item == null)
+            {
+                return;
+            }
+
+            //MessageBox.Show(item.ToString());
+        }
+
 
     }
 }

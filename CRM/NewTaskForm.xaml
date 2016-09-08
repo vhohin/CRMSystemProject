@@ -21,7 +21,7 @@
 
         </ComboBox>
         <Label Content="Task Type" HorizontalAlignment="Left" Margin="278,78,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="listTaskType" HorizontalAlignment="Left" Margin="278,110,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="listTaskType" HorizontalAlignment="Left" Margin="278,110,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="listTaskType_SelectionChanged">
             <ComboBoxItem IsSelected="True">--Select option--</ComboBoxItem>
             <ComboBoxItem>Meeting</ComboBoxItem>
             <ComboBoxItem>Call</ComboBoxItem>
