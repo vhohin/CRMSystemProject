@@ -34,6 +34,12 @@ namespace CRM
         string priority = "";
         string reminder = "";
         int clientId;
+        List<Clients> clientList;
+        List<string> clientNamesList;
+
+        List<Employees> employeeList;
+        List<string> employeeNamesList;
+
 
 
         public NewTask()
@@ -42,6 +48,7 @@ namespace CRM
             try
             {
                 db = new Database();
+
             }
             catch (Exception e)
             {
@@ -49,13 +56,45 @@ namespace CRM
                 Environment.Exit(1);
             }
             InitializeComponent();
+            UploadClientNames();
+            UploadEmployeeNames();
             dpStartDate.SelectedDate = DateTime.Now;
             dpEndDate.SelectedDate = DateTime.Now;
-        } // end NewTAsk
 
-        private void listTaskType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        } // end NewTask
+
+
+        // method to upload ClientNames into ComboBox
+        private void UploadClientNames()
         {
-            var item = ((ComboBoxItem)listTaskType.SelectedItem).Content;
+            clientList = db.GetAllClients();
+            clientNamesList = new List<string>();
+            foreach (Clients line in clientList)
+            {
+                clientNamesList.Add(line.ClientName);
+            }
+            cbClientList.ItemsSource = clientNamesList;
+            cbClientList.Items.Refresh();
+        }
+
+        // method to upload EmployeeNames into ComboBox
+        private void UploadEmployeeNames()
+        {
+            employeeList = db.GetAllEmployees();
+            employeeNamesList = new List<string>();
+            foreach (Employees line in employeeList)
+            {
+                employeeNamesList.Add(line.FirstName + " " + line.LastName);
+            }
+            cbEmployeeList.ItemsSource = employeeNamesList;
+            cbEmployeeList.Items.Refresh();
+        }
+
+
+        private void cbTaskType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ((ComboBoxItem)cbTaskType.SelectedItem).Content;
             if (item == null)
             {
                 return;
@@ -63,9 +102,9 @@ namespace CRM
 
         }
 
-        private void listStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = ((ComboBoxItem)listStatus.SelectedItem).Content;
+            var item = ((ComboBoxItem)cbStatus.SelectedItem).Content;
             if (item == null)
             {
                 return;
@@ -73,9 +112,9 @@ namespace CRM
 
         }
 
-        private void listPriority_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbPriority_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = ((ComboBoxItem)listPriority.SelectedItem).Content;
+            var item = ((ComboBoxItem)cbPriority.SelectedItem).Content;
             if (item == null)
             {
                 return;
@@ -83,9 +122,9 @@ namespace CRM
 
         }
 
-        private void listReminder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbReminder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = ((ComboBoxItem)listReminder.SelectedItem).Content;
+            var item = ((ComboBoxItem)cbReminder.SelectedItem).Content;
             if (item == null)
             {
                 return;
@@ -93,10 +132,38 @@ namespace CRM
 
         }
 
-        private bool ValidateData ()
+        private void cbClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            //clientId
+            foreach (Clients line in clientList)
+            {
+                if (cbClientList.SelectedItem == line.ClientName)
+                {
+                    clientId = line.ClientId;
+                }
+            }
+            //MessageBox.Show("employ id is " + clientId);
+
+        } // end cbClientList_SelectionChanged
+
+        private void cbEmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbEmployeeList.SelectedIndex == -1)
+            {
+                return;
+            }
+            Employees employee = employeeList[cbEmployeeList.SelectedIndex];
+            employeeId = employee.EmployeeId;
+            //MessageBox.Show("employ id is " + employee.EmployeeId);
+
+        } // end cbEmployeeList_SelectionChanged
+
+
+
+
+        private bool ValidateData()
+        {
+
             if (tbTaskName.Text.Length < 5)
             {
                 MessageBox.Show("Task name must be at least 5 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
@@ -107,37 +174,38 @@ namespace CRM
                 nameTask = tbTaskName.Text;
             }
 
-            // employeeId
-
-
-            // !!!!!!!!!!!TODO - VALIDATE IF END DATE < STARTDATE
-
-            
-            startDate =  dpStartDate.SelectedDate.Value;
+           
+            startDate = dpStartDate.SelectedDate.Value;
             endDate = dpEndDate.SelectedDate.Value;
 
-            taskType = ((ComboBoxItem)listTaskType.SelectedItem).Content.ToString();
+            if (startDate > endDate)
+            {
+                MessageBox.Show("End date must be greater then Start date");
+                return false;
+            }
+
+            taskType = ((ComboBoxItem)cbTaskType.SelectedItem).Content.ToString();
             if (taskType == "--Select option--")
             {
                 MessageBox.Show("Invalid input. Please select a task type");
                 return false;
             }
 
-            status = ((ComboBoxItem)listStatus.SelectedItem).Content.ToString();
+            status = ((ComboBoxItem)cbStatus.SelectedItem).Content.ToString();
             if (status == "--Select option--")
             {
                 MessageBox.Show("Invalid input. Please select a status");
                 return false;
             }
 
-            priority = ((ComboBoxItem)listPriority.SelectedItem).Content.ToString();
+            priority = ((ComboBoxItem)cbPriority.SelectedItem).Content.ToString();
             if (priority == "--Select option--")
             {
                 MessageBox.Show("Invalid input. Please select a priority");
                 return false;
             }
 
-            reminder = ((ComboBoxItem)listReminder.SelectedItem).Content.ToString();
+            reminder = ((ComboBoxItem)cbReminder.SelectedItem).Content.ToString();
             if (reminder == "--Select option--")
             {
                 MessageBox.Show("Invalid input. Please select a reminder");
@@ -167,14 +235,19 @@ namespace CRM
 
         private void ClearForm()
         {
-
-            // TODO: CLEAR ALL FIELDS FROM COMBOBOX
+                        
+            cbClientList.SelectedIndex = 0;
+            cbEmployeeList.SelectedIndex = 0;
             tbTaskName.Text = "";
             dpStartDate.SelectedDate = DateTime.Now;
             dpEndDate.SelectedDate = DateTime.Now;
             tbDescription.Text = "";
-            
-            
+            cbTaskType.SelectedIndex = 0;
+            cbStatus.SelectedIndex = 0;
+            cbPriority.SelectedIndex = 0;
+            cbReminder.SelectedIndex = 0;
+
+
         }
 
         private void btSave_Click(object sender, RoutedEventArgs e)
@@ -182,8 +255,8 @@ namespace CRM
 
             if (ValidateData() == true)
             {
-                //TODO - EMployeeId and ClientId
-                Tasks task = new Tasks() { EmployeeId=2, NameTask = nameTask, Description =description, StartDate=startDate, EndDate=endDate, InformationNotes="", Status=status, TaskType=taskType, Priority=priority, Reminder=reminder, ClientId=2};
+               
+                Tasks task = new Tasks() { EmployeeId = employeeId, NameTask = nameTask, Description = description, StartDate = startDate, EndDate = endDate, InformationNotes = "", Status = status, TaskType = taskType, Priority = priority, Reminder = reminder, ClientId = clientId };
                 db.AddTasks(task);
                 ClearAllData();
                 MessageBoxResult result = MessageBox.Show("New Task was succesfully added. Clear Form?", "Add", MessageBoxButton.YesNo, MessageBoxImage.Information);
@@ -194,5 +267,9 @@ namespace CRM
             }
 
         }
+
+
+
+
     }
 }

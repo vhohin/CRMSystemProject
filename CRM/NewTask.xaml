@@ -9,9 +9,8 @@
     <Grid>
         <Label Content="NEW   TASK" HorizontalAlignment="Left" Margin="348,2,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF0E52A2"/>
         <Label Content="Client" HorizontalAlignment="Left" Margin="39,28,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="listClient" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="39,59,0,0" VerticalAlignment="Top" Width="120" >
-            <ComboBoxItem IsSelected="True" Content="--Select option--"/>
-
+        <ComboBox x:Name="cbClientList" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="39,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbClientList_SelectionChanged" >
+         
         </ComboBox>
         <Label Content="Task name" HorizontalAlignment="Left" Margin="39,92,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tbTaskName" HorizontalAlignment="Left" Height="23" Margin="39,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157"/>
@@ -21,12 +20,11 @@
         <Button x:Name="btSave" Content="Save" HorizontalAlignment="Left" Margin="48,296,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="btSave_Click"/>
         <Label Content="Ends" HorizontalAlignment="Left" Margin="39,205,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Employee" HorizontalAlignment="Left" Margin="278,28,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="listEmployee" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="278,60,0,0" VerticalAlignment="Top" Width="120" >
-            <ComboBoxItem IsSelected="True" Content="--Select option--"/>
-
-        </ComboBox>
+        <ComboBox x:Name="cbEmployeeList" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="278,60,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbEmployeeList_SelectionChanged"/>
+           
+       
         <Label Content="Task Type" HorizontalAlignment="Left" Margin="278,100,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="listTaskType" HorizontalAlignment="Left" Margin="278,132,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="listTaskType_SelectionChanged">
+        <ComboBox x:Name="cbTaskType" HorizontalAlignment="Left" Margin="278,132,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbTaskType_SelectionChanged">
             <ComboBoxItem IsSelected="True">--Select option--</ComboBoxItem>
             <ComboBoxItem>Meeting</ComboBoxItem>
             <ComboBoxItem>Call</ComboBoxItem>
@@ -35,7 +33,7 @@
             <ComboBoxItem>Note</ComboBoxItem>
         </ComboBox>
         <Label Content="Status" HorizontalAlignment="Left" Margin="278,159,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="listStatus" HorizontalAlignment="Left" Margin="278,191,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="listStatus_SelectionChanged">
+        <ComboBox x:Name="cbStatus" HorizontalAlignment="Left" Margin="278,191,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbStatus_SelectionChanged">
             <ComboBoxItem IsSelected="True">--Select option--</ComboBoxItem>
             <ComboBoxItem>Active</ComboBoxItem>
             <ComboBoxItem>Planned</ComboBoxItem>
@@ -44,14 +42,14 @@
 
         </ComboBox>
         <Label Content="Priority" HorizontalAlignment="Left" Margin="278,228,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="listPriority" HorizontalAlignment="Left" Margin="278,260,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="listPriority_SelectionChanged">
+        <ComboBox x:Name="cbPriority" HorizontalAlignment="Left" Margin="278,260,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbPriority_SelectionChanged">
             <ComboBoxItem IsSelected="True">--Select option--</ComboBoxItem>
             <ComboBoxItem>Low</ComboBoxItem>
             <ComboBoxItem>Normal</ComboBoxItem>
             <ComboBoxItem>High</ComboBoxItem>
         </ComboBox>
         <Label Content="Reminder" HorizontalAlignment="Left" Margin="482,28,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="listReminder" HorizontalAlignment="Left" Margin="482,60,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="listReminder_SelectionChanged">
+        <ComboBox x:Name="cbReminder" HorizontalAlignment="Left" Margin="482,60,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbReminder_SelectionChanged">
             <ComboBoxItem IsSelected="True">--Select option--</ComboBoxItem>
             <ComboBoxItem>E-mail</ComboBoxItem>
             <ComboBoxItem>Call</ComboBoxItem>
