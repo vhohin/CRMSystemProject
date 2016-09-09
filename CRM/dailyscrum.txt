@@ -1,4 +1,4 @@
-September 7, 2016
+September 7, 2016 - DAY01
 
 Nazar
 
@@ -11,7 +11,7 @@ Valeriy
 2) Didn't finished ToolBar, Menu
 3) Finish Main Form 
 
-September 8, 2016
+September 8, 2016 - DAY02
 
 Valeriy
 
@@ -35,7 +35,7 @@ Nazar
 3/ Ask 
 - Didn't ask Gregory how to manage conflicts in SourceTree 
 
-September 9, 2016
+September 9, 2016 - DAY03
 
 Valeriy
 
@@ -48,3 +48,16 @@ Valeriy
 3) Add - test information to database;
        - forms Employee, Contracts, Services;
        - methods GetAllServices, AddServices, GetAllContracts, AddContract to class Database.
+
+Nazar
+1/ Finisned:
+- TaskForm, but
+
+2/ Didn't finish validation and link Employee and Client table with TaskForm - ask Valeriy
+
+3/ ToDoList: 
+- forms Employee, Contracts, Services;
+- TaskManager to be fully working
+
+4/ Ask 
+- Didn't ask Gregory how to manage conflicts in SourceTree 
