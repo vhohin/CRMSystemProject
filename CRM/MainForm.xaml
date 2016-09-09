@@ -15,6 +15,7 @@
         <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\contact4.png"/>
         <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\newclient.png"/>
         <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\newemployee.png"/>-->
+        
         <!--<BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
         <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
         <BitmapImage x:Key="ImageSource3" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\employees.png"/>
@@ -79,87 +80,105 @@
         <!--<Border Height="80" Background="Azure" DockPanel.Dock="Right">
             <TextBlock>Right Side</TextBlock>
         </Border>-->
-        <Border Background="#FFFFFF">
-            <Grid RenderTransformOrigin="0.313,0.475">
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130" MinWidth="130" MaxWidth="350"></ColumnDefinition>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <WrapPanel Grid.Row="1" MinWidth="60">
-                    <Button x:Name="btContacts" Width="120" Height="50" Margin="5" Background="Transparent" BorderBrush="#00000000" FontSize="14" Click="btContacts_Click">
+        <Border Background="#ffffff">
+            <Grid>
+                <TabControl Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  
+                            Grid.RowSpan="2" TabStripPlacement="Left">
+                    <TabItem Name="tabItem1">
+                        <TabItem.Header>
+                            <TextBlock Margin="3">
+                        <StackPanel Orientation="Horizontal" Width="120">
+                            <Image Source="{DynamicResource ImageSource6}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
+                            <TextBlock Text="Tasks" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                        </StackPanel>                    
+                            </TextBlock>
+                        </TabItem.Header>
+
+                        <StackPanel Orientation="Vertical" Height="240" VerticalAlignment="Top" >
+                            <Grid Height="56">
+                                <TextBlock x:Name="tblUserName" Text="" Height="30" FontSize="18" Foreground="#FF053A70" ForceCursor="True" Margin="0,13,535,19" HorizontalAlignment="Right" Width="328"  />
+                                <TextBlock Text="   Current Tasks" FontSize="16" Margin="374,12,386,14" Height="30" />
+                            </Grid>
+                            <Grid>
+                                <DataGrid x:Name="dgTasksList" Margin="0,0,0,-522" SelectionChanged="dgTasksList_SelectionChanged" SelectionMode="Single"   >
+                                    <DataGrid.ColumnHeaderStyle>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="Background" Value="LightGray" />
+                                            <Setter Property="BorderThickness" Value="1" />
+                                            <Setter Property="BorderBrush" Value="Black" />
+                                            <Setter Property="Height" Value="25" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </DataGrid.ColumnHeaderStyle>
+                                </DataGrid>
+                            </Grid>
+                        </StackPanel>
+
+                    </TabItem>
+                    <TabItem Name="tabItem2">
+                        <TabItem.Header>
+                            <TextBlock Margin="3">
                         <StackPanel Orientation="Horizontal" Width="120">
                             <Image Source="{DynamicResource ImageSource2}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 " />
                             <TextBlock Text="Contacts" VerticalAlignment="Center" HorizontalAlignment="Right" Width="59" />
                         </StackPanel>
-                    </Button>
-                    <Button x:Name="btClients" Width="120" Height="50" Margin="5" BorderBrush="White" Background="White" FontSize="14" Click="btClients_Click">
+                            </TextBlock>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem Name="tabItem3">
+                        <TabItem.Header>
+                            <TextBlock Margin="3">   
                         <StackPanel Orientation="Horizontal"  Width="120">
                             <Image Source="{DynamicResource ImageSource3}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
                             <TextBlock Text="Clients" VerticalAlignment="Center" HorizontalAlignment="Right" />
                         </StackPanel>
-                    </Button>
-                    <Button x:Name="btContracts" Width="120" Height="50" Margin="5" BorderBrush="White" Background="White" FontSize="14" Click="btContracts_Click">
+                            </TextBlock>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem Name="tabItem4">
+                        <TabItem.Header>
+                            <TextBlock Margin="3">   
                         <StackPanel Orientation="Horizontal" Width="120">
                             <Image Source="{DynamicResource ImageSource4}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
                             <TextBlock Text="Contracts" VerticalAlignment="Center" HorizontalAlignment="Right" Width="65" />
                         </StackPanel>
-                    </Button>
-                    <Button x:Name="btEmployees" Width="120" Height="50" Margin="5" BorderBrush="White" Background="White" FontSize="14" Click="btEmployees_Click">
+                            </TextBlock>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem Name="tabItem5">
+                        <TabItem.Header>
+                            <TextBlock Margin="3">
                         <StackPanel Orientation="Horizontal" Width="120">
                             <Image Source="{DynamicResource ImageSource5}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
                             <TextBlock Text="Employees" VerticalAlignment="Center" HorizontalAlignment="Right" />
                         </StackPanel>
-                    </Button>
-                    <Button x:Name="btServices" Width="120" Height="50" Margin="5" BorderBrush="White" Background="White" FontSize="14" Click="btServices_Click">
+                            </TextBlock>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem Name="tabItem6">
+                        <TabItem.Header>
+                            <TextBlock Margin="3"> 
                         <StackPanel Orientation="Horizontal" Width="120">
                             <Image Source="{DynamicResource ImageSource8}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
                             <TextBlock Text="Services" VerticalAlignment="Center" HorizontalAlignment="Right" />
                         </StackPanel>
-                    </Button>
-                    <Button x:Name="btProducts" Width="120" Height="50" Margin="5" BorderBrush="White" Background="White" FontSize="14" Click="btProducts_Click">
+                            </TextBlock>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem Name="tabItem7">
+                        <TabItem.Header>
+                            <TextBlock Margin="3">
                         <StackPanel Orientation="Horizontal" Width="120">
                             <Image Source="{DynamicResource ImageSource7}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
                             <TextBlock Text="Products" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="btTasks" Width="120" Height="50" Margin="5" BorderBrush="White" Background="White" FontSize="14" Click="btTasks_Click">
-                        <StackPanel Orientation="Horizontal" Width="120">
-                            <Image Source="{DynamicResource ImageSource6}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
-                            <TextBlock Text="Tasks" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                        </StackPanel>
-                    </Button>
-                </WrapPanel>
-                <WrapPanel Grid.Row="1" Grid.Column="3" MinWidth="160">
-                    <StackPanel Orientation="Horizontal" Height="50" Background="White" Width="923" >
-                        <TextBlock x:Name="tblUserName" Text="" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="18" Margin="30,14" FontWeight="Bold" Foreground="#FF0F16AA" />
-                        <TextBlock Text="   Current Tasks" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="30,14" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="50" Background="LightGray" >
-                        <DataGrid x:Name="dgTasksList" Margin="0" SelectionChanged="dgTasksList_SelectionChanged" RenderTransformOrigin="0.5,0.5" SelectionMode="Single" HorizontalAlignment="Left" Width="920" Height="496" VerticalAlignment="Top">
-                            <DataGrid.Columns>
-                                <!--<DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" Width="172" IsReadOnly="true" />-->
-                            </DataGrid.Columns>
-                            <DataGrid.ColumnHeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="FontWeight" Value="Bold" />
-                                    <Setter Property="Background" Value="LightGray" />
-                                    <Setter Property="BorderThickness" Value="1" />
-                                    <Setter Property="BorderBrush" Value="Black" />
-                                    <Setter Property="Height" Value="25" />
-                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
-                                </Style>
-                            </DataGrid.ColumnHeaderStyle>
-                        </DataGrid>
-                    </StackPanel>
-                </WrapPanel>
-                <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Width="5" Background= "#FFC3C7BC" 
-                      VerticalAlignment="Stretch" HorizontalAlignment="Center"></GridSplitter>
+                        </StackPanel>                    
+                            </TextBlock>
+                        </TabItem.Header>
+                    </TabItem>
+
+                </TabControl>
             </Grid>
         </Border>
     </DockPanel>
-
 </Window>

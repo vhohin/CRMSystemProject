@@ -30,9 +30,17 @@ namespace CRM
             }
             InitializeComponent();
             tblUserName.Text = user;
-            
+            if (importance != 0)
+            {
+                EnterBoss();
+            }
             UpdateGridList();
         }
+        private void EnterBoss()
+        { 
+        
+        }
+
         private void UpdateGridList()
         {
             try
@@ -47,10 +55,7 @@ namespace CRM
                 Environment.Exit(1);
             }
             dgTasksList.Items.Refresh();
-            /* lblId.Content = "...";
-             tbDescription.Text = "";
-             dpDueDate.SelectedDate = DateTime.Today;
-             cbIsDone.IsChecked = false;*/
+            
         }
         private void dgTasksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -95,9 +100,9 @@ namespace CRM
         }
         private void btNewTasks_Click(object sender, RoutedEventArgs e)
         {
-           /* NewTask newTaskWindow = new NewTask();
+            NewTask newTaskWindow = new NewTask();
             newTaskWindow.Owner = this;
-            newTaskWindow.Show();*/
+            newTaskWindow.Show();
 
         }
         private void btNewContact_Click(object sender, RoutedEventArgs e)

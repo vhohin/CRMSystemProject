@@ -26,7 +26,7 @@
             </ComboBox>
         </ToolBar>
         <StatusBar HorizontalAlignment="Left" Height="26" Margin="0,366,0,0" VerticalAlignment="Top" Width="724"/>
-        <TabControl HorizontalAlignment="Left" Height="271" Margin="154,80,0,0" VerticalAlignment="Top" Width="560">
+        <TabControl  HorizontalAlignment="Left" Height="271" Margin="154,80,0,0" VerticalAlignment="Top" Width="560">
             <TabItem Header="Today" Margin="-2,-2,-2,2">
                 <ListBox Name="lbTaskToday">
                     <!--<TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Today Tasks" />-->
