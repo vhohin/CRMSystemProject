@@ -66,9 +66,7 @@
     <Compile Include="NewClient.xaml.cs">
       <DependentUpon>NewClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewTask.xaml.cs">
-      <DependentUpon>NewTask.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="NewTask.xaml.cs" />
     <Compile Include="Tasks.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
