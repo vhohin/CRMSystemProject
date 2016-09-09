@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="CRM system" Height="676" Width="1069" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-       <!-- <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\contact3.png"/>
+        <!-- <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\contact3.png"/>
         <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\contact3.png"/>
         <BitmapImage x:Key="ImageSource3" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\employees.png"/>
         <BitmapImage x:Key="ImageSource4" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\contracts.png"/>
@@ -15,7 +15,20 @@
         <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\contact4.png"/>
         <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\newclient.png"/>
         <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\newemployee.png"/>-->
-        <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contact3.png"/>
+        <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
+        <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
+        <BitmapImage x:Key="ImageSource3" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\employees.png"/>
+        <BitmapImage x:Key="ImageSource4" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contracts.png"/>
+        <BitmapImage x:Key="ImageSource5" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\employee.png"/>
+        <BitmapImage x:Key="ImageSource6" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\tasks.png"/>
+        <BitmapImage x:Key="ImageSource7" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\product2.png"/>
+        <BitmapImage x:Key="ImageSource8" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\sup.png"/>
+        <BitmapImage x:Key="ImageSource9" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newtask.png"/>
+        <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact4.png"/>
+        <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newclient.png"/>
+        <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newemployee.png"/>
+
+        <!--<BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contact3.png"/>
         <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contact3.png"/>
         <BitmapImage x:Key="ImageSource3" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\employees.png"/>
         <BitmapImage x:Key="ImageSource4" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contracts.png"/>
@@ -26,7 +39,8 @@
         <BitmapImage x:Key="ImageSource9" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\newtask.png"/>
         <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contact4.png"/>
         <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\newclient.png"/>
-        <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\newemployee.png"/>
+        <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\newemployee.png"/>-->
+
         <!--<BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contacts3.jpg"/>
         -->
     </Window.Resources>
@@ -39,12 +53,12 @@
             <ToolBar Height="60">
                 <Button x:Name="btNewTasks" Width="60" Height="50" Margin="10 0 10 0" BorderBrush="#FFCDCECF" Background="Transparent" FontSize="14" Click="btNewTasks_Click">
                     <StackPanel Orientation="Horizontal" Width="50">
-                        <Image Source="{DynamicResource ImageSource9}" Width="50" Height="50" HorizontalAlignment="Left" />                        
+                        <Image Source="{DynamicResource ImageSource9}" Width="50" Height="50" HorizontalAlignment="Left" />
                     </StackPanel>
                 </Button>
                 <Button x:Name="btNewContact" Width="60" Height="50" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewContact_Click">
                     <StackPanel Orientation="Horizontal" Width="50">
-                        <Image Source="{DynamicResource ImageSource10}" Width="50" Height="50" HorizontalAlignment="Left"  />                        
+                        <Image Source="{DynamicResource ImageSource10}" Width="50" Height="50" HorizontalAlignment="Left"  />
                     </StackPanel>
                 </Button>
                 <Button x:Name="btNewClient" Width="60" Height="50" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewClient_Click">
@@ -120,8 +134,26 @@
                     </Button>
                 </WrapPanel>
                 <WrapPanel Grid.Row="1" Grid.Column="3" MinWidth="160">
-                    <StackPanel Orientation="Horizontal" Width="661" Height="50" Background="LightGray" >
-                        <TextBlock Text="Current Tasks" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" />
+                    <StackPanel Orientation="Horizontal" Height="50" Background="White" Width="923" >
+                        <TextBlock x:Name="tblUserName" Text="" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="18" Margin="30,14" FontWeight="Bold" Foreground="#FF0F16AA" />
+                        <TextBlock Text="   Current Tasks" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="30,14" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="50" Background="LightGray" >
+                        <DataGrid x:Name="dgTasksList" Margin="0" SelectionChanged="dgTasksList_SelectionChanged" RenderTransformOrigin="0.5,0.5" SelectionMode="Single" HorizontalAlignment="Left" Width="920" Height="496" VerticalAlignment="Top">
+                            <DataGrid.Columns>
+                                <!--<DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" Width="172" IsReadOnly="true" />-->
+                            </DataGrid.Columns>
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                    <Setter Property="Background" Value="LightGray" />
+                                    <Setter Property="BorderThickness" Value="1" />
+                                    <Setter Property="BorderBrush" Value="Black" />
+                                    <Setter Property="Height" Value="25" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                        </DataGrid>
                     </StackPanel>
                 </WrapPanel>
                 <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Width="5" Background= "#FFC3C7BC" 

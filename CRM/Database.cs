@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 
 namespace CRM
 {
+
     class Database
     {
         //Data Source=ipd8.database.windows.net;Initial Catalog=crm;Integrated Security=False;User ID=ipd8abbott;Password=Abbott2000;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
@@ -17,6 +18,9 @@ namespace CRM
             conn = new SqlConnection(CONN_STRING);
             conn.Open();
         }
+
+
+
         //**************************************************************************
         //      EMPLOYEES
         //****************************************************************************
@@ -51,21 +55,19 @@ namespace CRM
                         {
                             EmployeeId = id,
                             UserName = userName,
+                            Password = password,
                             FirstName = firstName,
-                            MiddleName = middleName
-                            ,
+                            MiddleName = middleName,
                             LastName = lastName,
                             Address = address,
                             Location = location,
                             Country = country,
-                            ZipCode = zipCode
-                            ,
+                            ZipCode = zipCode,
                             DOB = dob,
                             Phone = phone,
                             HireDate = hireDate,
                             PositionID = positionID,
-                            DepartmentID = departmentID
-                            ,
+                            DepartmentID = departmentID,
                             Importance = importance,
                             Description = description
                         };
@@ -131,13 +133,58 @@ namespace CRM
                             TaskId = id,
                             EmployeeId = employeeId,
                             NameTask = nameTask,
-                            Description = description
-                            ,
+                            Description = description,
                             StartDate = startDate,
                             EndDate = endDate,
                             InformationNotes = informationNotes,
-                            Status = status
-                            ,
+                            Status = status,
+                            TaskType = taskType,
+                            Priority = priority,
+                            Reminder = reminder,
+                            ClientId = clientId
+                        };
+                        list.Add(t);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Tasks> GetTasksByEmployeeId(int Id)
+        {
+            //throw new NotImplementedException();
+            List<Tasks> list = new List<Tasks>();
+            SqlCommand cmd = new SqlCommand("Select * From Tasks WHERE EmployeeId=@emId", conn);
+            cmd.Parameters.AddWithValue("@emId", Id);
+            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("TaskId"));
+                        int employeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
+                        string nameTask = reader.GetString(reader.GetOrdinal("NameTask"));
+                        string description = reader.GetString(reader.GetOrdinal("Description"));
+                        DateTime startDate = reader.GetDateTime(reader.GetOrdinal("StartDate"));
+                        DateTime endDate = reader.GetDateTime(reader.GetOrdinal("EndDate"));
+                        string informationNotes = reader.GetString(reader.GetOrdinal("InformationNotes"));
+                        string status = reader.GetString(reader.GetOrdinal("Status"));
+                        string taskType = reader.GetString(reader.GetOrdinal("TaskType"));
+                        string priority = reader.GetString(reader.GetOrdinal("Priority"));
+                        string reminder = reader.GetString(reader.GetOrdinal("Reminder"));
+                        int clientId = reader.GetInt32(reader.GetOrdinal("ClientId"));
+
+                        Tasks t = new Tasks
+                        {
+                            TaskId = id,
+                            EmployeeId = employeeId,
+                            NameTask = nameTask,
+                            Description = description,
+                            StartDate = startDate,
+                            EndDate = endDate,
+                            InformationNotes = informationNotes,
+                            Status = status,
                             TaskType = taskType,
                             Priority = priority,
                             Reminder = reminder,
@@ -192,20 +239,29 @@ namespace CRM
                         string postalCode = reader.GetString(reader.GetOrdinal("PostalCode"));
                         string phone = reader.GetString(reader.GetOrdinal("Phone"));
                         string description = reader.GetString(reader.GetOrdinal("Description"));
-                        int intCommercial = reader.GetInt32(reader.GetOrdinal("Commercial"));
-                        bool commercial = true;
-                        if (intCommercial == 0)
-                        {
-                            commercial = false;
-                        }
+                        bool commercial = reader.GetBoolean(reader.GetOrdinal("Commercial"));
                         string fax = reader.GetString(reader.GetOrdinal("Fax"));
                         string email = reader.GetString(reader.GetOrdinal("Email"));
                         string webPage = reader.GetString(reader.GetOrdinal("WebPage"));
-                        DateTime firstContacted = reader.GetDateTime(reader.GetOrdinal("FirstContacted"));                       
-
-                        Clients cl = new Clients{ClientId = id, ClientName = clientName, ContactName = contactName, Address = address
-                            , City = city, Location = location, Country = country, PostalCode = postalCode, Phone = phone, Description = description
-                            , Commercial = commercial, Fax = fax, Email = email, WebPage = webPage, FirstContacted = firstContacted};
+                        DateTime firstContacted = reader.GetDateTime(reader.GetOrdinal("FirstContacted"));
+                        Clients cl = new Clients
+                        {
+                            ClientId = id,
+                            ClientName = clientName,
+                            ContactName = contactName,
+                            Address = address,
+                            City = city,
+                            Location = location,
+                            Country = country,
+                            PostalCode = postalCode,
+                            Phone = phone,
+                            Description = description,
+                            Commercial = commercial,
+                            Fax = fax,
+                            Email = email,
+                            WebPage = webPage,
+                            FirstContacted = firstContacted
+                        };
                         list.Add(cl);
                     }
                 }

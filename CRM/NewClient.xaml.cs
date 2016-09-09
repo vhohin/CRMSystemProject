@@ -22,12 +22,12 @@ namespace CRM
         Database db;
         string clientName = "";
         string contactName = "";
-        string address ="";
+        string address = "";
         string city = "";
         string location = "";
-        string country="";
+        string country = "";
         string postalCode = "";
-        string phone="";
+        string phone = "";
         string description = "";
         string commercialYN;
         bool commercial;
@@ -37,31 +37,115 @@ namespace CRM
         DateTime firstContacted;
         public NewClient()
         {
+            try
+            {
+                db = new Database();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Fatal error: unable coonect to database" + e.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                Environment.Exit(1);
+            }
             InitializeComponent();
-            dpFirstContact.SelectedDate = DateTime.Now;            
+            dpFirstContact.SelectedDate = DateTime.Now;
         }
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             var button = sender as RadioButton;
             commercialYN = button.Content.ToString();
-            
+
+        }
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var picker = sender as DatePicker;
+            DateTime? date = picker.SelectedDate;
         }
 
         private bool CheckingDatas()
         {
-            /* string description = tbDescription.Text;
-             DateTime dueDate = dpFirstContact.SelectedDate.Value;
-             bool isDone = false;
-             if (cbIsDone.IsChecked == true)
-             {
-                 isDone = true;
-             }
-             Clients cl = new Clients() { Description = description, DueDate = dueDate, IsDone = isDone };
-             db.AddClients(cl);*/
-            //UpdateG();
             if (tbClientName.Text.Length < 2)
-            { 
-            
+            {
+                MessageBox.Show("Client name must be at least 2 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                clientName = tbClientName.Text;
+            }
+
+            if (tbContactName.Text.Length < 2)
+            {
+                MessageBox.Show("Contact name must be at least 2 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                contactName = tbContactName.Text;
+            }
+
+            if (tbAddress.Text.Length < 1)
+            {
+                MessageBox.Show("Enter Address please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                address = tbAddress.Text;
+            }
+
+            if (tbCity.Text.Length < 1)
+            {
+                MessageBox.Show("Enter City please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                city = tbCity.Text;
+            }
+
+            if (tbCountry.Text.Length < 1)
+            {
+                MessageBox.Show("Enter Country please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                country = tbCountry.Text;
+            }
+
+            if (tbLocation.Text.Length > 0)
+            {
+                location = tbLocation.Text;
+            }
+
+            if (tbPostalCode.Text.Length > 0)
+            {
+                postalCode = tbPostalCode.Text;
+            }
+
+            if (tbPhone.Text.Length > 0)
+            {
+                phone = tbPhone.Text;
+            }
+
+            if (tbFax.Text.Length > 0)
+            {
+                fax = tbFax.Text;
+            }
+
+            if (tbEmail.Text.Length > 0)
+            {
+                email = tbEmail.Text;
+            }
+
+            if (tbWeb.Text.Length > 0)
+            {
+                webPage = tbWeb.Text;
+            }
+
+            if (tbDescription.Text.Length > 0)
+            {
+                description = tbDescription.Text;
             }
 
             if (commercialYN == "YES")
@@ -72,34 +156,95 @@ namespace CRM
             {
                 commercial = false;
             }
-            else 
+            else
             {
-                MessageBox.Show("It is commercial client or no?","Error entering datas",MessageBoxButton.OK,MessageBoxImage.Hand);
+                MessageBox.Show("It is commercial client or no?", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return false;
             }
+            firstContacted = dpFirstContact.SelectedDate.Value;
             return true;
+        }
+
+        private void ClearDatas()
+        {
+            clientName = "";
+            contactName = "";
+            address = "";
+            city = "";
+            location = "";
+            country = "";
+            postalCode = "";
+            phone = "";
+            description = "";
+            fax = "";
+            email = "";
+            webPage = "";
+        }
+
+        private void ClearForm()
+        {
+            tbClientName.Text = "";
+            tbContactName.Text = "";
+            tbAddress.Text = "";
+            tbCity.Text = "";
+            tbCountry.Text = "";
+            tbLocation.Text = "";
+            tbPostalCode.Text = "";
+            tbPhone.Text = "";
+            tbFax.Text = "";
+            tbEmail.Text = "";
+            tbWeb.Text = "";
+            tbDescription.Text = "";
+            rbYesCommercial.IsChecked = false;
+            rbNoCommercial.IsChecked = false;
+            dpFirstContact.SelectedDate = DateTime.Now;
         }
 
         private void btAdd_Click(object sender, RoutedEventArgs e)
         {
             if (CheckingDatas() == true)
             {
-                Clients cl = new Clients{ClientName = clientName, ContactName = contactName, Address = address
-                    ,City = city, Location = location, Country = country, PostalCode = postalCode, Phone = phone, Description = description
-                    , Commercial = commercial, Fax = fax, Email = email, WebPage = webPage, FirstContacted = firstContacted};
+                Clients cl = new Clients() { ClientName = clientName, ContactName = contactName, Address = address, City = city, Location = location, Country = country, PostalCode = postalCode, Phone = phone, Description = description, Commercial = commercial, Fax = fax, Email = email, WebPage = webPage, FirstContacted = firstContacted };
                 db.AddClients(cl);
+                ClearDatas();
+                MessageBoxResult result = MessageBox.Show("New Client was succesful added. Clear Form?", "Addition", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ClearForm();
+                }
             }
-           
         }
 
         private void btClear_Click(object sender, RoutedEventArgs e)
         {
-
+            //Employees em = new Employees() { UserName = "ogogo", Password = "1", FirstName = "1", MiddleName = "1", LastName = "1", Address = "1", Location = "1", Country = "1", ZipCode = "1", DOB = firstContacted, Phone = "1", HireDate = firstContacted, PositionID = 2, DepartmentID = 8, Importance = 2, Description = "1" };
+            //db.AddEmployees(em);
+            MessageBoxResult result = MessageBox.Show("Clear Form?", "Clear Form", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                ClearForm();
+                ClearDatas();
+            }
         }
 
         private void btClose_Click(object sender, RoutedEventArgs e)
         {
-
+            if ((tbClientName.Text != "") || (tbContactName.Text != "") || (tbAddress.Text != "")
+            || (tbCity.Text != "") || (tbCountry.Text != "")
+            || (tbLocation.Text != "") || (tbPostalCode.Text != "")
+            || (tbPhone.Text != "") || (tbFax.Text != "") || (tbEmail.Text != "")
+            || (tbWeb.Text != "") || (tbDescription.Text != ""))
+            {
+                MessageBoxResult result = MessageBox.Show("Close Form?", "Close", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

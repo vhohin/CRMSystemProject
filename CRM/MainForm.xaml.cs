@@ -16,9 +16,44 @@ namespace CRM
 {    
     public partial class MainForm : Window
     {
-        public MainForm()
+        Database db;
+        public MainForm(string user)
         {
+            try
+            {
+                db = new Database();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Fatal error: unable coonect to database" + e.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                Environment.Exit(1);
+            }
             InitializeComponent();
+            tblUserName.Text = user;
+            UpdateGridList();
+        }
+        private void UpdateGridList()
+        {
+            try
+            {
+                List<Tasks> list = db.GetTasksByEmployeeId(2);
+                dgTasksList.ItemsSource = list;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }
+            dgTasksList.Items.Refresh();
+            /* lblId.Content = "...";
+             tbDescription.Text = "";
+             dpDueDate.SelectedDate = DateTime.Today;
+             cbIsDone.IsChecked = false;*/
+        }
+        private void dgTasksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         private void btEmployees_Click(object sender, RoutedEventArgs e)
@@ -38,7 +73,9 @@ namespace CRM
 
         private void btClients_Click(object sender, RoutedEventArgs e)
         {
-
+            ClientInfo clientInfo = new ClientInfo();
+            clientInfo.Owner = this;
+            clientInfo.Show();
         }
 
         private void btServices_Click(object sender, RoutedEventArgs e)
@@ -57,9 +94,9 @@ namespace CRM
         }
         private void btNewTasks_Click(object sender, RoutedEventArgs e)
         {
-            NewTaskForm newTaskWindow = new NewTaskForm();
+            /*NewTaskForm newTaskWindow = new NewTaskForm();
             newTaskWindow.Owner = this;
-            newTaskWindow.Show();
+            newTaskWindow.Show();*/
 
         }
         private void btNewContact_Click(object sender, RoutedEventArgs e)

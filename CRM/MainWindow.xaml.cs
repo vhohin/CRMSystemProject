@@ -21,6 +21,7 @@ namespace CRM
     public partial class MainWindow : Window
     {
         Database db;
+        string employee = "";
         public MainWindow()
         {
             try
@@ -34,35 +35,58 @@ namespace CRM
                 Environment.Exit(1);
                 //throw e;
             }
-            InitializeComponent();
+            InitializeComponent();            
+        }
+        private bool EnterCheck()
+        {
+            if (tbUserName.Text == "")
+            {
+                MessageBox.Show("Enter name, please.","Error",MessageBoxButton.OK,MessageBoxImage.Stop);
+                return false;
+            }
+            if (pbPsw.Password == "")
+            {
+                MessageBox.Show("Enter password, please.", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                return false;
+            }
             try
             {
                 List<Employees> list = db.GetAllEmployees();
-                /*dgEmployees.ItemsSource = list;
-                dgEmployees.Items.Refresh();*/
+                foreach (Employees e in list)
+                {
+                    if ((tbUserName.Text == e.UserName) && (pbPsw.Password == e.Password))
+                    {
+                        employee = e.FirstName + "   " + e.LastName;
+                        return true;
+                    }
+                }
+                return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
                 // TODO: write details of the exception to log text file
                 Environment.Exit(1);
-                //throw e;
             }
+            return true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //db.AddEmployees();
-            //dgEmployees.Items.Refresh();
-            MainForm taskWindow = new MainForm();
-            taskWindow.Show();
-            this.Close();
-
-           // Window2 taskWindow = new Window2();
-           // taskWindow.Show();
-           // MessageBox.Show("kuku");
-
-
+            if (EnterCheck() == true)
+            {
+                MainForm taskWindow = new MainForm(employee);
+                taskWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Name or Password is not correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                tbUserName.Text = "";
+                pbPsw.Password = "";
+                return;
+            }
+            
         }
     }
 }

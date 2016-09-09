@@ -8,7 +8,7 @@ namespace CRM
 {
     class Clients
     {
-        public int ClientId { get; set; }
+       public int ClientId { get; set; }
         public string ClientName { get; set; }
         public string ContactName { get; set; }
         public string Address { get; set; }
