@@ -34,3 +34,17 @@ Nazar
 
 3/ Ask 
 - Didn't ask Gregory how to manage conflicts in SourceTree 
+
+September 9, 2016
+
+Valeriy
+
+1) Finished - added tasks information to MainForm;
+            - enter to application by password;
+            - methods GetAllClients(), AddClients in Database class;
+            - Forms ClientInfo, NewClient;
+            - tested all work above.
+2) Didn't finished  addition test information to database.
+3) Add - test information to database;
+       - forms Employee, Contracts, Services;
+       - methods GetAllServices, AddServices, GetAllContracts, AddContract to class Database.
