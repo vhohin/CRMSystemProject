@@ -25,7 +25,7 @@ namespace CRM
             }
             catch (Exception e)
             {
-                MessageBox.Show("Fatal error: unable coonect to database" + e.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show("Fatal error: unable connect to database" + e.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Environment.Exit(1);
             }
             InitializeComponent();
@@ -94,9 +94,9 @@ namespace CRM
         }
         private void btNewTasks_Click(object sender, RoutedEventArgs e)
         {
-            /*NewTaskForm newTaskWindow = new NewTaskForm();
+            NewTask newTaskWindow = new NewTask();
             newTaskWindow.Owner = this;
-            newTaskWindow.Show();*/
+            newTaskWindow.Show();
 
         }
         private void btNewContact_Click(object sender, RoutedEventArgs e)
