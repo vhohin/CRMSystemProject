@@ -17,7 +17,7 @@ namespace CRM
     public partial class MainForm : Window
     {
         Database db;
-        public MainForm(string user)
+        public MainForm(string user, int importance)
         {
             try
             {
@@ -30,6 +30,7 @@ namespace CRM
             }
             InitializeComponent();
             tblUserName.Text = user;
+            
             UpdateGridList();
         }
         private void UpdateGridList()
@@ -94,9 +95,9 @@ namespace CRM
         }
         private void btNewTasks_Click(object sender, RoutedEventArgs e)
         {
-            NewTask newTaskWindow = new NewTask();
+           /* NewTask newTaskWindow = new NewTask();
             newTaskWindow.Owner = this;
-            newTaskWindow.Show();
+            newTaskWindow.Show();*/
 
         }
         private void btNewContact_Click(object sender, RoutedEventArgs e)
