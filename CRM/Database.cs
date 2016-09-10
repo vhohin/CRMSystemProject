@@ -298,10 +298,77 @@ namespace CRM
             }
         }
         //**************************************************************************
-        //     
+        //     POSITION
         //****************************************************************************
-
-
+        public List<Positions> GetAllPositions()
+        {
+            List<Positions> list = new List<Positions>();
+            SqlCommand cmd = new SqlCommand("Select * From Positions", conn);
+            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("PositionId"));
+                        string positionName = reader.GetString(reader.GetOrdinal("PositionName"));
+                        Positions p = new Positions
+                        {
+                            PositionId = id,
+                            PositionName = positionName,                            
+                        };
+                        list.Add(p);
+                    }
+                }
+            }
+            return list;
+        }
+        public void AddPositions(Positions p)
+        {
+            using (SqlCommand cmd = new SqlCommand("Insert Into Clients (PositionName) VALUES (@positionName)"))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@positionName", p.PositionName);                
+                cmd.ExecuteNonQuery();
+            }
+        }
+        //**************************************************************************
+        //     DEPARTAMENT
+        //****************************************************************************
+        public List<Departaments> GetAllDepartaments()
+        {
+            List<Departaments> list = new List<Departaments>();
+            SqlCommand cmd = new SqlCommand("Select * From Departaments", conn);
+            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("DepartamentId"));
+                        string departamentName = reader.GetString(reader.GetOrdinal("DepartamentName"));
+                        Departaments p = new Departaments
+                        {
+                            DepartamentId = id,
+                            DepartamentName = departamentName,
+                        };
+                        list.Add(p);
+                    }
+                }
+            }
+            return list;
+        }
+        public void AddDepartaments(Departaments p)
+        {
+            using (SqlCommand cmd = new SqlCommand("Insert Into Clients (DepartamentName) VALUES (@departamentName)"))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@departamentName", p.DepartamentName);
+                cmd.ExecuteNonQuery();
+            }
+        }
 
     }
 }

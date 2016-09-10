@@ -59,6 +59,7 @@
     <Compile Include="Clients.cs" />
     <Compile Include="Contacts.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Departaments.cs" />
     <Compile Include="Employees.cs" />
     <Compile Include="EmployeesList.xaml.cs">
       <DependentUpon>EmployeesList.xaml</DependentUpon>
@@ -67,6 +68,7 @@
       <DependentUpon>NewClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewTask.xaml.cs" />
+    <Compile Include="Positions.cs" />
     <Compile Include="Tasks.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>

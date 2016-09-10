@@ -22,6 +22,8 @@ namespace CRM
             public DateTime DOB { get; set; }
             public string Phone { get; set; }
             public string Email { get; set; }
+            //public string Position { get; set; }
+            //public string Department { get; set; }
             public DateTime HireDate { get; set; }
             public int PositionID { get; set; }
             public int DepartmentID { get; set; }
