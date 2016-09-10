@@ -75,7 +75,7 @@ namespace CRM
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (EnterCheck() == true)
+            /*if (EnterCheck() == true)
             {
                 MainForm taskWindow = new MainForm(employee, importance);
                 taskWindow.Show();
@@ -87,8 +87,11 @@ namespace CRM
                 tbUserName.Text = "";
                 pbPsw.Password = "";
                 return;
-            }
-            
+            }*/
+            MainForm taskWindow = new MainForm("Valeriy Hohin", 1);
+            taskWindow.Show();
+            this.Close();
         }
     }
+
 }

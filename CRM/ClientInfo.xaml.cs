@@ -47,9 +47,9 @@ namespace CRM
                 Environment.Exit(1);
             }
             InitializeComponent();
-            UpdateGridList();
+            UpdateGridListClients();
         }
-        private void UpdateGridList()
+        private void UpdateGridListClients()
         {
             try
             {
@@ -69,7 +69,7 @@ namespace CRM
             cbIsDone.IsChecked = false;*/
         }
 
-        private void ClearForm()
+        private void ClearFormClients()
         {
             tbClientName.Text = "";
             tbContactName.Text = "";

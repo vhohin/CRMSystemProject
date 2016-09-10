@@ -15,11 +15,13 @@ namespace CRM
             public string MiddleName { get; set; }
             public string LastName { get; set; }
             public string Address { get; set; }
+            public string City { get; set; }
             public string Location { get; set; }
             public string Country { get; set; }
             public string ZipCode { get; set; }
             public DateTime DOB { get; set; }
             public string Phone { get; set; }
+            public string Email { get; set; }
             public DateTime HireDate { get; set; }
             public int PositionID { get; set; }
             public int DepartmentID { get; set; }

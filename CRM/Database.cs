@@ -41,11 +41,13 @@ namespace CRM
                         string middleName = reader.GetString(reader.GetOrdinal("MiddleName"));
                         string lastName = reader.GetString(reader.GetOrdinal("LastName"));
                         string address = reader.GetString(reader.GetOrdinal("Address"));
-                        string location = reader.GetString(reader.GetOrdinal("Location"));
+                        string city = reader.GetString(reader.GetOrdinal("City"));
+                        string location = reader.GetString(reader.GetOrdinal("Location"));                        
                         string country = reader.GetString(reader.GetOrdinal("Country"));
                         string zipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
                         DateTime dob = reader.GetDateTime(reader.GetOrdinal("DOB"));
                         string phone = reader.GetString(reader.GetOrdinal("Phone"));
+                        string email = reader.GetString(reader.GetOrdinal("Email"));
                         DateTime hireDate = reader.GetDateTime(reader.GetOrdinal("HireDate"));
                         int positionID = reader.GetInt32(reader.GetOrdinal("PositionID"));
                         int departmentID = reader.GetInt32(reader.GetOrdinal("DepartmentID"));
@@ -60,11 +62,13 @@ namespace CRM
                             MiddleName = middleName,
                             LastName = lastName,
                             Address = address,
+                            City = city,
                             Location = location,
                             Country = country,
                             ZipCode = zipCode,
                             DOB = dob,
                             Phone = phone,
+                            Email = email,
                             HireDate = hireDate,
                             PositionID = positionID,
                             DepartmentID = departmentID,
@@ -79,7 +83,7 @@ namespace CRM
         }
         public void AddEmployees(Employees em)
         {
-            using (SqlCommand cmd = new SqlCommand("Insert Into Employees (UserName, Password, FirstName, MiddleName, LastName, Address, Location, Country, ZipCode, DOB, Phone, HireDate, PositionID, DepartmentID, Importance, Description) VALUES (@userName, @password, @firstName, @middleName, @lastName, @address, @location, @country, @zipCode, @dob, @phone, @hireDate, @positionID, @departmentID, @importance, @description)"))
+            using (SqlCommand cmd = new SqlCommand("Insert Into Employees (UserName, Password, FirstName, MiddleName, LastName, Address,City, Location, Country, ZipCode, DOB, Phone, Email, HireDate, PositionID, DepartmentID, Importance, Description) VALUES (@userName, @password, @firstName, @middleName, @lastName, @address, @city, @location, @country, @zipCode, @dob, @phone, @email, @hireDate, @positionID, @departmentID, @importance, @description)"))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection = conn;
@@ -89,11 +93,13 @@ namespace CRM
                 cmd.Parameters.AddWithValue("@middleName", em.MiddleName);
                 cmd.Parameters.AddWithValue("@lastName", em.LastName);
                 cmd.Parameters.AddWithValue("@address", em.Address);
+                cmd.Parameters.AddWithValue("@city", em.City);
                 cmd.Parameters.AddWithValue("@location", em.Location);
                 cmd.Parameters.AddWithValue("@country", em.Country);
                 cmd.Parameters.AddWithValue("@zipCode", em.ZipCode);
                 cmd.Parameters.AddWithValue("@dob", em.DOB);
                 cmd.Parameters.AddWithValue("@phone", em.Phone);
+                cmd.Parameters.AddWithValue("@email", em.Email);
                 cmd.Parameters.AddWithValue("@hireDate", em.HireDate);
                 cmd.Parameters.AddWithValue("@positionID", em.PositionID);
                 cmd.Parameters.AddWithValue("@departmentID", em.DepartmentID);
