@@ -16,7 +16,12 @@ namespace CRM
 {    
     public partial class MainForm : Window
     {
-        Database db;        
+        Database db;
+        List<Employees> listEmployee;
+        List<Clients> listClients;
+        List<Positions> listPositions;
+        List<Departaments> listDepartments;
+        string commercialYN="";
         public MainForm(string user, int importance)
         {
             try
@@ -29,6 +34,7 @@ namespace CRM
                 Environment.Exit(1);
             }
             InitializeComponent();
+            this.Title = " CRM System User: "+user;
             tblUserName.Text = user;
             if (importance != 0)
             {
@@ -37,14 +43,55 @@ namespace CRM
             UpdateGridListTasks();
             UpdateGridListClients();
             UpdateGridListEmployees();
+            UpdateGridListPositions();
+            UpdateGridListDepartments();
         }
         private void EnterBoss()
-        { 
-        
+        {
+            //Clients
+            tbClientName.IsReadOnly= false;
+            tbContactName.IsReadOnly = false;
+            tbAddress.IsReadOnly = false;
+            tbCity.IsReadOnly = false;
+            tbCountry.IsReadOnly = false;
+            tbLocation.IsReadOnly = false;
+            tbPostalCode.IsReadOnly = false;
+            tbLocation.IsReadOnly = false;
+            tbPhone.IsReadOnly = false;
+            tbFax.IsReadOnly = false;
+            tbEmail.IsReadOnly = false;
+            tbWeb.IsReadOnly = false;
+            tbDescription.IsReadOnly = false;
+            rbYesCommercial.IsEnabled = true;
+            rbNoCommercial.IsEnabled = true;
+            dpFirstContact.IsEnabled = true;
+            btClientUpdate.Visibility = Visibility.Visible;
+            btClientClear.Visibility = Visibility.Visible;
+            btClientDelete.Visibility = Visibility.Visible;
+            //Employees
+            tbEmployeeFirstName.IsReadOnly = false;
+            tbEmployeeLastName.IsReadOnly = false;
+            tbEmployeeAddress.IsReadOnly = false;
+            tbEmployeeCity.IsReadOnly = false;
+            tbEmployeeCountry.IsReadOnly = false;
+            tbEmployeeLocation.IsReadOnly = false;
+            tbEmployeePostalCode.IsReadOnly = false;
+            tbEmployeeLocation.IsReadOnly = false;
+            tbEmployeePhone.IsReadOnly = false;
+            tbEmployeePosition.IsReadOnly = false;
+            tbEmployeeDepartament.IsReadOnly = false;
+            tbEmployeeDescription.IsReadOnly = false;
+            dpEmployeeDOB.IsEnabled = true;
+            dpEmployeeHireDate.IsEnabled = true;
+            btEmployeeUpdate.Visibility = Visibility.Visible;
+            btEmployeeClear.Visibility = Visibility.Visible;
+            btEmployeeDelete.Visibility = Visibility.Visible;
         }
         //*******************************************************
         //  Update Grid Lists
         //*******************************************************
+
+            // will be Changed******************************************
         private void UpdateGridListTasks()
         {
             try
@@ -65,8 +112,8 @@ namespace CRM
         {
             try
             {
-                List<Clients> list = db.GetAllClients();
-                dgClientsList.ItemsSource = list;
+                listClients = db.GetAllClients();
+                dgClientsList.ItemsSource = listClients;
             }
             catch (Exception ex)
             {
@@ -80,8 +127,36 @@ namespace CRM
         {
             try
             {
-                List<Employees> list = db.GetAllEmployees();
-                dgEmployeesList.ItemsSource = list;
+                listEmployee = db.GetAllEmployees();
+                dgEmployeesList.ItemsSource = listEmployee;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }
+            dgEmployeesList.Items.Refresh();
+        }
+        private void UpdateGridListPositions()
+        {
+            try
+            {
+                listPositions = db.GetAllPositions();              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }
+            dgEmployeesList.Items.Refresh();
+        }
+        private void UpdateGridListDepartments()
+        {
+            try
+            {
+                listDepartments = db.GetAllDepartments();
             }
             catch (Exception ex)
             {
@@ -122,16 +197,13 @@ namespace CRM
             tbDescription.Text = cl.Description;
             if (cl.Commercial == true)
             {
-                tbCommercial.Text = "YES";
+                rbYesCommercial.IsChecked = true;
             }
             else
             {
-                tbCommercial.Text = "NO";
-            }
-            //rbYesCommercial.IsChecked = false;
-            //rbNoCommercial.IsChecked = false;
-            tbFirstContact.Text = cl.FirstContacted.ToShortDateString();
-            //dpFirstContact.SelectedDate = cl.FirstContacted;
+                rbNoCommercial.IsChecked = true;
+            }            
+            dpFirstContact.SelectedDate = cl.FirstContacted;
         }
         private void dgEmployeesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -151,11 +223,51 @@ namespace CRM
             tbEmployeePostalCode.Text = em.ZipCode;
             tbEmployeePhone.Text = em.Phone;
             tbEmployeeEmail.Text = em.Email;
-            //tbEmployeePosition.Text = cl.Fax;
-            //tbEmployeeDepartament.Text = em.DepartmentID;            
-            tbEmployeeDOB.Text = em.DOB.ToShortDateString();
-            tbEmployeeHireDate.Text = em.HireDate.ToShortDateString();
+            tbEmployeePosition.Text = PositionsToString(em.PositionID);
+            tbEmployeeDepartament.Text = DepartmentToString(em.DepartmentID);
+            dpEmployeeDOB.SelectedDate = em.DOB;
+            dpEmployeeHireDate.SelectedDate = em.HireDate;           
             tbDescription.Text = em.Description;
+        }
+
+        //*******************************************************
+        //  Positions And Departaments Strings
+        //*******************************************************
+
+        private string PositionsToString(int id)
+        {
+            string positionName="";
+            if (listPositions.Count > 0)
+            {
+                foreach (Positions p in listPositions)
+                    if (p.PositionId == id)
+                    {
+                        positionName = p.PositionName;
+                    }
+            }                
+            /*try
+            {
+                positionName = db.GetPositionsById(id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                Environment.Exit(1);
+            }*/
+            return positionName;
+        }
+        private string DepartmentToString(int id)
+        {
+            string departmentName = "";
+            if (listPositions.Count > 0)
+            {
+                foreach (Departaments d in listDepartments)
+                    if (d.DepartmentId == id)
+                    {
+                        departmentName = d.DepartmentName;
+                    }
+            }            
+            return departmentName;
         }
         //*******************************************************
         //  Buttons Clicks
@@ -179,6 +291,40 @@ namespace CRM
             addClientWindow.Show();
         }
         private void btNewEmployee_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var button = sender as RadioButton;
+            commercialYN = button.Content.ToString();
+
+        }
+
+        private void btClientUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btClientClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btClientDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btEmployeeUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btEmployeeClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btEmployeeDelete_Click(object sender, RoutedEventArgs e)
         {
 
         }

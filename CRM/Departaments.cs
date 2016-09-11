@@ -8,7 +8,7 @@ namespace CRM
 {
     class Departaments
     {
-        public int DepartamentId { get; set; }
-        public string DepartamentName { get; set; }
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
     }
 }
