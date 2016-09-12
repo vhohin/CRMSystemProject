@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="NewTask.xaml.cs" />
     <Compile Include="Positions.cs" />
+    <Compile Include="Products.cs" />
     <Compile Include="Tasks.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>

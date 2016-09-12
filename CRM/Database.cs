@@ -11,8 +11,9 @@ namespace CRM
     class Database
     {
         //Data Source=ipd8.database.windows.net;Initial Catalog=crm;Integrated Security=False;User ID=ipd8abbott;Password=Abbott2000;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
-        //const string CONN_STRING = @"Data Source=ipd8.database.windows.net;Initial Catalog=crm;Integrated Security=False;User ID=ipd8abbott;Password=Abbott2000;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        const string CONN_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\BitBuckets\CRMGroupProject\CRM\crm.mdf;Integrated Security=True;Connect Timeout=30";
+        const string CONN_STRING = @"Data Source=ipd8vs.database.windows.net;Initial Catalog=crm;Integrated Security=False;User ID=sqladmin;Password=IPD8rocks!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //const string CONN_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\BitBuckets\CRMGroupProject\CRM\crm.mdf;Integrated Security=True;Connect Timeout=30";
+        //const string CONN_STRING = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\ipd\Documents\CRMSystemProject\CRM\DB\DBCRM.mdf;Integrated Security=True;Connect Timeout=30";
         private SqlConnection conn;
         public Database()
         {
@@ -512,5 +513,117 @@ namespace CRM
                 cmd.ExecuteNonQuery();
             }
         }
+
+
+        //**************************************************************************
+        //     PRODUCTS
+        //****************************************************************************
+        public List<Products> GetAllProducts()
+        {
+            List<Products> list = new List<Products>();
+            SqlCommand cmd = new SqlCommand("Select * From Products", conn);
+            using (SqlDataReader reader = cmd.ExecuteReader()) 
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                     
+
+                        int productId = reader.GetInt32(reader.GetOrdinal("ProductId"));
+                        string productType = reader.GetString(reader.GetOrdinal("ProductType"));
+                        string productName = reader.GetString(reader.GetOrdinal("ProductName"));
+                        string producerName = reader.GetString(reader.GetOrdinal("ProducerName"));
+                        string model = reader.GetString(reader.GetOrdinal("Model"));
+                        string descriprion = reader.GetString(reader.GetOrdinal("Descriprion"));
+                        string color = reader.GetString(reader.GetOrdinal("Color"));
+                        double unitPrice = reader.GetDouble(reader.GetOrdinal("UnitPrice"));
+                        double weight = reader.GetDouble(reader.GetOrdinal("Weight"));
+                        int unitsInStock = reader.GetInt32(reader.GetOrdinal("UnitsInStock"));
+                        int customerRating = reader.GetInt32(reader.GetOrdinal("CustomerRating"));
+                        bool discontinued = reader.GetBoolean(reader.GetOrdinal("Discontinued"));
+
+
+                        Products p = new Products
+                        {
+                            ProductId = productId,
+                            ProductType = productName,
+                            ProductName = productName,
+                            ProducerName = producerName,
+                            Model = model,
+                            Descriprion = descriprion,
+                            Color = color,
+                            UnitPrice = unitPrice,
+                            Weight = weight,
+                            UnitsInStock = unitsInStock,
+                            CustomerRating = customerRating,
+                            Discontinued = discontinued
+                        };
+                        list.Add(p);
+                    }
+                }
+            }
+            return list;
+        }
+
+        // TODO LIST
+
+
+        /*public void AddClients(Clients cl)
+        {
+            using (SqlCommand cmd = new SqlCommand("Insert Into Clients (ClientName, ContactName, Address, City, Location, Country, PostalCode, Phone, Description, Commercial, Fax, Email,WebPage,FirstContacted) VALUES (@clientName, @contactName, @address, @city, @location, @country, @postalCode, @phone, @description, @commercial, @fax, @email,@webPage,@firstContacted)"))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@clientName", cl.ClientName);
+                cmd.Parameters.AddWithValue("@contactName", cl.ContactName);
+                cmd.Parameters.AddWithValue("@address", cl.Address);
+                cmd.Parameters.AddWithValue("@city", cl.City);
+                cmd.Parameters.AddWithValue("@location", cl.Location);
+                cmd.Parameters.AddWithValue("@country", cl.Country);
+                cmd.Parameters.AddWithValue("@postalCode", cl.PostalCode);
+                cmd.Parameters.AddWithValue("@phone", cl.Phone);
+                cmd.Parameters.AddWithValue("@description", cl.Description);
+                cmd.Parameters.AddWithValue("@commercial", cl.Commercial);
+                cmd.Parameters.AddWithValue("@fax", cl.Fax);
+                cmd.Parameters.AddWithValue("@email", cl.Email);
+                cmd.Parameters.AddWithValue("@webPage", cl.WebPage);
+                cmd.Parameters.AddWithValue("@firstContacted", cl.FirstContacted);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void UpdateClient(Clients cl)
+        {
+            //throw new NotImplementedException();
+            using (SqlCommand cmd = new SqlCommand("Update Clients set ClientName=@clientName, ContactName=@contactName, Address=@address, City=@city, Location=@Location, Country=@country, PostalCode=@postalCode, Phone=@phone, Description=@description, Commercial=@commercial, Fax=@fax, Email=@email, WebPage= @webPage, FirstContacted=@firstContacted where ClientId=@id", conn))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", cl.ClientId);
+                cmd.Parameters.AddWithValue("@clientName", cl.ClientName);
+                cmd.Parameters.AddWithValue("@contactName", cl.ContactName);
+                cmd.Parameters.AddWithValue("@address", cl.Address);
+                cmd.Parameters.AddWithValue("@city", cl.City);
+                cmd.Parameters.AddWithValue("@Location", cl.Location);
+                cmd.Parameters.AddWithValue("@country", cl.Country);
+                cmd.Parameters.AddWithValue("@postalCode", cl.PostalCode);
+                cmd.Parameters.AddWithValue("@phone", cl.Phone);
+                cmd.Parameters.AddWithValue("@description", cl.Description);
+                cmd.Parameters.AddWithValue("@commercial", cl.Commercial);
+                cmd.Parameters.AddWithValue("@fax", cl.Fax);
+                cmd.Parameters.AddWithValue("@email", cl.Email);
+                cmd.Parameters.AddWithValue("@webPage", cl.WebPage);
+                cmd.Parameters.AddWithValue("@firstContacted", cl.FirstContacted);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void DeleteClientById(int Id)
+        {
+            using (SqlCommand cmd = new SqlCommand("Delete from Clients where ClientId=@id", conn))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", Id);
+                cmd.ExecuteNonQuery();
+            }
+        }*/
     }
 }

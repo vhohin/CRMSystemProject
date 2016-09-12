@@ -60,6 +60,29 @@ namespace CRM
         DateTime employeeDOB;
         DateTime employeeHireDate;
         int currentEmployee = 0;
+       
+        // products fields
+        List<Products> listProducts;
+
+        int productId;
+        string productType = "";
+        string productName = "";
+        string producerName = "";
+        string model = "";
+        string descriprion = "";
+        string color = "";
+        double unitPrice = 0;
+        double weight = 0;
+        int unitsInStock = 1;
+        int customerRating = 1;
+        string discontinuedYN;
+        bool discontinued;
+
+        int currentProduct = 0;
+
+
+
+
         public MainForm(string user, int importance)
         {
             try
@@ -88,8 +111,11 @@ namespace CRM
             UpdateGridListEmployees();
             UpdateGridListPositions();
             UpdateGridListDepartments();
+            UpdateGridListProducts();
+
             UploadEmployeePositions();
             UploadEmployeeDepartments();
+            
         }
         private void EnterBoss()
         {
@@ -200,7 +226,7 @@ namespace CRM
                 // TODO: write details of the exception to log text file
                 Environment.Exit(1);
             }
-            dgEmployeesList.Items.Refresh();
+            //dgEmployeesList.Items.Refresh();
         }
         private void UpdateGridListDepartments()
         {
@@ -214,8 +240,27 @@ namespace CRM
                 // TODO: write details of the exception to log text file
                 Environment.Exit(1);
             }
-            dgEmployeesList.Items.Refresh();
+            //dgEmployeesList.Items.Refresh();
         }
+
+        private void UpdateGridListProducts()
+        {
+            try
+            {
+                listProducts = db.GetAllProducts();
+                dgProductsList.ItemsSource = listProducts;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }
+            dgProductsList.Items.Refresh();
+        }
+
+
+
         //*******************************************************
         //  Grid Lists Selections
         //*******************************************************
@@ -283,6 +328,42 @@ namespace CRM
             tbDescription.Text = em.Description;
             employeeImportance = em.Importance;
         }
+
+
+        private void dgProductsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Products p = dgProductsList.SelectedItem as Products;
+            if (p == null)
+            {
+                currentProduct = 0;
+                return;
+            }
+            currentProduct = p.ProductId;
+
+            tbProductType.Text = p.ProductType;
+            tbProducerName.Text = p.ProductName;
+            tbModel.Text = p.Model;
+            tbColor.Text = p.Color;
+            tbWeight.Text = String.Format("{0}",p.Weight);
+            tbPricePerItem.Text = String.Format("{0}",p.UnitPrice);
+            tbUnitsInStock.Text = String.Format("{0}", p.UnitsInStock);
+            tbCustomerRating.Text = String.Format("{0}", p.CustomerRating); ;
+            tbProductDescription.Text = p.Descriprion; 
+
+            if (p.Discontinued == true)
+            {
+                rbYesDiscontinued.IsChecked = true;
+            }
+            else
+            {
+                rbNoDiscontinued.IsChecked = true;
+            }
+            
+        }
+
+
+
+
         //*******************************************************
         //  Upploads combos
         //*******************************************************
@@ -763,8 +844,8 @@ namespace CRM
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TabItem selectedTab = e.AddedItems[0] as TabItem;  // Gets selected tab
-
+            /*TabItem selectedTab = e.AddedItems[0] as TabItem;  // Gets selected tab
+            
             if (tabItem5.IsSelected)
             {
                 UpdateGridListEmployees();
@@ -777,6 +858,23 @@ namespace CRM
             {
                 // Do work Tab2
             }
+             * */
+        }
+
+        
+        private void btProductUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btProductCleal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btProductDelete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -17,18 +17,18 @@
         <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\newclient.png"/>
         <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\newemployee.png"/>-->
 
-        <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
-        <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
-        <BitmapImage x:Key="ImageSource3" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\employees.png"/>
-        <BitmapImage x:Key="ImageSource4" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contracts.png"/>
-        <BitmapImage x:Key="ImageSource5" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\employee.png"/>
-        <BitmapImage x:Key="ImageSource6" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\tasks.png"/>
-        <BitmapImage x:Key="ImageSource7" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\product2.png"/>
-        <BitmapImage x:Key="ImageSource8" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\sup.png"/>
-        <BitmapImage x:Key="ImageSource9" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newtask.png"/>
-        <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact4.png"/>
-        <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newclient.png"/>
-        <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newemployee.png"/>
+        <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
+        <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
+        <BitmapImage x:Key="ImageSource3" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\employees.png"/>
+        <BitmapImage x:Key="ImageSource4" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\contracts.png"/>
+        <BitmapImage x:Key="ImageSource5" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\employee.png"/>
+        <BitmapImage x:Key="ImageSource6" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\tasks.png"/>
+        <BitmapImage x:Key="ImageSource7" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\product2.png"/>
+        <BitmapImage x:Key="ImageSource8" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\sup.png"/>
+        <BitmapImage x:Key="ImageSource9" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\newtask.png"/>
+        <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\contact4.png"/>
+        <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\newclient.png"/>
+        <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\newemployee.png"/>
 
         <!--<BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contact3.png"/>
         <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contact3.png"/>
@@ -48,7 +48,7 @@
     </Window.Resources>
 
     <DockPanel Grid.Column="1" Grid.ColumnSpan="2">
-       <Border Height="60" Background="#FFD5D8D8" DockPanel.Dock="Top">
+        <Border Height="60" Background="#FFD5D8D8" DockPanel.Dock="Top">
             <ToolBar Height="60">
                 <Button x:Name="btNewTasks" Width="60" Height="50" Margin="10 0 10 0" BorderBrush="#FFCDCECF" Background="Transparent" FontSize="14" Click="btNewTasks_Click">
                     <StackPanel Orientation="Horizontal" Width="50">
@@ -191,7 +191,7 @@
                                         <Button x:Name="btClientUpdate" Content="UPDATE" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btClientUpdate_Click" Foreground="#FF102EB4"/>
                                         <Button x:Name="btClientClear" Content="CLEAR" Height="35" VerticalAlignment="Top" Margin="205,483,189,-33" Width="160"  Click="btClientClear_Click" Foreground="#FF9C1313"/>
                                         <Button x:Name="btClientDelete" Content="DELETE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btClientDelete_Click" Foreground="#FF9C1313"/>
-                                        </Grid>
+                                    </Grid>
                                 </WrapPanel>
                                 <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Width="5" Background= "White" 
                       VerticalAlignment="Stretch" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1,0"></GridSplitter>
@@ -236,7 +236,7 @@
                                         <DataGrid.ColumnHeaderStyle>
                                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                                 <Setter Property="FontWeight" Value="Bold" />
-                                                <Setter Property="Background" Value="LightGray" />                                                
+                                                <Setter Property="Background" Value="LightGray" />
                                                 <Setter Property="Height" Value="25" />
                                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
                                             </Style>
@@ -307,6 +307,68 @@
                         </StackPanel>                    
                             </TextBlock>
                         </TabItem.Header>
+
+                        <Grid>
+                            <Grid RenderTransformOrigin="0.313,0.475">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="185" MinWidth="130" MaxWidth="185"></ColumnDefinition>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <WrapPanel Grid.Row="1" MinWidth="180">
+                                    <DataGrid x:Name="dgProductsList" Margin="3,3,3,3"  RenderTransformOrigin="0.5,0.5" SelectionChanged="dgProductsList_SelectionChanged" AutoGenerateColumns="False" SelectionMode="Single" HorizontalAlignment="Left" Width="180" Height="541" VerticalAlignment="Top">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" Width="172" IsReadOnly="true" />
+                                        </DataGrid.Columns>
+                                        <DataGrid.ColumnHeaderStyle>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                                <Setter Property="Background" Value="LightGray" />
+                                                <Setter Property="BorderThickness" Value="1" />
+                                                <Setter Property="BorderBrush" Value="Black" />
+                                                <Setter Property="Height" Value="25" />
+                                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            </Style>
+                                        </DataGrid.ColumnHeaderStyle>
+                                    </DataGrid>
+
+                                </WrapPanel>
+                                <WrapPanel Grid.Row="1" Grid.Column="3" MinWidth="200">
+                                    <Grid Margin="0,0,-6,0">
+                                        <Label Content="PRODUCT INFORMATION" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF0E52A2"/>
+                                        <Label Content="Product Type" HorizontalAlignment="Left" Margin="16,35,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Producer Name" HorizontalAlignment="Left" Margin="299,35,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Model" HorizontalAlignment="Left" Margin="16,107,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Color" HorizontalAlignment="Left" Margin="16,157,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Weight" HorizontalAlignment="Left" Margin="170,157,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Price per item" HorizontalAlignment="Left" Margin="16,228,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Description" HorizontalAlignment="Left" Margin="16,345,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Discontinued" HorizontalAlignment="Left" Margin="16,442,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Units in stock" HorizontalAlignment="Left" Margin="322,228,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Cutomer Rating" HorizontalAlignment="Left" Margin="16,275,0,0" VerticalAlignment="Top"/>
+                                        <TextBox x:Name="tbProductType" Height="23" Margin="16,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbProducerName" HorizontalAlignment="Left" Height="23" Margin="299,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbModel" HorizontalAlignment="Left" Height="23" Margin="16,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbColor" HorizontalAlignment="Left" Height="23" Margin="16,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbWeight" HorizontalAlignment="Left" Height="23" Margin="170,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbPricePerItem" HorizontalAlignment="Left" Height="23" Margin="16,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbUnitsInStock" HorizontalAlignment="Left" Height="23" Margin="322,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbCustomerRating" HorizontalAlignment="Left" Height="23" Margin="16,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbProductDescription" HorizontalAlignment="Left" Height="55" Margin="16,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" IsReadOnly="True"/>
+                                        <RadioButton x:Name="rbYesDiscontinued" GroupName="discontinued" Content="YES" Checked="RadioButton_Checked" HorizontalAlignment="Left" Margin="112,448,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+                                        <RadioButton x:Name="rbNoDiscontinued" GroupName="discontinued" Content="NO" Checked="RadioButton_Checked" HorizontalAlignment="Left" Margin="163,448,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+                                        <Button x:Name="btProductUpdate" Content="UPDATE" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btProductUpdate_Click" Foreground="#FF102EB4"/>
+                                        <Button x:Name="btProductClear" Content="CLEAR" Height="35" VerticalAlignment="Top" Margin="205,483,189,-33" Width="160"  Click="btProductCleal_Click" Foreground="#FF9C1313"/>
+                                        <Button x:Name="btProductDelete" Content="DELETE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btProductDelete_Click" Foreground="#FF9C1313"/>
+                                    </Grid>
+                                </WrapPanel>
+                                <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Width="5" Background= "White" 
+                      VerticalAlignment="Stretch" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1,0"></GridSplitter>
+                            </Grid>
+                        </Grid>
                     </TabItem>
                 </TabControl>
             </Grid>
