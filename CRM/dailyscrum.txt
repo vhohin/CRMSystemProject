@@ -78,3 +78,37 @@ Nazar
 
 4/ Ask 
 - How to properly manage conflicts in SourceTree 
+
+Valeriy
+1) Finished - addition test information to database;
+	    - form newEmployee;
+            - methods DeleteEmployee, UpdateEmployee, DeleteClient, UpdateClient to class Database;
+	    - test DeleteEmployee, UpdateEmployee, DeleteClient, UpdateClient.
+
+2) Didn't finished methods GetAllServices, AddServices, GetAllContracts, AddContract to class Database.
+3) ToDo:  GetAllContracts, AddContract, form NewCotract.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
