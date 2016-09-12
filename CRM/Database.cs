@@ -115,6 +115,7 @@ namespace CRM
             using (SqlCommand cmd = new SqlCommand("Update Employees set UserName=@userName, Password=@password, FirstName=@firstName, MiddleName=@middleName, LastName=@lastName, Address=@address,City=@city, Location=@location, Country=@country, ZipCode=@zipCode, DOB=@dob, Phone=@phone, Email=@email, HireDate=@hireDate, PositionID=@positionID, DepartmentID=@departmentID, Importance=@importance, Description=@description where EmployeeId=@id", conn))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", em.EmployeeId);
                 cmd.Parameters.AddWithValue("@userName", em.UserName);
                 cmd.Parameters.AddWithValue("@password", em.Password);
                 cmd.Parameters.AddWithValue("@firstName", em.FirstName);
@@ -341,6 +342,7 @@ namespace CRM
             using (SqlCommand cmd = new SqlCommand("Update Clients set ClientName=@clientName, ContactName=@contactName, Address=@address, City=@city, Location=@Location, Country=@country, PostalCode=@postalCode, Phone=@phone, Description=@description, Commercial=@commercial, Fax=@fax, Email=@email, WebPage= @webPage, FirstContacted=@firstContacted where ClientId=@id", conn))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", cl.ClientId);
                 cmd.Parameters.AddWithValue("@clientName", cl.ClientName);
                 cmd.Parameters.AddWithValue("@contactName", cl.ContactName);
                 cmd.Parameters.AddWithValue("@address", cl.Address);
@@ -426,6 +428,7 @@ namespace CRM
             using (SqlCommand cmd = new SqlCommand("Update Positions set PositionName=@positionName where PositionId=@id", conn))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", p.PositionId);
                 cmd.Parameters.AddWithValue("@positionName", p.PositionName);
                 cmd.ExecuteNonQuery();
             }
@@ -495,6 +498,7 @@ namespace CRM
             using (SqlCommand cmd = new SqlCommand("Update Positions set DepartmentName=@departmentName where DepartmentId=@id", conn))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", d.DepartmentId);
                 cmd.Parameters.AddWithValue("@departmentName", d.DepartmentName);
                 cmd.ExecuteNonQuery();
             }

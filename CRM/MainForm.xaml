@@ -48,10 +48,7 @@
     </Window.Resources>
 
     <DockPanel Grid.Column="1" Grid.ColumnSpan="2">
-        <!--<Border Height="25" Background="AliceBlue" DockPanel.Dock="Top">
-            <TextBlock>Menu</TextBlock>
-        </Border>-->
-        <Border Height="60" Background="#FFD5D8D8" DockPanel.Dock="Top">
+       <Border Height="60" Background="#FFD5D8D8" DockPanel.Dock="Top">
             <ToolBar Height="60">
                 <Button x:Name="btNewTasks" Width="60" Height="50" Margin="10 0 10 0" BorderBrush="#FFCDCECF" Background="Transparent" FontSize="14" Click="btNewTasks_Click">
                     <StackPanel Orientation="Horizontal" Width="50">
@@ -78,13 +75,10 @@
         <Border Height="30" Background="LightSteelBlue" DockPanel.Dock="Bottom">
             <TextBlock Background="#FFECECEC">Status</TextBlock>
         </Border>
-        <!--<Border Height="80" Background="Azure" DockPanel.Dock="Right">
-            <TextBlock>Right Side</TextBlock>
-        </Border>-->
         <Border Background="#ffffff">
             <Grid>
                 <TabControl Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  
-                            Grid.RowSpan="2" TabStripPlacement="Left">
+                            Grid.RowSpan="2" TabStripPlacement="Left" SelectionChanged="TabControl_SelectionChanged">
                     <TabItem Name="tabItem1">
                         <TabItem.Header>
                             <TextBlock Margin="3">
@@ -94,7 +88,6 @@
                         </StackPanel>                    
                             </TextBlock>
                         </TabItem.Header>
-
                         <StackPanel Orientation="Vertical" Height="240" VerticalAlignment="Top" >
                             <Grid Height="56">
                                 <TextBlock x:Name="tblUserName" Text="" Height="30" FontSize="18" Foreground="#FF053A70" ForceCursor="True" Margin="56,12,0,14" HorizontalAlignment="Left" Width="328"  />
@@ -115,7 +108,6 @@
                                 </DataGrid>
                             </Grid>
                         </StackPanel>
-
                     </TabItem>
                     <TabItem Name="tabItem2">
                         <TabItem.Header>
@@ -199,20 +191,11 @@
                                         <Button x:Name="btClientUpdate" Content="UPDATE" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btClientUpdate_Click" Foreground="#FF102EB4"/>
                                         <Button x:Name="btClientClear" Content="CLEAR" Height="35" VerticalAlignment="Top" Margin="205,483,189,-33" Width="160"  Click="btClientClear_Click" Foreground="#FF9C1313"/>
                                         <Button x:Name="btClientDelete" Content="DELETE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btClientDelete_Click" Foreground="#FF9C1313"/>
-                                        <!--<TextBox x:Name="tbFirstContact" HorizontalAlignment="Left" Height="23" Margin="413,446,0,-1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" IsInactiveSelectionHighlightEnabled="True"/>
-                                        <TextBox x:Name="tbCommercial" HorizontalAlignment="Left" Height="23" Margin="109,446,0,-1" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" IsReadOnly="True" IsInactiveSelectionHighlightEnabled="True"/>-->
-                                        <!--SelectedDateChanged="DatePicker_SelectedDateChanged"-->
-                                        <!--<Button x:Name="btAdd" Content="ADD" HorizontalAlignment="Left" Margin="16,486,0,0" VerticalAlignment="Top" Width="160" Foreground="#FF055905" Click="btAdd_Click" Height="39"/>
-                    <Button x:Name="btClear" Content="CLEAR" HorizontalAlignment="Left" Margin="206,486,0,0" VerticalAlignment="Top" Width="160" Foreground="#FFC11919" Click="btClear_Click" Height="39"/>
-                    <Button x:Name="btClose" Content="CLOSE" HorizontalAlignment="Left" Margin="394,486,0,0" VerticalAlignment="Top" Width="160" Foreground="#FFC11919" Click="btClose_Click" Height="39"/>-->
-
-
-                                    </Grid>
+                                        </Grid>
                                 </WrapPanel>
                                 <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Width="5" Background= "White" 
                       VerticalAlignment="Stretch" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1,0"></GridSplitter>
                             </Grid>
-
                         </Grid>
                     </TabItem>
                     <TabItem Name="tabItem4">
@@ -225,7 +208,7 @@
                             </TextBlock>
                         </TabItem.Header>
                     </TabItem>
-                    <TabItem Name="tabItem5">
+                    <TabItem x:Name="tabItem5" >
                         <TabItem.Header>
                             <TextBlock Margin="3">
                         <StackPanel Orientation="Horizontal" Width="120">
@@ -253,15 +236,11 @@
                                         <DataGrid.ColumnHeaderStyle>
                                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                                 <Setter Property="FontWeight" Value="Bold" />
-                                                <Setter Property="Background" Value="LightGray" />
-                                                <!--<Setter Property="BorderThickness" Value="1" />
-                                                <Setter Property="BorderBrush" Value="Black" />-->
+                                                <Setter Property="Background" Value="LightGray" />                                                
                                                 <Setter Property="Height" Value="25" />
                                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
                                             </Style>
                                         </DataGrid.ColumnHeaderStyle>
-
-
                                     </DataGrid>
                                 </WrapPanel>
                                 <WrapPanel Grid.Row="1" Grid.Column="3" MinWidth="200">
@@ -290,28 +269,23 @@
                                         <Label Content="Location" HorizontalAlignment="Left" Margin="322,157,0,0" VerticalAlignment="Top"/>
                                         <TextBox x:Name="tbEmployeePhone" HorizontalAlignment="Left" Height="23" Margin="16,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" IsReadOnly="True"/>
                                         <TextBox x:Name="tbEmployeeEmail" HorizontalAlignment="Left" Height="23" Margin="322,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeePosition" HorizontalAlignment="Left" Height="23" Margin="16,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeeDepartament" HorizontalAlignment="Left" Height="23" Margin="322,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsReadOnly="True"/>
+                                        <ComboBox x:Name="cbEmployeePositions" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="16,315,0,0" VerticalAlignment="Top" Width="281" SelectionChanged="cbEmployeePositions_SelectionChanged" IsReadOnly="True" />
+                                        <ComboBox x:Name="cbEmployeeDepartments" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="322,315,0,0" VerticalAlignment="Top" Width="232" SelectionChanged="cbEmployeeDepartmets_SelectionChanged" IsReadOnly="True" />
                                         <TextBox x:Name="tbEmployeeDescription" HorizontalAlignment="Left" Height="55" Margin="16,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" IsReadOnly="True"/>
                                         <DatePicker x:Name="dpEmployeeHireDate" HorizontalAlignment="Left" Margin="413,443,0,0" VerticalAlignment="Top" Width="141" IsEnabled="False" />
                                         <DatePicker x:Name="dpEmployeeDOB" HorizontalAlignment="Left" Margin="109,445,0,-1" VerticalAlignment="Top" Width="141" IsEnabled="False" />
                                         <Button x:Name="btEmployeeUpdate" Content="UPDATE" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btEmployeeUpdate_Click" Foreground="#FF102EB4"/>
                                         <Button x:Name="btEmployeeClear" Content="CLEAR" Height="35" VerticalAlignment="Top" Margin="205,483,189,-33" Width="160"  Click="btEmployeeClear_Click" Foreground="#FF9C1313"/>
                                         <Button x:Name="btEmployeeDelete" Content="DELETE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btEmployeeDelete_Click" Foreground="#FF9C1313"/>
-                                        <!--<TextBox x:Name="tbEmployeeHireDate" HorizontalAlignment="Left" Height="23" Margin="414,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" IsReadOnly="True" IsInactiveSelectionHighlightEnabled="True"/>
-                                        <TextBox x:Name="tbEmployeeDOB" HorizontalAlignment="Left" Height="23" Margin="109,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" IsReadOnly="True" IsInactiveSelectionHighlightEnabled="True"/>-->
-                                        <!--SelectedDateChanged="DatePicker_SelectedDateChanged"-->
-                                        <!--<Button x:Name="btAdd" Content="ADD" HorizontalAlignment="Left" Margin="16,486,0,0" VerticalAlignment="Top" Width="160" Foreground="#FF055905" Click="btAdd_Click" Height="39"/>
-                    <Button x:Name="btClear" Content="CLEAR" HorizontalAlignment="Left" Margin="206,486,0,0" VerticalAlignment="Top" Width="160" Foreground="#FFC11919" Click="btClear_Click" Height="39"/>
-                    <Button x:Name="btClose" Content="CLOSE" HorizontalAlignment="Left" Margin="394,486,0,0" VerticalAlignment="Top" Width="160" Foreground="#FFC11919" Click="btClose_Click" Height="39"/>-->
-
-
+                                        <TextBox x:Name="tbEmployeeUserName" HorizontalAlignment="Left" Height="23" Margin="90,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+                                        <TextBox x:Name="tbEmployeePassword" HorizontalAlignment="Left" Height="23" Margin="364,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+                                        <Label x:Name="lblEmployeeUserName" Content="User Name" HorizontalAlignment="Left" Margin="16,85,0,0" VerticalAlignment="Top"/>
+                                        <Label x:Name="lblEmployeePassword" Content="Password" HorizontalAlignment="Left" Margin="299,85,0,0" VerticalAlignment="Top"/>
                                     </Grid>
                                 </WrapPanel>
                                 <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Width="5" Background= "White" 
                       VerticalAlignment="Stretch" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1,0"></GridSplitter>
                             </Grid>
-
                         </Grid>
                     </TabItem>
                     <TabItem Name="tabItem6">
@@ -334,7 +308,6 @@
                             </TextBlock>
                         </TabItem.Header>
                     </TabItem>
-
                 </TabControl>
             </Grid>
         </Border>

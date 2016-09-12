@@ -13,15 +13,53 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace CRM
-{    
+{
     public partial class MainForm : Window
     {
         Database db;
         List<Employees> listEmployee;
         List<Clients> listClients;
         List<Positions> listPositions;
+        List<string> listPositionsNames;
         List<Departaments> listDepartments;
-        string commercialYN="";
+        List<string> listDepartmentsNames;
+        //client fields
+        string clientName = "";
+        string contactName = "";
+        string address = "";
+        string city = "";
+        string location = "";
+        string country = "";
+        string postalCode = "";
+        string phone = "";
+        string description = "";
+        string commercialYN;
+        bool commercial;
+        string fax = "";
+        string email = "";
+        string webPage = "";
+        DateTime firstContacted;
+        int currentClient = 0;
+        //employee fields
+        string employeeUserName = "";
+        string employeePassword = "";
+        string employeeFirstName = "";
+        string employeeMiddleName = "";
+        string employeeLastName = "";
+        string employeeAddress = "";
+        string employeeCity = "";
+        string employeeLocation = "";
+        string employeeCountry = "";
+        string employeePostalCode = "";
+        string employeePhone = "";
+        string employeeEmail = "";
+        string employeeDescription = "";
+        int employeePositionId = 0;
+        int employeeDepartmentID = 0;
+        int employeeImportance = 0;
+        DateTime employeeDOB;
+        DateTime employeeHireDate;
+        int currentEmployee = 0;
         public MainForm(string user, int importance)
         {
             try
@@ -34,8 +72,13 @@ namespace CRM
                 Environment.Exit(1);
             }
             InitializeComponent();
-            this.Title = " CRM System User: "+user;
+            this.Title = " CRM System User: " + user;
             tblUserName.Text = user;
+
+            tbEmployeeUserName.Visibility = Visibility.Hidden;
+            tbEmployeePassword.Visibility = Visibility.Hidden;
+            lblEmployeeUserName.Visibility = Visibility.Hidden;
+            lblEmployeePassword.Visibility = Visibility.Hidden;
             if (importance != 0)
             {
                 EnterBoss();
@@ -45,11 +88,13 @@ namespace CRM
             UpdateGridListEmployees();
             UpdateGridListPositions();
             UpdateGridListDepartments();
+            UploadEmployeePositions();
+            UploadEmployeeDepartments();
         }
         private void EnterBoss()
         {
             //Clients
-            tbClientName.IsReadOnly= false;
+            tbClientName.IsReadOnly = false;
             tbContactName.IsReadOnly = false;
             tbAddress.IsReadOnly = false;
             tbCity.IsReadOnly = false;
@@ -78,20 +123,25 @@ namespace CRM
             tbEmployeePostalCode.IsReadOnly = false;
             tbEmployeeLocation.IsReadOnly = false;
             tbEmployeePhone.IsReadOnly = false;
-            tbEmployeePosition.IsReadOnly = false;
-            tbEmployeeDepartament.IsReadOnly = false;
+            tbEmployeeEmail.IsReadOnly = false;
+            cbEmployeePositions.IsReadOnly = false;
+            cbEmployeeDepartments.IsReadOnly = false;
             tbEmployeeDescription.IsReadOnly = false;
             dpEmployeeDOB.IsEnabled = true;
             dpEmployeeHireDate.IsEnabled = true;
             btEmployeeUpdate.Visibility = Visibility.Visible;
             btEmployeeClear.Visibility = Visibility.Visible;
             btEmployeeDelete.Visibility = Visibility.Visible;
+            tbEmployeeUserName.Visibility = Visibility.Visible;
+            tbEmployeePassword.Visibility = Visibility.Visible;
+            lblEmployeeUserName.Visibility = Visibility.Visible;
+            lblEmployeePassword.Visibility = Visibility.Visible;
         }
         //*******************************************************
         //  Update Grid Lists
         //*******************************************************
 
-            // will be Changed******************************************
+        // will be Changed******************************************
         private void UpdateGridListTasks()
         {
             try
@@ -106,7 +156,7 @@ namespace CRM
                 Environment.Exit(1);
             }
             dgTasksList.Items.Refresh();
-            
+
         }
         private void UpdateGridListClients()
         {
@@ -142,7 +192,7 @@ namespace CRM
         {
             try
             {
-                listPositions = db.GetAllPositions();              
+                listPositions = db.GetAllPositions();
             }
             catch (Exception ex)
             {
@@ -179,10 +229,10 @@ namespace CRM
             Clients cl = dgClientsList.SelectedItem as Clients;
             if (cl == null)
             {
-                //currentClient = 0;
+                currentClient = 0;
                 return;
             }
-            //currentClient = cl.ClientId;
+            currentClient = cl.ClientId;
             tbClientName.Text = cl.ClientName;
             tbContactName.Text = cl.ContactName;
             tbAddress.Text = cl.Address;
@@ -202,7 +252,7 @@ namespace CRM
             else
             {
                 rbNoCommercial.IsChecked = true;
-            }            
+            }
             dpFirstContact.SelectedDate = cl.FirstContacted;
         }
         private void dgEmployeesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -210,12 +260,15 @@ namespace CRM
             Employees em = dgEmployeesList.SelectedItem as Employees;
             if (em == null)
             {
-                //currentClient = 0;
+                currentEmployee = 0;
                 return;
             }
-            //currentClient = cl.ClientId;
+            currentEmployee = em.EmployeeId;
+
             tbEmployeeFirstName.Text = em.FirstName;
             tbEmployeeLastName.Text = em.LastName;
+            tbEmployeeUserName.Text = em.UserName;
+            tbEmployeePassword.Text = em.Password;
             tbEmployeeAddress.Text = em.Address;
             tbEmployeeCity.Text = em.City;
             tbEmployeeCountry.Text = em.Country;
@@ -223,11 +276,54 @@ namespace CRM
             tbEmployeePostalCode.Text = em.ZipCode;
             tbEmployeePhone.Text = em.Phone;
             tbEmployeeEmail.Text = em.Email;
-            tbEmployeePosition.Text = PositionsToString(em.PositionID);
-            tbEmployeeDepartament.Text = DepartmentToString(em.DepartmentID);
+            cbEmployeePositions.SelectedItem = PositionsToString(em.PositionID);
+            cbEmployeeDepartments.SelectedItem = DepartmentToString(em.DepartmentID);
             dpEmployeeDOB.SelectedDate = em.DOB;
-            dpEmployeeHireDate.SelectedDate = em.HireDate;           
+            dpEmployeeHireDate.SelectedDate = em.HireDate;
             tbDescription.Text = em.Description;
+            employeeImportance = em.Importance;
+        }
+        //*******************************************************
+        //  Upploads combos
+        //*******************************************************
+        private void UploadEmployeePositions()
+        {
+            listPositionsNames = new List<string>();
+            foreach (Positions line in listPositions)
+            {
+                listPositionsNames.Add(line.PositionName);
+            }            
+            cbEmployeePositions.ItemsSource = listPositionsNames;
+            cbEmployeePositions.Items.Refresh();
+        }
+        private void UploadEmployeeDepartments()
+        {
+            listDepartmentsNames = new List<string>();
+            foreach (Departaments line in listDepartments)
+            {
+                listDepartmentsNames.Add(line.DepartmentName);
+            }
+            cbEmployeeDepartments.ItemsSource = listDepartmentsNames;
+            cbEmployeeDepartments.Items.Refresh();
+        }
+
+        private void cbEmployeePositions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbEmployeePositions.SelectedIndex == -1)
+            {
+                return;
+            }
+            Positions p = listPositions[cbEmployeePositions.SelectedIndex];
+            employeePositionId = p.PositionId;           
+        }
+        private void cbEmployeeDepartmets_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbEmployeeDepartments.SelectedIndex == -1)
+            {
+                return;
+            }
+            Departaments d = listDepartments[cbEmployeeDepartments.SelectedIndex];
+            employeeDepartmentID = d.DepartmentId;
         }
 
         //*******************************************************
@@ -236,7 +332,7 @@ namespace CRM
 
         private string PositionsToString(int id)
         {
-            string positionName="";
+            string positionName = "";
             if (listPositions.Count > 0)
             {
                 foreach (Positions p in listPositions)
@@ -244,29 +340,20 @@ namespace CRM
                     {
                         positionName = p.PositionName;
                     }
-            }                
-            /*try
-            {
-                positionName = db.GetPositionsById(id);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
-                Environment.Exit(1);
-            }*/
+            }           
             return positionName;
         }
         private string DepartmentToString(int id)
         {
             string departmentName = "";
-            if (listPositions.Count > 0)
+            if (listDepartments.Count > 0)
             {
                 foreach (Departaments d in listDepartments)
                     if (d.DepartmentId == id)
                     {
                         departmentName = d.DepartmentName;
                     }
-            }            
+            }
             return departmentName;
         }
         //*******************************************************
@@ -282,7 +369,7 @@ namespace CRM
         }
         private void btNewContact_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
         private void btNewClient_Click(object sender, RoutedEventArgs e)
         {
@@ -292,7 +379,9 @@ namespace CRM
         }
         private void btNewEmployee_Click(object sender, RoutedEventArgs e)
         {
-
+            NewEmployee addEmployeeWindow = new NewEmployee();
+            addEmployeeWindow.Owner = this;
+            addEmployeeWindow.Show();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -304,29 +393,125 @@ namespace CRM
 
         private void btClientUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            Clients cl = dgClientsList.SelectedItem as Clients;
+            if (cl == null)
+            {
+                currentClient = 0;
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Do you want to update client information?", "Updating", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    if (CheckingClientDatas() == true)
+                    {
+                        Clients clU = new Clients() {ClientId=cl.ClientId, ClientName = clientName, ContactName = contactName, Address = address, City = city, Location = location, Country = country, PostalCode = postalCode, Phone = phone, Description = description, Commercial = commercial, Fax = fax, Email = email, WebPage = webPage, FirstContacted = firstContacted };
+                        db.UpdateClient(clU);
+                        MessageBox.Show("Client " + cl.ClientName + " information was succesful updated.", "Updating", MessageBoxButton.OK, MessageBoxImage.Information);
+                        ClearFormClients();
+                        UpdateGridListClients();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to update client information in database." + ex.Message, "Updating error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    return;
+                }
+            }
         }
 
         private void btClientClear_Click(object sender, RoutedEventArgs e)
         {
-
+            ClearFormClients();
         }
         private void btClientDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            Clients cl = dgClientsList.SelectedItem as Clients;
+            if (cl == null)
+            {
+                currentClient = 0;
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Do you want to delete client " + cl.ClientName + "?", "Deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    db.DeleteClientById(currentClient);
+                    MessageBox.Show("Client " + cl.ClientName + " information was succesful deleted.", "Deletion", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ClearFormClients();
+                    UpdateGridListClients();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to update client information in database." + ex.Message, "Updating error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    return;
+                }
+            }
         }
         private void btEmployeeUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            Employees em = dgEmployeesList.SelectedItem as Employees;
+            if (em == null)
+            {
+                currentClient = 0;
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Do you want to update emlpoyee "+ em.FirstName + " " + em.LastName + " information?", "Updating", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    if (CheckingEmployeeDatas() == true)
+                    {
+                        Employees emU = new Employees() { EmployeeId = em.EmployeeId, UserName= employeeUserName, Password = employeePassword, Importance = employeeImportance, FirstName = employeeFirstName, MiddleName= employeeMiddleName, LastName = employeeLastName, Address = employeeAddress, City = employeeCity, Location = employeeLocation, Country = employeeCountry, ZipCode = employeePostalCode, Phone = employeePhone, Description = employeeDescription,  Email = employeeEmail, PositionID= employeePositionId,DepartmentID= employeeDepartmentID, DOB= employeeDOB, HireDate = employeeHireDate };
+                        db.UpdateEmployee(emU);
+                        MessageBox.Show("Employee " + emU.FirstName + " " + emU.LastName + " information was succesful updated.", "Updating", MessageBoxButton.OK, MessageBoxImage.Information);
+                        ClearFormEmployee();
+                        UpdateGridListEmployees();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to update employee information in database." + ex.Message, "Updating error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    return;
+                }
+            }
         }
 
         private void btEmployeeClear_Click(object sender, RoutedEventArgs e)
         {
-
+            ClearFormEmployee();
         }
         private void btEmployeeDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            Employees em = dgEmployeesList.SelectedItem as Employees;
+            if (em == null)
+            {
+                currentEmployee = 0;
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Do you want to delete employee " + em.FirstName + " " + em.LastName + "?", "Deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {                
+                try
+                {
+                    db.DeleteEmployeesById(currentEmployee);
+                    MessageBox.Show("Client " + em.FirstName + " " + em.LastName + " information was succesful deleted.", "Deletion", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ClearFormEmployee();
+                    UpdateGridListEmployees();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to update client information in database." + ex.Message, "Updating error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    return;
+                }
+            }
         }
 
         //*******************************************************
@@ -346,10 +531,252 @@ namespace CRM
             tbEmail.Text = "";
             tbWeb.Text = "";
             tbDescription.Text = "";
-            //rbYesCommercial.IsChecked = false;
-            //rbNoCommercial.IsChecked = false;
+            rbYesCommercial.IsChecked = false;
+            rbNoCommercial.IsChecked = false;
             dpFirstContact.SelectedDate = DateTime.Now;
         }
-        
+        private void ClearFormEmployee()
+        {
+            tbEmployeeFirstName.Text = "";
+            tbEmployeeLastName.Text = "";
+            tbEmployeeUserName.Text = "";
+            tbEmployeePassword.Text = "";
+            tbEmployeeAddress.Text = "";
+            tbEmployeeCity.Text = "";
+            tbEmployeeCountry.Text = "";
+            tbEmployeeLocation.Text = "";
+            tbEmployeePostalCode.Text = "";
+            tbEmployeePhone.Text = "";
+            tbEmployeeEmail.Text = "";
+            tbEmployeeDescription.Text = "";
+            cbEmployeePositions.SelectedIndex = -1;
+            cbEmployeeDepartments.SelectedIndex = -1;
+            dpEmployeeDOB.SelectedDate = DateTime.Now;
+            dpEmployeeHireDate.SelectedDate = DateTime.Now;
+        }
+        //*******************************************************
+        //  Checking Forms
+        //*******************************************************
+        private bool CheckingClientDatas()
+        {
+            if (tbClientName.Text.Length < 2)
+            {
+                MessageBox.Show("Client name must be at least 2 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                clientName = tbClientName.Text;
+            }
+
+            if (tbContactName.Text.Length < 2)
+            {
+                MessageBox.Show("Contact name must be at least 2 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                contactName = tbContactName.Text;
+            }
+
+            if (tbAddress.Text.Length < 1)
+            {
+                MessageBox.Show("Enter Address please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                address = tbAddress.Text;
+            }
+
+            if (tbCity.Text.Length < 1)
+            {
+                MessageBox.Show("Enter City please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                city = tbCity.Text;
+            }
+
+            if (tbCountry.Text.Length < 1)
+            {
+                MessageBox.Show("Enter Country please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                country = tbCountry.Text;
+            }
+
+            if (tbLocation.Text.Length > 0)
+            {
+                location = tbLocation.Text;
+            }
+
+            if (tbPostalCode.Text.Length > 0)
+            {
+                postalCode = tbPostalCode.Text;
+            }
+
+            if (tbPhone.Text.Length > 0)
+            {
+                phone = tbPhone.Text;
+            }
+
+            if (tbFax.Text.Length > 0)
+            {
+                fax = tbFax.Text;
+            }
+
+            if (tbEmail.Text.Length > 0)
+            {
+                email = tbEmail.Text;
+            }
+
+            if (tbWeb.Text.Length > 0)
+            {
+                webPage = tbWeb.Text;
+            }
+
+            if (tbDescription.Text.Length > 0)
+            {
+                description = tbDescription.Text;
+            }
+
+            if (commercialYN == "YES")
+            {
+                commercial = true;
+            }
+            else if (commercialYN == "NO")
+            {
+                commercial = false;
+            }
+            else
+            {
+                MessageBox.Show("It is commercial client or no?", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            firstContacted = dpFirstContact.SelectedDate.Value;
+            return true;
+        }
+        private bool CheckingEmployeeDatas()
+        {
+            if (tbEmployeeUserName.Text.Length < 2)
+            {
+                MessageBox.Show("User name must be at least 2 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                employeeUserName = tbEmployeeUserName.Text;
+            }
+
+            if (tbEmployeePassword.Text.Length < 2)
+            {
+                MessageBox.Show("Password must be at least 2 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                employeePassword = tbEmployeePassword.Text;
+            }
+
+            if (tbEmployeeFirstName.Text.Length < 2)
+            {
+                MessageBox.Show("Employee first name must be at least 2 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                employeeFirstName = tbEmployeeFirstName.Text;
+            }
+
+            if (tbEmployeeLastName.Text.Length < 2)
+            {
+                MessageBox.Show("Employee last name must be at least 2 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                employeeLastName = tbEmployeeLastName.Text;
+            }
+
+            if (tbEmployeeAddress.Text.Length < 1)
+            {
+                MessageBox.Show("Enter Address please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                employeeAddress = tbEmployeeAddress.Text;
+            }
+
+            if (tbEmployeeCity.Text.Length < 1)
+            {
+                MessageBox.Show("Enter City please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                employeeCity = tbEmployeeCity.Text;
+            }
+
+            if (tbEmployeeCountry.Text.Length < 1)
+            {
+                MessageBox.Show("Enter Country please", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return false;
+            }
+            else
+            {
+                employeeCountry = tbEmployeeCountry.Text;
+            }
+
+            if (tbEmployeeLocation.Text.Length > 0)
+            {
+                employeeLocation = tbEmployeeLocation.Text;
+            }
+
+            if (tbEmployeePostalCode.Text.Length > 0)
+            {
+                employeePostalCode = tbEmployeePostalCode.Text;
+            }
+
+            if (tbEmployeePhone.Text.Length > 0)
+            {
+                employeePhone = tbEmployeePhone.Text;
+            }            
+
+            if (tbEmployeeEmail.Text.Length > 0)
+            {
+                employeeEmail = tbEmployeeEmail.Text;
+            }            
+
+            if (tbEmployeeDescription.Text.Length > 0)
+            {
+                employeeDescription = tbEmployeeDescription.Text;
+            }
+            employeeDOB = dpEmployeeDOB.SelectedDate.Value;
+            employeeHireDate = dpEmployeeHireDate.SelectedDate.Value; 
+            return true;
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabItem selectedTab = e.AddedItems[0] as TabItem;  // Gets selected tab
+
+            if (tabItem5.IsSelected)
+            {
+                UpdateGridListEmployees();
+                UpdateGridListPositions();
+                UpdateGridListDepartments();
+                UploadEmployeePositions();
+                UploadEmployeeDepartments();
+            }
+            else if (selectedTab.Name == "Tab2")
+            {
+                // Do work Tab2
+            }
+        }
     }
 }
