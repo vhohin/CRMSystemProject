@@ -57,7 +57,9 @@ namespace CRM
             }
             InitializeComponent();
             UploadClientNames();
+            
             UploadEmployeeNames();
+           
             dpStartDate.SelectedDate = DateTime.Now;
             dpEndDate.SelectedDate = DateTime.Now;
 
@@ -76,6 +78,7 @@ namespace CRM
             }
             cbClientList.ItemsSource = clientNamesList;
             cbClientList.Items.Refresh();
+            cbClientList.Text = "--Select option--";
         }
 
         // method to upload EmployeeNames into ComboBox
@@ -89,6 +92,7 @@ namespace CRM
             }
             cbEmployeeList.ItemsSource = employeeNamesList;
             cbEmployeeList.Items.Refresh();
+            cbEmployeeList.Text = "--Select option--";
         }
 
 
@@ -142,7 +146,7 @@ namespace CRM
                     clientId = line.ClientId;
                 }
             }
-            //MessageBox.Show("employ id is " + clientId);
+           
 
         } // end cbClientList_SelectionChanged
 
@@ -166,7 +170,7 @@ namespace CRM
 
             if (tbTaskName.Text.Length < 5)
             {
-                MessageBox.Show("Task name must be at least 5 characters", "Error entering datas", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show("Task name must be at least 5 characters", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return false;
             }
             else
@@ -180,37 +184,37 @@ namespace CRM
 
             if (startDate > endDate)
             {
-                MessageBox.Show("End date must be greater then Start date");
+                MessageBox.Show("End date must be greater than Start date", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return false;
             }
 
             taskType = ((ComboBoxItem)cbTaskType.SelectedItem).Content.ToString();
             if (taskType == "--Select option--")
             {
-                MessageBox.Show("Invalid input. Please select a task type");
+                MessageBox.Show("Invalid input. Please select a task type", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return false;
             }
 
             status = ((ComboBoxItem)cbStatus.SelectedItem).Content.ToString();
             if (status == "--Select option--")
             {
-                MessageBox.Show("Invalid input. Please select a status");
+                MessageBox.Show("Invalid input. Please select a status", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return false;
             }
 
             priority = ((ComboBoxItem)cbPriority.SelectedItem).Content.ToString();
             if (priority == "--Select option--")
             {
-                MessageBox.Show("Invalid input. Please select a priority");
+                MessageBox.Show("Invalid input. Please select a priority", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return false;
             }
 
             reminder = ((ComboBoxItem)cbReminder.SelectedItem).Content.ToString();
-            if (reminder == "--Select option--")
+            /*if (reminder == "--Select option--")
             {
-                MessageBox.Show("Invalid input. Please select a reminder");
+                MessageBox.Show("Invalid input. Please select a reminder", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return false;
-            }
+            }*/
 
             if (tbDescription.Text.Length > 0)
             {
@@ -231,13 +235,14 @@ namespace CRM
             string taskType = "";
             string priority = "";
             string reminder = "";
+
         }
 
         private void ClearForm()
         {
-                        
-            cbClientList.SelectedIndex = 0;
-            cbEmployeeList.SelectedIndex = 0;
+
+            cbClientList.Text = "--Select option--";
+            cbEmployeeList.Text = "--Select option--";
             tbTaskName.Text = "";
             dpStartDate.SelectedDate = DateTime.Now;
             dpEndDate.SelectedDate = DateTime.Now;
@@ -268,8 +273,14 @@ namespace CRM
 
         }
 
-
-
-
+        private void btClear_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Clear Form?", "Clear Form", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                ClearForm();
+                ClearAllData();
+            }
+        }
     }
 }
