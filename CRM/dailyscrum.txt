@@ -61,3 +61,20 @@ Nazar
 
 4/ Ask 
 - Didn't ask Gregory how to manage conflicts in SourceTree 
+
+
+September 12, 2016 - DAY03
+
+Nazar
+1/ Finisned:
+- TaskForm
+
+2/ Started Products Form, but not finished yet 
+
+3/ ToDoList: 
+- finish Finish Products
+- find Tutorial on Reports - try to create some Reports, if possible 
+- find Tutorial on Calendar/Organizer for WPF - and try together with Valeriy
+
+4/ Ask 
+- How to properly manage conflicts in SourceTree 
