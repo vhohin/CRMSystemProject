@@ -205,7 +205,16 @@ namespace CRM
             if (CheckingDatas() == true)
             {
                 Clients cl = new Clients() { ClientName = clientName, ContactName = contactName, Address = address, City = city, Location = location, Country = country, PostalCode = postalCode, Phone = phone, Description = description, Commercial = commercial, Fax = fax, Email = email, WebPage = webPage, FirstContacted = firstContacted };
-                db.AddClients(cl);
+                try
+                {
+                    db.AddClients(cl);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to add records to database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    Environment.Exit(1);
+                } 
                 ClearDatas();
                 MessageBoxResult result = MessageBox.Show("New Client was succesful added. Clear Form?", "Addition", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (result == MessageBoxResult.Yes)

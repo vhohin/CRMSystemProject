@@ -17,18 +17,18 @@
         <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\newclient.png"/>
         <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="I:\CRMGroupProject\CRM\Pictures\newemployee.png"/>-->
 
-        <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
-        <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
-        <BitmapImage x:Key="ImageSource3" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\employees.png"/>
-        <BitmapImage x:Key="ImageSource4" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\contracts.png"/>
-        <BitmapImage x:Key="ImageSource5" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\employee.png"/>
-        <BitmapImage x:Key="ImageSource6" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\tasks.png"/>
-        <BitmapImage x:Key="ImageSource7" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\product2.png"/>
-        <BitmapImage x:Key="ImageSource8" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\sup.png"/>
-        <BitmapImage x:Key="ImageSource9" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\newtask.png"/>
-        <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\contact4.png"/>
-        <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\newclient.png"/>
-        <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\BitBuckets\CRMGroupProject\CRM\Pictures\newemployee.png"/>
+        <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
+        <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact3.png"/>
+        <BitmapImage x:Key="ImageSource3" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\employees.png"/>
+        <BitmapImage x:Key="ImageSource4" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contracts.png"/>
+        <BitmapImage x:Key="ImageSource5" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\employee.png"/>
+        <BitmapImage x:Key="ImageSource6" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\tasks.png"/>
+        <BitmapImage x:Key="ImageSource7" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\product2.png"/>
+        <BitmapImage x:Key="ImageSource8" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\sup.png"/>
+        <BitmapImage x:Key="ImageSource9" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newtask.png"/>
+        <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\contact4.png"/>
+        <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newclient.png"/>
+        <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="F:\BitBuckets\CRMGroupProject\CRM\Pictures\newemployee.png"/>
 
         <!--<BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contact3.png"/>
         <BitmapImage x:Key="ImageSource2" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\ipd\Documents\CRMSystemProject\CRM\Pictures\contact3.png"/>
@@ -139,7 +139,7 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <WrapPanel Grid.Row="1" MinWidth="180">
-                                    <DataGrid x:Name="dgClientsList" Margin="3,3,3,3" SelectionChanged="dgClientsList_SelectionChanged" RenderTransformOrigin="0.5,0.5" AutoGenerateColumns="False" SelectionMode="Single" HorizontalAlignment="Left" Width="180" Height="541" VerticalAlignment="Top">
+                                    <DataGrid x:Name="dgClientsList" Margin="3,3,3,3" SelectionChanged="dgClientsList_SelectionChanged" RenderTransformOrigin="0.5,0.5" AutoGenerateColumns="False" SelectionMode="Single" HorizontalAlignment="Left" Width="180" Height="541" VerticalAlignment="Top" TabIndex="19">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" Width="172" IsReadOnly="true" />
                                         </DataGrid.Columns>
@@ -172,25 +172,25 @@
                                         <Label Content="Email" HorizontalAlignment="Left" Margin="16,275,0,0" VerticalAlignment="Top"/>
                                         <Label Content="Web" HorizontalAlignment="Left" Margin="322,275,0,0" VerticalAlignment="Top"/>
                                         <Label Content="First Contact" HorizontalAlignment="Left" Margin="322,442,0,0" VerticalAlignment="Top"/>
-                                        <TextBox x:Name="tbClientName" Height="23" Margin="16,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbContactName" HorizontalAlignment="Left" Height="23" Margin="299,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbAddress" HorizontalAlignment="Left" Height="23" Margin="16,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbCity" HorizontalAlignment="Left" Height="23" Margin="16,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbCountry" HorizontalAlignment="Left" Height="23" Margin="170,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbLocation" HorizontalAlignment="Left" Height="23" Margin="322,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbPostalCode" HorizontalAlignment="Left" Height="23" Margin="474,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbClientName" Height="23" Margin="16,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255" TabIndex="1"/>
+                                        <TextBox x:Name="tbContactName" HorizontalAlignment="Left" Height="23" Margin="299,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="2"/>
+                                        <TextBox x:Name="tbAddress" HorizontalAlignment="Left" Height="23" Margin="16,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" TabIndex="3"/>
+                                        <TextBox x:Name="tbCity" HorizontalAlignment="Left" Height="23" Margin="16,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TabIndex="4"/>
+                                        <TextBox x:Name="tbCountry" HorizontalAlignment="Left" Height="23" Margin="170,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TabIndex="5"/>
+                                        <TextBox x:Name="tbLocation" HorizontalAlignment="Left" Height="23" Margin="322,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TabIndex="6"/>
+                                        <TextBox x:Name="tbPostalCode" HorizontalAlignment="Left" Height="23" Margin="474,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TabIndex="7"/>
                                         <Label Content="Location" HorizontalAlignment="Left" Margin="322,157,0,0" VerticalAlignment="Top"/>
-                                        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" Height="23" Margin="16,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbFax" HorizontalAlignment="Left" Height="23" Margin="322,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Height="23" Margin="16,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbWeb" HorizontalAlignment="Left" Height="23" Margin="322,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="55" Margin="16,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" IsReadOnly="True"/>
-                                        <RadioButton x:Name="rbYesCommercial" GroupName="commercial" Content="YES" Checked="RadioButton_Checked" HorizontalAlignment="Left" Margin="112,448,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-                                        <RadioButton x:Name="rbNoCommercial" GroupName="commercial" Content="NO" Checked="RadioButton_Checked" HorizontalAlignment="Left" Margin="163,448,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-                                        <DatePicker x:Name="dpFirstContact" HorizontalAlignment="Left" Margin="413,443,0,0" VerticalAlignment="Top" Width="141" IsEnabled="False" />
-                                        <Button x:Name="btClientUpdate" Content="UPDATE" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btClientUpdate_Click" Foreground="#FF102EB4"/>
-                                        <Button x:Name="btClientClear" Content="CLEAR" Height="35" VerticalAlignment="Top" Margin="205,483,189,-33" Width="160"  Click="btClientClear_Click" Foreground="#FF9C1313"/>
-                                        <Button x:Name="btClientDelete" Content="DELETE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btClientDelete_Click" Foreground="#FF9C1313"/>
+                                        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" Height="23" Margin="16,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" TabIndex="8"/>
+                                        <TextBox x:Name="tbFax" HorizontalAlignment="Left" Height="23" Margin="322,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="9"/>
+                                        <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Height="23" Margin="16,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" TabIndex="10"/>
+                                        <TextBox x:Name="tbWeb" HorizontalAlignment="Left" Height="23" Margin="322,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="11"/>
+                                        <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="55" Margin="16,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" TabIndex="12"/>
+                                        <RadioButton x:Name="rbYesCommercial" GroupName="commercial" Content="YES" Checked="RadioButton_Checked" HorizontalAlignment="Left" Margin="112,448,0,0" VerticalAlignment="Top" TabIndex="13"/>
+                                        <RadioButton x:Name="rbNoCommercial" GroupName="commercial" Content="NO" Checked="RadioButton_Checked" HorizontalAlignment="Left" Margin="163,448,0,0" VerticalAlignment="Top" TabIndex="14"/>
+                                        <DatePicker x:Name="dpFirstContact" HorizontalAlignment="Left" Margin="413,443,0,0" VerticalAlignment="Top" Width="141" TabIndex="15" />
+                                        <Button x:Name="btClientUpdate" Content="UPDATE" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btClientUpdate_Click" Foreground="#FF102EB4" TabIndex="16"/>
+                                        <Button x:Name="btClientClear" Content="CLEAR" Height="35" VerticalAlignment="Top" Margin="205,483,189,-33" Width="160"  Click="btClientClear_Click" Foreground="#FF9C1313" TabIndex="17"/>
+                                        <Button x:Name="btClientDelete" Content="DELETE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btClientDelete_Click" Foreground="#FF9C1313" TabIndex="18"/>
                                     </Grid>
                                 </WrapPanel>
                                 <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Width="5" Background= "White" 
@@ -228,7 +228,7 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <WrapPanel Grid.Row="1" MinWidth="180">
-                                    <DataGrid x:Name="dgEmployeesList" Margin="3,3,3,3" SelectionChanged="dgEmployeesList_SelectionChanged" RenderTransformOrigin="0.5,0.5" AutoGenerateColumns="False" SelectionMode="Single" HorizontalAlignment="Left" Width="270" Height="541" VerticalAlignment="Top" BorderThickness="0">
+                                    <DataGrid x:Name="dgEmployeesList" Margin="3,3,3,3" SelectionChanged="dgEmployeesList_SelectionChanged" RenderTransformOrigin="0.5,0.5" AutoGenerateColumns="False" SelectionMode="Single" HorizontalAlignment="Left" Width="270" Height="541" VerticalAlignment="Top" BorderThickness="0" TabIndex="1">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="First Name" Binding="{Binding LastName}" Width="165" IsReadOnly="true" />
                                             <DataGridTextColumn Header="Last Name" Binding="{Binding FirstName}" Width="95" IsReadOnly="true" />
@@ -259,24 +259,24 @@
                                         <Label Content="Position" HorizontalAlignment="Left" Margin="16,292,0,0" VerticalAlignment="Top"/>
                                         <Label Content="Department" HorizontalAlignment="Left" Margin="322,292,0,0" VerticalAlignment="Top"/>
                                         <Label Content="Hire Date" HorizontalAlignment="Left" Margin="322,442,0,0" VerticalAlignment="Top"/>
-                                        <TextBox x:Name="tbEmployeeFirstName" Height="23" Margin="16,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeeLastName" HorizontalAlignment="Left" Height="23" Margin="299,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeeAddress" HorizontalAlignment="Left" Height="23" Margin="16,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeeCity" HorizontalAlignment="Left" Height="23" Margin="16,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeeCountry" HorizontalAlignment="Left" Height="23" Margin="170,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeeLocation" HorizontalAlignment="Left" Height="23" Margin="322,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeePostalCode" HorizontalAlignment="Left" Height="23" Margin="474,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" IsReadOnly="True"/>
+                                        <TextBox x:Name="tbEmployeeFirstName" Height="23" Margin="16,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255" TabIndex="2"/>
+                                        <TextBox x:Name="tbEmployeeLastName" HorizontalAlignment="Left" Height="23" Margin="299,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="3"/>
+                                        <TextBox x:Name="tbEmployeeAddress" HorizontalAlignment="Left" Height="23" Margin="16,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" TabIndex="4"/>
+                                        <TextBox x:Name="tbEmployeeCity" HorizontalAlignment="Left" Height="23" Margin="16,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TabIndex="5"/>
+                                        <TextBox x:Name="tbEmployeeCountry" HorizontalAlignment="Left" Height="23" Margin="170,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TabIndex="6"/>
+                                        <TextBox x:Name="tbEmployeeLocation" HorizontalAlignment="Left" Height="23" Margin="322,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TabIndex="7"/>
+                                        <TextBox x:Name="tbEmployeePostalCode" HorizontalAlignment="Left" Height="23" Margin="474,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TabIndex="8"/>
                                         <Label Content="Location" HorizontalAlignment="Left" Margin="322,157,0,0" VerticalAlignment="Top"/>
-                                        <TextBox x:Name="tbEmployeePhone" HorizontalAlignment="Left" Height="23" Margin="16,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" IsReadOnly="True"/>
-                                        <TextBox x:Name="tbEmployeeEmail" HorizontalAlignment="Left" Height="23" Margin="322,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsReadOnly="True"/>
-                                        <ComboBox x:Name="cbEmployeePositions" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="16,315,0,0" VerticalAlignment="Top" Width="281" SelectionChanged="cbEmployeePositions_SelectionChanged" IsReadOnly="True" />
-                                        <ComboBox x:Name="cbEmployeeDepartments" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="322,315,0,0" VerticalAlignment="Top" Width="232" SelectionChanged="cbEmployeeDepartmets_SelectionChanged" IsReadOnly="True" />
-                                        <TextBox x:Name="tbEmployeeDescription" HorizontalAlignment="Left" Height="55" Margin="16,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" IsReadOnly="True"/>
-                                        <DatePicker x:Name="dpEmployeeHireDate" HorizontalAlignment="Left" Margin="413,443,0,0" VerticalAlignment="Top" Width="141" IsEnabled="False" />
-                                        <DatePicker x:Name="dpEmployeeDOB" HorizontalAlignment="Left" Margin="109,445,0,-1" VerticalAlignment="Top" Width="141" IsEnabled="False" />
-                                        <Button x:Name="btEmployeeUpdate" Content="UPDATE" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btEmployeeUpdate_Click" Foreground="#FF102EB4"/>
-                                        <Button x:Name="btEmployeeClear" Content="CLEAR" Height="35" VerticalAlignment="Top" Margin="205,483,189,-33" Width="160"  Click="btEmployeeClear_Click" Foreground="#FF9C1313"/>
-                                        <Button x:Name="btEmployeeDelete" Content="DELETE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btEmployeeDelete_Click" Foreground="#FF9C1313"/>
+                                        <TextBox x:Name="tbEmployeePhone" HorizontalAlignment="Left" Height="23" Margin="16,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" TabIndex="9"/>
+                                        <TextBox x:Name="tbEmployeeEmail" HorizontalAlignment="Left" Height="23" Margin="322,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="10"/>
+                                        <ComboBox x:Name="cbEmployeePositions" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="16,315,0,0" VerticalAlignment="Top" Width="281" SelectionChanged="cbEmployeePositions_SelectionChanged" IsReadOnly="True" TabIndex="12" />
+                                        <ComboBox x:Name="cbEmployeeDepartments" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="322,315,0,0" VerticalAlignment="Top" Width="232" SelectionChanged="cbEmployeeDepartmets_SelectionChanged" IsReadOnly="True" TabIndex="13" />
+                                        <TextBox x:Name="tbEmployeeDescription" HorizontalAlignment="Left" Height="55" Margin="16,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="538" TabIndex="14"/>
+                                        <DatePicker x:Name="dpEmployeeHireDate" HorizontalAlignment="Left" Margin="413,443,0,0" VerticalAlignment="Top" Width="141" TabIndex="16" />
+                                        <DatePicker x:Name="dpEmployeeDOB" HorizontalAlignment="Left" Margin="109,445,0,-1" VerticalAlignment="Top" Width="141" TabIndex="15" />
+                                        <Button x:Name="btEmployeeUpdate" Content="UPDATE" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btEmployeeUpdate_Click" Foreground="#FF102EB4" TabIndex="17"/>
+
+                                        <Button x:Name="btEmployeeDelete" Content="DELETE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btEmployeeDelete_Click" Foreground="#FF9C1313" TabIndex="19"/>
                                         <TextBox x:Name="tbEmployeeUserName" HorizontalAlignment="Left" Height="23" Margin="90,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
                                         <TextBox x:Name="tbEmployeePassword" HorizontalAlignment="Left" Height="23" Margin="364,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
                                         <Label x:Name="lblEmployeeUserName" Content="User Name" HorizontalAlignment="Left" Margin="16,85,0,0" VerticalAlignment="Top"/>

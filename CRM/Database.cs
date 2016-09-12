@@ -371,6 +371,96 @@ namespace CRM
             }
         }
         //**************************************************************************
+        //      Contacts
+        //****************************************************************************
+        public List<Contacts> GetAllContacts()
+        {
+            List<Contacts> list = new List<Contacts>();
+            SqlCommand cmd = new SqlCommand("Select * From Contacts", conn);
+            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("ContactId"));
+                        int emplyeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
+                        int clientId = reader.GetInt32(reader.GetOrdinal("ClientId"));
+                        string contactType = reader.GetString(reader.GetOrdinal("ContactType"));
+                        string location = reader.GetString(reader.GetOrdinal("Location"));
+                        DateTime contactDate = reader.GetDateTime(reader.GetOrdinal("ContactDate"));
+                        string subject = reader.GetString(reader.GetOrdinal("Subject"));
+                        string outcome = reader.GetString(reader.GetOrdinal("Outcome"));
+                        string actionToDo = reader.GetString(reader.GetOrdinal("ActionsToDo"));
+                        Contacts co = new Contacts
+                        {
+                            ContactId = id,
+                            EmployeeId = emplyeeId,
+                            ClientId = clientId,
+                            ContactType = contactType,
+                            Location = location,
+                            ContactDate = contactDate,
+                            Subject = subject,
+                            Outcome = outcome,
+                            ActionsToDo = actionToDo
+                        };
+                        list.Add(co);
+                    }
+                }
+            }
+            return list;
+        }
+        public void AddContacts(Contacts co)
+        {
+            using (SqlCommand cmd = new SqlCommand("Insert Into Contacts (EmployeeId, ClientId, ContactType, Location, ContactDate, Subject, Outcome, ActionsToDo) VALUES (@emplyeeId, @clientId, @contactType, @location, @contactDate, @subject, @outcome, @actionsToDo)"))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@emplyeeId", co.EmployeeId);
+                cmd.Parameters.AddWithValue("@clientId", co.ClientId);
+                cmd.Parameters.AddWithValue("@contactType", co.ContactType);
+                cmd.Parameters.AddWithValue("@location", co.Location);
+                cmd.Parameters.AddWithValue("@contactDate", co.ContactDate);
+                cmd.Parameters.AddWithValue("@subject", co.Subject);
+                cmd.Parameters.AddWithValue("@outcome", co.Outcome);
+                cmd.Parameters.AddWithValue("@actionsToDo", co.ActionsToDo);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        /* public void UpdateClient(Clients cl)
+         {
+             //throw new NotImplementedException();
+             using (SqlCommand cmd = new SqlCommand("Update Clients set ClientName=@clientName, ContactName=@contactName, Address=@address, City=@city, Location=@Location, Country=@country, PostalCode=@postalCode, Phone=@phone, Description=@description, Commercial=@commercial, Fax=@fax, Email=@email, WebPage= @webPage, FirstContacted=@firstContacted where ClientId=@id", conn))
+             {
+                 cmd.CommandType = System.Data.CommandType.Text;
+                 cmd.Parameters.AddWithValue("@id", cl.ClientId);
+                 cmd.Parameters.AddWithValue("@clientName", cl.ClientName);
+                 cmd.Parameters.AddWithValue("@contactName", cl.ContactName);
+                 cmd.Parameters.AddWithValue("@address", cl.Address);
+                 cmd.Parameters.AddWithValue("@city", cl.City);
+                 cmd.Parameters.AddWithValue("@Location", cl.Location);
+                 cmd.Parameters.AddWithValue("@country", cl.Country);
+                 cmd.Parameters.AddWithValue("@postalCode", cl.PostalCode);
+                 cmd.Parameters.AddWithValue("@phone", cl.Phone);
+                 cmd.Parameters.AddWithValue("@description", cl.Description);
+                 cmd.Parameters.AddWithValue("@commercial", cl.Commercial);
+                 cmd.Parameters.AddWithValue("@fax", cl.Fax);
+                 cmd.Parameters.AddWithValue("@email", cl.Email);
+                 cmd.Parameters.AddWithValue("@webPage", cl.WebPage);
+                 cmd.Parameters.AddWithValue("@firstContacted", cl.FirstContacted);
+                 cmd.ExecuteNonQuery();
+             }
+         }*/
+        public void DeleteContactById(int Id)
+        {
+            using (SqlCommand cmd = new SqlCommand("Delete from Contacts where ContactId=@id", conn))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", Id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        //**************************************************************************
         //     POSITION
         //****************************************************************************
         public List<Positions> GetAllPositions()

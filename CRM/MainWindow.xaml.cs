@@ -22,7 +22,7 @@ namespace CRM
     {
         Database db;
         string employee = "";
-        int importance =0;
+        int importance = 0;
         public MainWindow()
         {
             try
@@ -36,13 +36,16 @@ namespace CRM
                 Environment.Exit(1);
                 //throw e;
             }
-            InitializeComponent();            
+            InitializeComponent();
+
+            tbUserName.Focus();
+
         }
         private bool EnterCheck()
         {
             if (tbUserName.Text == "")
             {
-                MessageBox.Show("Enter name, please.","Error",MessageBoxButton.OK,MessageBoxImage.Stop);
+                MessageBox.Show("Enter name, please.", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return false;
             }
             if (pbPsw.Password == "")
@@ -75,7 +78,7 @@ namespace CRM
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            /*if (EnterCheck() == true)
+          /*  if (EnterCheck() == true)
             {
                 MainForm taskWindow = new MainForm(employee, importance);
                 taskWindow.Show();
@@ -88,9 +91,9 @@ namespace CRM
                 pbPsw.Password = "";
                 return;
             }*/
-            MainForm taskWindow = new MainForm("Valeriy Hohin", 1);
-            taskWindow.Show();
-            this.Close();
+             MainForm taskWindow = new MainForm("Valeriy Hohin", 1);
+             taskWindow.Show();
+             this.Close();
         }
     }
 

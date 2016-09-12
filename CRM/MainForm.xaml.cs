@@ -101,67 +101,72 @@ namespace CRM
             tbEmployeeUserName.Visibility = Visibility.Hidden;
             tbEmployeePassword.Visibility = Visibility.Hidden;
             lblEmployeeUserName.Visibility = Visibility.Hidden;
-            lblEmployeePassword.Visibility = Visibility.Hidden;
-            if (importance != 0)
-            {
-                EnterBoss();
-            }
+            lblEmployeePassword.Visibility = Visibility.Hidden;            
+            if (importance == 0)
+                {
+                    EnterNoBoss();
+                }
             UpdateGridListTasks();
             UpdateGridListClients();
             UpdateGridListEmployees();
             UpdateGridListPositions();
             UpdateGridListDepartments();
-            UpdateGridListProducts();
+
 
             UploadEmployeePositions();
             UploadEmployeeDepartments();
-            
+
         }
-        private void EnterBoss()
+        private void EnterNoBoss()
         {
+            tbEmployeeUserName.Visibility = Visibility.Hidden;
+            tbEmployeePassword.Visibility = Visibility.Hidden;
+            lblEmployeeUserName.Visibility = Visibility.Hidden;
+            lblEmployeePassword.Visibility = Visibility.Hidden;
+            btNewEmployee.Visibility = Visibility.Hidden;
             //Clients
-            tbClientName.IsReadOnly = false;
-            tbContactName.IsReadOnly = false;
-            tbAddress.IsReadOnly = false;
-            tbCity.IsReadOnly = false;
-            tbCountry.IsReadOnly = false;
-            tbLocation.IsReadOnly = false;
-            tbPostalCode.IsReadOnly = false;
-            tbLocation.IsReadOnly = false;
-            tbPhone.IsReadOnly = false;
-            tbFax.IsReadOnly = false;
-            tbEmail.IsReadOnly = false;
-            tbWeb.IsReadOnly = false;
-            tbDescription.IsReadOnly = false;
-            rbYesCommercial.IsEnabled = true;
-            rbNoCommercial.IsEnabled = true;
-            dpFirstContact.IsEnabled = true;
-            btClientUpdate.Visibility = Visibility.Visible;
-            btClientClear.Visibility = Visibility.Visible;
-            btClientDelete.Visibility = Visibility.Visible;
+            tbClientName.IsReadOnly = true;
+            tbContactName.IsReadOnly = true;
+            tbAddress.IsReadOnly = true;
+            tbCity.IsReadOnly = true;
+            tbCountry.IsReadOnly = true;
+            tbLocation.IsReadOnly = true;
+            tbPostalCode.IsReadOnly = true;
+            tbLocation.IsReadOnly = true;
+            tbPhone.IsReadOnly = true;
+            tbFax.IsReadOnly = true;
+            tbEmail.IsReadOnly = true;
+            tbWeb.IsReadOnly = true;
+            tbDescription.IsReadOnly = true;
+            rbYesCommercial.IsEnabled = false;
+            rbNoCommercial.IsEnabled = false;
+            dpFirstContact.IsEnabled = false;
+            btClientUpdate.Visibility = Visibility.Hidden;
+            btClientClear.Visibility = Visibility.Hidden;
+            btClientDelete.Visibility = Visibility.Hidden;
             //Employees
-            tbEmployeeFirstName.IsReadOnly = false;
-            tbEmployeeLastName.IsReadOnly = false;
-            tbEmployeeAddress.IsReadOnly = false;
-            tbEmployeeCity.IsReadOnly = false;
-            tbEmployeeCountry.IsReadOnly = false;
-            tbEmployeeLocation.IsReadOnly = false;
-            tbEmployeePostalCode.IsReadOnly = false;
-            tbEmployeeLocation.IsReadOnly = false;
-            tbEmployeePhone.IsReadOnly = false;
-            tbEmployeeEmail.IsReadOnly = false;
-            cbEmployeePositions.IsReadOnly = false;
-            cbEmployeeDepartments.IsReadOnly = false;
-            tbEmployeeDescription.IsReadOnly = false;
-            dpEmployeeDOB.IsEnabled = true;
-            dpEmployeeHireDate.IsEnabled = true;
-            btEmployeeUpdate.Visibility = Visibility.Visible;
-            btEmployeeClear.Visibility = Visibility.Visible;
-            btEmployeeDelete.Visibility = Visibility.Visible;
-            tbEmployeeUserName.Visibility = Visibility.Visible;
-            tbEmployeePassword.Visibility = Visibility.Visible;
-            lblEmployeeUserName.Visibility = Visibility.Visible;
-            lblEmployeePassword.Visibility = Visibility.Visible;
+            tbEmployeeFirstName.IsReadOnly = true;
+            tbEmployeeLastName.IsReadOnly = true;
+            tbEmployeeAddress.IsReadOnly = true;
+            tbEmployeeCity.IsReadOnly = true;
+            tbEmployeeCountry.IsReadOnly = true;
+            tbEmployeeLocation.IsReadOnly = true;
+            tbEmployeePostalCode.IsReadOnly = true;
+            tbEmployeeLocation.IsReadOnly = true;
+            tbEmployeePhone.IsReadOnly = true;
+            tbEmployeeEmail.IsReadOnly = true;
+            cbEmployeePositions.IsReadOnly = true;
+            cbEmployeeDepartments.IsReadOnly = true;
+            tbEmployeeDescription.IsReadOnly = true;
+            dpEmployeeDOB.IsEnabled = false;
+            dpEmployeeHireDate.IsEnabled = false;
+            btEmployeeUpdate.Visibility = Visibility.Hidden;
+            //btEmployeeClear.Visibility = Visibility.Hidden;
+            btEmployeeDelete.Visibility = Visibility.Hidden;
+            tbEmployeeUserName.Visibility = Visibility.Hidden;
+            tbEmployeePassword.Visibility = Visibility.Hidden;
+            lblEmployeeUserName.Visibility = Visibility.Hidden;
+            lblEmployeePassword.Visibility = Visibility.Hidden;
         }
         //*******************************************************
         //  Update Grid Lists
@@ -329,7 +334,6 @@ namespace CRM
             employeeImportance = em.Importance;
         }
 
-
         private void dgProductsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Products p = dgProductsList.SelectedItem as Products;
@@ -357,13 +361,8 @@ namespace CRM
             else
             {
                 rbNoDiscontinued.IsChecked = true;
-            }
-            
+            }            
         }
-
-
-
-
         //*******************************************************
         //  Upploads combos
         //*******************************************************
@@ -450,7 +449,9 @@ namespace CRM
         }
         private void btNewContact_Click(object sender, RoutedEventArgs e)
         {
-
+            NewContact newContactWindow = new NewContact();
+            newContactWindow.Owner = this;
+            newContactWindow.Show();
         }
         private void btNewClient_Click(object sender, RoutedEventArgs e)
         {
@@ -478,6 +479,7 @@ namespace CRM
             if (cl == null)
             {
                 currentClient = 0;
+                UpdateGridListClients();
                 return;
             }
             MessageBoxResult result = MessageBox.Show("Do you want to update client information?", "Updating", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -539,6 +541,7 @@ namespace CRM
             if (em == null)
             {
                 currentClient = 0;
+                UpdateGridListEmployees();
                 return;
             }
             MessageBoxResult result = MessageBox.Show("Do you want to update emlpoyee "+ em.FirstName + " " + em.LastName + " information?", "Updating", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -844,21 +847,7 @@ namespace CRM
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*TabItem selectedTab = e.AddedItems[0] as TabItem;  // Gets selected tab
-            
-            if (tabItem5.IsSelected)
-            {
-                UpdateGridListEmployees();
-                UpdateGridListPositions();
-                UpdateGridListDepartments();
-                UploadEmployeePositions();
-                UploadEmployeeDepartments();
-            }
-            else if (selectedTab.Name == "Tab2")
-            {
-                // Do work Tab2
-            }
-             * */
+           
         }
 
         
