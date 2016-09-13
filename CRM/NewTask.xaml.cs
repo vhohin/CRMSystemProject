@@ -70,7 +70,16 @@ namespace CRM
         // method to upload ClientNames into ComboBox
         private void UploadClientNames()
         {
-            clientList = db.GetAllClients();
+            try
+            {
+                clientList = db.GetAllClients();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }               
             clientNamesList = new List<string>();
             foreach (Clients line in clientList)
             {
@@ -83,8 +92,17 @@ namespace CRM
 
         // method to upload EmployeeNames into ComboBox
         private void UploadEmployeeNames()
-        {
-            employeeList = db.GetAllEmployees();
+        {            
+            try
+            {
+                employeeList = db.GetAllEmployees(); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }    
             employeeNamesList = new List<string>();
             foreach (Employees line in employeeList)
             {
@@ -262,7 +280,16 @@ namespace CRM
             {
                
                 Tasks task = new Tasks() { EmployeeId = employeeId, NameTask = nameTask, Description = description, StartDate = startDate, EndDate = endDate, InformationNotes = "", Status = status, TaskType = taskType, Priority = priority, Reminder = reminder, ClientId = clientId };
-                db.AddTasks(task);
+                try
+                {
+                    db.AddTasks(task);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    Environment.Exit(1);
+                }                
                 ClearAllData();
                 MessageBoxResult result = MessageBox.Show("New Task was succesfully added. Clear Form?", "Add", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (result == MessageBoxResult.Yes)

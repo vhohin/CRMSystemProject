@@ -65,13 +65,13 @@
                         </StackPanel>                    
                             </TextBlock>
                         </TabItem.Header>
-                        <StackPanel Orientation="Vertical" Height="240" VerticalAlignment="Top" >
+                        <StackPanel Orientation="Vertical" Height="550" VerticalAlignment="Top" >
                             <Grid Height="56">
                                 <TextBlock x:Name="tblUserName" Text="" Height="30" FontSize="18" Foreground="#FF053A70" ForceCursor="True" Margin="56,12,0,14" HorizontalAlignment="Left" Width="328"  />
                                 <TextBlock Text="   Current Tasks" FontSize="16" Margin="0,12,280,14" Height="30" HorizontalAlignment="Right" Width="128" />
                             </Grid>
-                            <Grid>
-                                <DataGrid x:Name="dgTasksList" Margin="0,0,0,-522" SelectionChanged="dgTasksList_SelectionChanged" SelectionMode="Single"   >
+                            <Grid Height="490">
+                                <DataGrid x:Name="dgTasksList" SelectionChanged="dgTasksList_SelectionChanged" SelectionMode="Single" Height="440" VerticalAlignment="Top"   >
                                     <DataGrid.ColumnHeaderStyle>
                                         <Style TargetType="{x:Type DataGridColumnHeader}">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -83,6 +83,9 @@
                                         </Style>
                                     </DataGrid.ColumnHeaderStyle>
                                 </DataGrid>
+                                <Grid Height="56" VerticalAlignment="Bottom">
+                                    <Button x:Name="btAllTask" Content="ALL TASK" Height="35" VerticalAlignment="Bottom" Margin="10,0,0,7" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btAllTask_Click"/>
+                                </Grid>
                             </Grid>
                         </StackPanel>
                     </TabItem>
@@ -104,8 +107,6 @@
                             <Label Content="Outcome" HorizontalAlignment="Left" Margin="400,135,0,0" VerticalAlignment="Top"/>
                             <Label Content="Actions To Do" HorizontalAlignment="Left" Margin="16,163,0,0" VerticalAlignment="Top"/>
                             <Label Content="Contact Date" HorizontalAlignment="Left" Margin="16,100,0,0" VerticalAlignment="Top"/>
-                            <!--<TextBox x:Name="tbClientContactName" Height="23" Margin="156,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
-        <TextBox x:Name="tbEmployeeContactName" HorizontalAlignment="Left" Height="23" Margin="156,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>-->
                             <ComboBox x:Name="cbClientContactName" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="110,39,0,0" VerticalAlignment="Top" Width="253" IsReadOnly="True" TabIndex="1" SelectionChanged="cbClientContactName_SelectionChanged" BorderBrush="#FF8B0B0B" AllowDrop="True" >
                                 <ComboBox.Background>
                                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -237,6 +238,11 @@
                         </StackPanel>
                             </TextBlock>
                         </TabItem.Header>
+                        <Grid>
+                            <Button x:Name="btCalendar1" Content="Button" Height="50" Width="75" Margin="54,41,0,0" Click="Button1_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Button x:Name="btCalendar2" Content="Button" Height="50" Width="75" Margin="54,91,0,0" Click="Button2_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Button x:Name="btCalendar3" Content="Button" Height="50" Width="75" Margin="54,141,0,0" Click="Button3_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </Grid>
                     </TabItem>
                     <TabItem x:Name="tabItem5" >
                         <TabItem.Header>
@@ -399,6 +405,7 @@
                             </Grid>
                         </Grid>
                     </TabItem>
+
                 </TabControl>
             </Grid>
         </Border>
