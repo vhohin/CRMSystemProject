@@ -88,6 +88,18 @@ Valeriy
 2) Didn't finished methods GetAllServices, AddServices, GetAllContracts, AddContract to class Database.
 3) ToDo:  GetAllContracts, AddContract, form NewCotract.
 
+September 12, 2016 - DAY05
+
+
+Valeriy
+1) Finished - methods GetAllContacts, GetAllContactsByEmployee, GetAllContactsByClient, AddContact in Database;
+	    - form newContact;
+            - page Contacts with selection by Employee and Clients.    
+
+2) Didn't finished - methods GetAllServices, AddServices in Database;
+		   - form and page Services.
+
+3) ToDo:  form and page Services, methods GetAllServices, AddServices in Database, Tasks Calendar.
 
 
 
