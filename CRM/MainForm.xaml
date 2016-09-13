@@ -328,7 +328,7 @@
                             </TextBlock>
                         </TabItem.Header>
                     </TabItem>
-                    <TabItem Name="tabItem7">
+                    <TabItem Name="tabItem7" MouseLeftButtonDown="tabItem7_MouseLeftButtonDown">
                         <TabItem.Header>
                             <TextBlock Margin="3">
                         <StackPanel Orientation="Horizontal" Width="120">

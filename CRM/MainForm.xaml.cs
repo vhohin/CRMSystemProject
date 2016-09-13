@@ -1133,7 +1133,7 @@ namespace CRM
                             Discontinued = discontinued
                         };
                         db.UpdateProduct(pUpd);
-                        MessageBox.Show("Product: " + pUpd.ProductName + "" + p.Model + " information was succesful updated.", "Updating", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Product information about " + pUpd.ProductName + " " + p.Model + "  was succesfully updated.", "Updating", MessageBoxButton.OK, MessageBoxImage.Information);
                         ClearFormProducts();
                         UpdateGridListProducts();
 
@@ -1276,6 +1276,11 @@ namespace CRM
         {
 
 
+        }
+
+        private void tabItem7_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            UpdateGridListProducts();
         }
 
     }    

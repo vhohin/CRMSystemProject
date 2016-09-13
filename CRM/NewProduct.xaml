@@ -16,30 +16,30 @@
         <TextBox x:Name="tbEmployeeContactName" HorizontalAlignment="Left" Height="23" Margin="156,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>-->
 
 
-        <TextBox x:Name="tbAddProductColor" HorizontalAlignment="Left" Height="23" Margin="65,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76"/>
+        <TextBox x:Name="tbAddProductColor" HorizontalAlignment="Left" Height="23" Margin="65,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" TabIndex="5"/>
         <Label Content="Color" HorizontalAlignment="Left" Margin="16,167,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbAddProductWeight" HorizontalAlignment="Left" Height="23" Margin="222,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51"/>
-        <TextBox x:Name="tbAddProductUnitPrice" HorizontalAlignment="Left" Height="23" Margin="368,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45"/>
-        <TextBox x:Name="tbAddProductDescription" HorizontalAlignment="Left" Height="55" Margin="16,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="397"/>
+        <TextBox x:Name="tbAddProductWeight" HorizontalAlignment="Left" Height="23" Margin="222,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" TabIndex="6"/>
+        <TextBox x:Name="tbAddProductUnitPrice" HorizontalAlignment="Left" Height="23" Margin="368,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" TabIndex="7"/>
+        <TextBox x:Name="tbAddProductDescription" HorizontalAlignment="Left" Height="55" Margin="16,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="397" TabIndex="11"/>
         <!--SelectedDateChanged="DatePicker_SelectedDateChanged"-->
-        <Button x:Name="btAddProduct" Content="ADD" HorizontalAlignment="Left" Margin="16,381,0,0" VerticalAlignment="Top" Width="130" Foreground="#FF055905" Click="btAddProduct_Click" Height="39"/>
-        <Button x:Name="btCloseProduct" Content="CLOSE" HorizontalAlignment="Left" Margin="281,381,0,0" VerticalAlignment="Top" Width="130" Foreground="#FFC11919" Click="btCloseProduct_Click" Height="39"/>
+        <Button x:Name="btAddProduct" Content="ADD" HorizontalAlignment="Left" Margin="16,381,0,0" VerticalAlignment="Top" Width="130" Foreground="#FF055905" Click="btAddProduct_Click" Height="39" TabIndex="12"/>
+        <Button x:Name="btCloseProduct" Content="CLOSE" HorizontalAlignment="Left" Margin="281,381,0,0" VerticalAlignment="Top" Width="130" Foreground="#FFC11919" Click="btCloseProduct_Click" Height="39" TabIndex="13"/>
         <Label x:Name="label" Content="*" HorizontalAlignment="Left" Margin="102,31,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16"/>
         <Label x:Name="label_Copy2" Content="*" HorizontalAlignment="Left" Margin="101,67,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16"/>
         <Label x:Name="label_Copy4" Content="*" HorizontalAlignment="Left" Margin="65,134,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16"/>
         <Label x:Name="label_Copy5" Content="*" HorizontalAlignment="Left" Margin="105,102,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16"/>
         <Label x:Name="label_Copy6" Content="*" HorizontalAlignment="Left" Margin="93,282,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16" RenderTransformOrigin="-0.176,0.548"/>
-        <TextBox x:Name="tbAddProductName" HorizontalAlignment="Left" Height="23" Margin="158,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
-        <TextBox x:Name="tbAddProductType" HorizontalAlignment="Left" Height="23" Margin="158,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
-        <TextBox x:Name="tbAddProducerName" HorizontalAlignment="Left" Height="23" Margin="158,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
-        <TextBox x:Name="tbAddProductModel" HorizontalAlignment="Left" Height="23" Margin="158,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
+        <TextBox x:Name="tbAddProductName" HorizontalAlignment="Left" Height="23" Margin="158,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="1"/>
+        <TextBox x:Name="tbAddProductType" HorizontalAlignment="Left" Height="23" Margin="158,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="2"/>
+        <TextBox x:Name="tbAddProducerName" HorizontalAlignment="Left" Height="23" Margin="158,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="3"/>
+        <TextBox x:Name="tbAddProductModel" HorizontalAlignment="Left" Height="23" Margin="158,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="4"/>
         <Label Content="Units In Stock" HorizontalAlignment="Left" Margin="272,207,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbAddProductUnitsInStock" HorizontalAlignment="Left" Height="23" Margin="365,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46"/>
+        <TextBox x:Name="tbAddProductUnitsInStock" HorizontalAlignment="Left" Height="23" Margin="365,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" TabIndex="8"/>
         <Label Content="Customer Rating" HorizontalAlignment="Left" Margin="16,204,0,0" VerticalAlignment="Top" Width="116"/>
-        <TextBox x:Name="tbAddProductCustomerRating" HorizontalAlignment="Left" Height="23" Margin="132,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51"/>
+        <TextBox x:Name="tbAddProductCustomerRating" HorizontalAlignment="Left" Height="23" Margin="132,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" TabIndex="7"/>
         <Label Content="Discontinued" HorizontalAlignment="Left" Margin="16,250,0,0" VerticalAlignment="Top" Width="80"/>
-        <RadioButton x:Name="rbYesDiscontinued" GroupName="discontinued" Content="YES" Checked="RadioButtonProduct_Checked" HorizontalAlignment="Left" Margin="124,255,0,0" VerticalAlignment="Top" />
-        <RadioButton x:Name="rbNoDiscontinued" GroupName="discontinued" Content="NO" Checked="RadioButtonProduct_Checked" HorizontalAlignment="Left" Margin="173,255,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="rbYesDiscontinued" GroupName="discontinued" Content="YES" Checked="RadioButtonAddProduct_Checked" HorizontalAlignment="Left" Margin="124,255,0,0" VerticalAlignment="Top" TabIndex="9" />
+        <RadioButton x:Name="rbNoDiscontinued" GroupName="discontinued" Content="NO" Checked="RadioButtonAddProduct_Checked" HorizontalAlignment="Left" Margin="173,255,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="8"/>
 
     </Grid>
 </Window>

@@ -764,32 +764,32 @@ namespace CRM
             return list;
         }
 
-        // TODO LIST
+    
 
 
-        /*public void AddClients(Clients cl)
+        public void AddProduct(Products p)
         {
-            using (SqlCommand cmd = new SqlCommand("Insert Into Clients (ClientName, ContactName, Address, City, Location, Country, PostalCode, Phone, Description, Commercial, Fax, Email,WebPage,FirstContacted) VALUES (@clientName, @contactName, @address, @city, @location, @country, @postalCode, @phone, @description, @commercial, @fax, @email,@webPage,@firstContacted)"))
+            using (SqlCommand cmd = new SqlCommand("Insert Into Products (ProductType, ProductName, ProducerName, Model, Descriprion, Color, UnitPrice, Weight, UnitsInStock, CustomerRating, Discontinued) VALUES (@productType, @productName, @producerName, @model, @descriprion, @color, @unitPrice, @weight, @unitsInStock, @customerRating, @discontinued)"))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection = conn;
-                cmd.Parameters.AddWithValue("@clientName", cl.ClientName);
-                cmd.Parameters.AddWithValue("@contactName", cl.ContactName);
-                cmd.Parameters.AddWithValue("@address", cl.Address);
-                cmd.Parameters.AddWithValue("@city", cl.City);
-                cmd.Parameters.AddWithValue("@location", cl.Location);
-                cmd.Parameters.AddWithValue("@country", cl.Country);
-                cmd.Parameters.AddWithValue("@postalCode", cl.PostalCode);
-                cmd.Parameters.AddWithValue("@phone", cl.Phone);
-                cmd.Parameters.AddWithValue("@description", cl.Description);
-                cmd.Parameters.AddWithValue("@commercial", cl.Commercial);
-                cmd.Parameters.AddWithValue("@fax", cl.Fax);
-                cmd.Parameters.AddWithValue("@email", cl.Email);
-                cmd.Parameters.AddWithValue("@webPage", cl.WebPage);
-                cmd.Parameters.AddWithValue("@firstContacted", cl.FirstContacted);
+               
+                cmd.Parameters.AddWithValue("@productId", p.ProductId);
+                cmd.Parameters.AddWithValue("@productType", p.ProductType);
+                cmd.Parameters.AddWithValue("@productName", p.ProductName);
+                cmd.Parameters.AddWithValue("@producerName", p.ProducerName);
+                cmd.Parameters.AddWithValue("@model", p.Model);
+                cmd.Parameters.AddWithValue("@descriprion", p.Descriprion);
+                cmd.Parameters.AddWithValue("@color", p.Color);
+                cmd.Parameters.AddWithValue("@unitPrice", p.UnitPrice);
+                cmd.Parameters.AddWithValue("@weight", p.Weight);
+                cmd.Parameters.AddWithValue("@unitsInStock", p.UnitsInStock);
+                cmd.Parameters.AddWithValue("@customerRating", p.CustomerRating);
+                cmd.Parameters.AddWithValue("@discontinued", p.Discontinued);
+
                 cmd.ExecuteNonQuery();
             }
-        }*/
+        }
         public void UpdateProduct (Products p)
         {
            
