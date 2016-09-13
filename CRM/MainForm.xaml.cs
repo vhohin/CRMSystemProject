@@ -160,8 +160,7 @@ namespace CRM
             rbYesCommercial.IsEnabled = false;
             rbNoCommercial.IsEnabled = false;
             dpFirstContact.IsEnabled = false;
-            btClientUpdate.Visibility = Visibility.Hidden;
-            btClientClear.Visibility = Visibility.Hidden;
+            btClientUpdate.Visibility = Visibility.Hidden;           
             btClientDelete.Visibility = Visibility.Hidden;
             //Employees
             tbEmployeeFirstName.IsReadOnly = true;
