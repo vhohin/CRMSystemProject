@@ -1,0 +1,10 @@
+diff a/CRM/MainForm.xaml.cs b/CRM/MainForm.xaml.cs	(rejected hunks)
+@@ -161,7 +161,7 @@
+             rbNoCommercial.IsEnabled = false;
+             dpFirstContact.IsEnabled = false;
+             btClientUpdate.Visibility = Visibility.Hidden;
+-            btClientClear.Visibility = Visibility.Hidden;
++            //btClientClear.Visibility = Visibility.Hidden;
+             btClientDelete.Visibility = Visibility.Hidden;
+             //Employees
+             tbEmployeeFirstName.IsReadOnly = true;

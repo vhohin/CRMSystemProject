@@ -226,9 +226,7 @@ namespace CRM
 
         private void btClear_Click(object sender, RoutedEventArgs e)
         {
-            //Employees em = new Employees() { UserName = "ogogo", Password = "1", FirstName = "1", MiddleName = "1", LastName = "1", Address = "1", Location = "1", Country = "1", ZipCode = "1", DOB = firstContacted, Phone = "1", HireDate = firstContacted, PositionID = 2, DepartmentID = 8, Importance = 2, Description = "1" };
-            //db.AddEmployees(em);
-            MessageBoxResult result = MessageBox.Show("Clear Form?", "Clear Form", MessageBoxButton.YesNo, MessageBoxImage.Question);
+             MessageBoxResult result = MessageBox.Show("Clear Form?", "Clear Form", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 ClearForm();

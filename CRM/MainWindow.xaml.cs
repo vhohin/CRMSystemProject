@@ -22,6 +22,7 @@ namespace CRM
     {
         Database db;
         string employee = "";
+        int employeeId = 0;
         int importance = 0;
         public MainWindow()
         {
@@ -72,6 +73,7 @@ namespace CRM
                     if ((tbUserName.Text == e.UserName) && (pbPsw.Password == e.Password))
                     {
                         employee = e.FirstName + "   " + e.LastName;
+                        employeeId = e.EmployeeId;
                         importance = e.Importance;
                         return true;
                     }
@@ -94,9 +96,9 @@ namespace CRM
 
         private void EnterToSystem()
         {
-            /*  if (EnterCheck() == true)
+              if (EnterCheck() == true)
                        {
-                           MainForm taskWindow = new MainForm(employee, importance);
+                           MainForm taskWindow = new MainForm(employee, employeeId, importance);
                            taskWindow.Show();
                            this.Close();
                        }
@@ -106,10 +108,10 @@ namespace CRM
                            tbUserName.Text = "";
                            pbPsw.Password = "";
                            return;
-                       }*/
-            MainForm taskWindow = new MainForm("Valeriy Hohin", 1);
+                       }
+           /* MainForm taskWindow = new MainForm("Valeriy Hohin", 1);
             taskWindow.Show();
-            this.Close();
+            this.Close();*/
         }
     }
 

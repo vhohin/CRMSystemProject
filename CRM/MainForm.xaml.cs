@@ -26,6 +26,7 @@ namespace CRM
         List<string> listPositionsNames;
         List<Departaments> listDepartments;
         List<string> listDepartmentsNames;
+        int enterEmployeeId = 0;
         //client fields
         string clientName = "";
         string contactName = "";
@@ -91,7 +92,7 @@ namespace CRM
         bool discontinued;
         int currentProduct = 0;
 
-        public MainForm(string user, int importance)
+        public MainForm(string user, int employeeId, int importance)
         {
             try
             {
@@ -105,6 +106,7 @@ namespace CRM
             InitializeComponent();
             this.Title = " CRM System User: " + user;
             tblUserName.Text = user;
+            enterEmployeeId = employeeId;
 
             tbEmployeeUserName.Visibility = Visibility.Hidden;
             tbEmployeePassword.Visibility = Visibility.Hidden;
@@ -160,8 +162,6 @@ namespace CRM
             rbYesCommercial.IsEnabled = false;
             rbNoCommercial.IsEnabled = false;
             dpFirstContact.IsEnabled = false;
-            btClientUpdate.Visibility = Visibility.Hidden;
-            btClientClear.Visibility = Visibility.Hidden;
             btClientDelete.Visibility = Visibility.Hidden;
             //Employees
             tbEmployeeFirstName.IsReadOnly = true;
@@ -195,7 +195,7 @@ namespace CRM
         {
             try
             {
-                List<Tasks> list = db.GetTasksByEmployeeId(2);
+                List<Tasks> list = db.GetTasksByEmployeeId(enterEmployeeId);
                 dgTasksList.ItemsSource = list;
             }
             catch (Exception ex)
@@ -304,7 +304,7 @@ namespace CRM
         //*******************************************************
         private void dgTasksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            //sdafsadfsdfsdaf
         }
         private void dgContactList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -429,17 +429,7 @@ namespace CRM
             cbContactType.Items.Refresh();
         }
         private void UploadEmployeeContactsNames()
-        {
-            /*try
-            {
-                listEmployeesNames = db.GetAllEmployees();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
-                // TODO: write details of the exception to log text file
-                Environment.Exit(1);
-            }*/
+        {           
             listEmployeesNames = new List<string>();
             foreach (Employees line in listEmployee)
             {
@@ -450,16 +440,6 @@ namespace CRM
         }
         private void UploadClientsContactsNames()
         {
-            /*try
-            {
-                listClients = db.GetAllClients();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
-                // TODO: write details of the exception to log text file
-                Environment.Exit(1);
-            }*/
             listClientsNames = new List<string>();
             foreach (Clients line in listClients)
             {
@@ -545,26 +525,26 @@ namespace CRM
         private void btNewTasks_Click(object sender, RoutedEventArgs e)
         {
             NewTask newTaskWindow = new NewTask();
-            newTaskWindow.Owner = this;
+            //newTaskWindow.Owner = this;
             newTaskWindow.Show();
 
         }
         private void btNewContact_Click(object sender, RoutedEventArgs e)
         {
             NewContact newContactWindow = new NewContact();
-            newContactWindow.Owner = this;
+            //newContactWindow.Owner = this;
             newContactWindow.Show();
         }
         private void btNewClient_Click(object sender, RoutedEventArgs e)
         {
             NewClient addClientWindow = new NewClient();
-            addClientWindow.Owner = this;
+            //addClientWindow.Owner = this;
             addClientWindow.Show();
         }
         private void btNewEmployee_Click(object sender, RoutedEventArgs e)
         {
             NewEmployee addEmployeeWindow = new NewEmployee();
-            addEmployeeWindow.Owner = this;
+            //addEmployeeWindow.Owner = this;
             addEmployeeWindow.Show();
         }
 
@@ -1067,6 +1047,30 @@ namespace CRM
         private void cbContactType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            CalendarTasks newTaskWindow = new CalendarTasks();
+            //newTaskWindow.Owner = this;
+            newTaskWindow.Show();
+        }
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            CalendarTasks2 newTaskWindow = new CalendarTasks2();
+            //newTaskWindow.Owner = this;
+            newTaskWindow.Show();
+        }
+        private void Button3_Click(object sender, RoutedEventArgs e)
+        {
+            CalendarTasks newTaskWindow = new CalendarTasks();
+            //newTaskWindow.Owner = this;
+            newTaskWindow.Show();
+        }
+
+        private void btAllTask_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
