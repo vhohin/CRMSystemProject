@@ -41,6 +41,17 @@ namespace CRM
             tbUserName.Focus();
 
         }
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                EnterToSystem();
+            }
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
+        }
         private bool EnterCheck()
         {
             if (tbUserName.Text == "")
@@ -78,22 +89,27 @@ namespace CRM
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          /*  if (EnterCheck() == true)
-            {
-                MainForm taskWindow = new MainForm(employee, importance);
-                taskWindow.Show();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Name or Password is not correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
-                tbUserName.Text = "";
-                pbPsw.Password = "";
-                return;
-            }*/
-             MainForm taskWindow = new MainForm("Valeriy Hohin", 1);
-             taskWindow.Show();
-             this.Close();
+            EnterToSystem();
+        }
+
+        private void EnterToSystem()
+        {
+            /*  if (EnterCheck() == true)
+                       {
+                           MainForm taskWindow = new MainForm(employee, importance);
+                           taskWindow.Show();
+                           this.Close();
+                       }
+                       else
+                       {
+                           MessageBox.Show("Name or Password is not correct.", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                           tbUserName.Text = "";
+                           pbPsw.Password = "";
+                           return;
+                       }*/
+            MainForm taskWindow = new MainForm("Valeriy Hohin", 1);
+            taskWindow.Show();
+            this.Close();
         }
     }
 

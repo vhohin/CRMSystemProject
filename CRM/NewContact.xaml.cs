@@ -201,7 +201,7 @@ namespace CRM
                     MessageBoxResult result = MessageBox.Show("New Client was succesful added. Clear Form?", "Addition", MessageBoxButton.YesNo, MessageBoxImage.Information);
                     if (result == MessageBoxResult.Yes)
                     {
-                        //    ClearForm();
+                        ClearForm();
                     }
                 }
                 catch (Exception ex)
@@ -222,6 +222,17 @@ namespace CRM
             contactOutcome = "";
             contactActionToDo = "";
             contactDate = DateTime.Now;
+        }
+        private void ClearForm()
+        {
+            cbEmployeeContactName.SelectedIndex = -1;
+            cbClientContactName.SelectedIndex = -1;
+            cbContactType.SelectedIndex = -1;
+            tbContactSubject.Text = "";
+            tbContactLocation.Text = "";
+            tbContactOutcome.Text = "";
+            tbContactActionsToDo.Text = "";
+            dpContactDate.SelectedDate = DateTime.Now;
         }
         private void btClose_Click(object sender, RoutedEventArgs e)
         {

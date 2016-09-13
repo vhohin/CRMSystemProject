@@ -18,7 +18,10 @@ namespace CRM
     {
         Database db;
         List<Employees> listEmployee;
+        List<string> listEmployeesNames;
+        List<Contacts> listContacts;
         List<Clients> listClients;
+        List<string> listClientsNames;
         List<Positions> listPositions;
         List<string> listPositionsNames;
         List<Departaments> listDepartments;
@@ -60,10 +63,19 @@ namespace CRM
         DateTime employeeDOB;
         DateTime employeeHireDate;
         int currentEmployee = 0;
-       
+        //contact fields
+        List<string> listContactTypeName;
+        int contactEmployeeId = 0;
+        int contactClientId = 0;
+        string contactTypeName = "";
+        string contactSubject = "";
+        string contactLocation = "";
+        string contactOutcome = "";
+        string contactActionToDo = "";
+        DateTime contactDate;
+        bool changeEC = true;
         // products fields
         List<Products> listProducts;
-
         int productId;
         string productType = "";
         string productName = "";
@@ -77,11 +89,7 @@ namespace CRM
         int customerRating = 1;
         string discontinuedYN;
         bool discontinued;
-
         int currentProduct = 0;
-
-
-
 
         public MainForm(string user, int importance)
         {
@@ -107,15 +115,16 @@ namespace CRM
                     EnterNoBoss();
                 }
             UpdateGridListTasks();
+            UpdateGridListContacts();
+            UploadContactType();
             UpdateGridListClients();
             UpdateGridListEmployees();
             UpdateGridListPositions();
             UpdateGridListDepartments();
-
-
             UploadEmployeePositions();
             UploadEmployeeDepartments();
-
+            UploadEmployeeContactsNames();
+            UploadClientsContactsNames();
         }
         private void EnterNoBoss()
         {
@@ -124,6 +133,16 @@ namespace CRM
             lblEmployeeUserName.Visibility = Visibility.Hidden;
             lblEmployeePassword.Visibility = Visibility.Hidden;
             btNewEmployee.Visibility = Visibility.Hidden;
+            //contacts
+            //cbEmployeeContactName.IsReadOnly = true;
+            //cbClientContactName.IsReadOnly = true;
+            cbContactType.IsReadOnly = true;
+            tbContactSubject.IsReadOnly = true;
+            tbContactLocation.IsReadOnly = true;
+            tbContactOutcome.IsReadOnly = true;
+            tbContactActionsToDo.IsReadOnly = true;
+            dpContactDate.IsEnabled = false;
+            //btUpdateContact.Visibility = Visibility.Hidden;
             //Clients
             tbClientName.IsReadOnly = true;
             tbContactName.IsReadOnly = true;
@@ -160,8 +179,7 @@ namespace CRM
             tbEmployeeDescription.IsReadOnly = true;
             dpEmployeeDOB.IsEnabled = false;
             dpEmployeeHireDate.IsEnabled = false;
-            btEmployeeUpdate.Visibility = Visibility.Hidden;
-            //btEmployeeClear.Visibility = Visibility.Hidden;
+            btEmployeeUpdate.Visibility = Visibility.Hidden;            
             btEmployeeDelete.Visibility = Visibility.Hidden;
             tbEmployeeUserName.Visibility = Visibility.Hidden;
             tbEmployeePassword.Visibility = Visibility.Hidden;
@@ -188,6 +206,21 @@ namespace CRM
             }
             dgTasksList.Items.Refresh();
 
+        }
+        private void UpdateGridListContacts()
+        {
+            try
+            {
+                listContacts = db.GetAllContacts();
+                dgContactsList.ItemsSource = listContacts;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }
+            dgClientsList.Items.Refresh();
         }
         private void UpdateGridListClients()
         {
@@ -267,13 +300,30 @@ namespace CRM
 
 
         //*******************************************************
-        //  Grid Lists Selections
+        //  Grid Lists Selections  
         //*******************************************************
         private void dgTasksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
-        //int currentClient = 0;
+        private void dgContactList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Contacts co = dgContactsList.SelectedItem as Contacts;
+            if (co == null)
+            {                
+                return;
+            }
+            changeEC = false;
+            cbEmployeeContactName.SelectedIndex = co.EmployeeId;
+            cbClientContactName.SelectedIndex = co.ClientId;
+            cbContactType.SelectedValue = co.ContactType;
+            tbContactSubject.Text = co.Subject;
+            tbContactLocation.Text = co.Location;
+            tbContactOutcome.Text = co.Outcome;
+            tbContactActionsToDo.Text = co.ActionsToDo;
+            dpContactDate.SelectedDate = co.ContactDate;
+            changeEC = true;
+        }
         private void dgClientsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Clients cl = dgClientsList.SelectedItem as Clients;
@@ -366,6 +416,58 @@ namespace CRM
         //*******************************************************
         //  Upploads combos
         //*******************************************************
+        private void UploadContactType()
+        {
+            listContactTypeName = new List<string>();
+            listContactTypeName.Add("phone");
+            listContactTypeName.Add("mail");
+            listContactTypeName.Add("meeting");
+            listContactTypeName.Add("fax");
+            listContactTypeName.Add("skype");
+            listContactTypeName.Add("call");
+            cbContactType.ItemsSource = listContactTypeName;
+            cbContactType.Items.Refresh();
+        }
+        private void UploadEmployeeContactsNames()
+        {
+            /*try
+            {
+                listEmployeesNames = db.GetAllEmployees();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }*/
+            listEmployeesNames = new List<string>();
+            foreach (Employees line in listEmployee)
+            {
+                listEmployeesNames.Add(line.FirstName + " " + line.LastName);
+            }
+            cbEmployeeContactName.ItemsSource = listEmployeesNames;
+            cbEmployeeContactName.Items.Refresh();
+        }
+        private void UploadClientsContactsNames()
+        {
+            /*try
+            {
+                listClients = db.GetAllClients();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                // TODO: write details of the exception to log text file
+                Environment.Exit(1);
+            }*/
+            listClientsNames = new List<string>();
+            foreach (Clients line in listClients)
+            {
+                listClientsNames.Add(line.ClientName);
+            }
+            cbClientContactName.ItemsSource = listClientsNames;
+            cbClientContactName.Items.Refresh();
+        }
         private void UploadEmployeePositions()
         {
             listPositionsNames = new List<string>();
@@ -863,6 +965,108 @@ namespace CRM
 
         private void btProductDelete_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void btAllContacts_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateGridListContacts();
+        }
+
+        private void cbClientContactName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (changeEC == false)
+            {
+                return;
+            }
+            if (cbClientContactName.SelectedIndex == -1)
+            {
+                return;
+            }
+            Clients cl = listClients[cbClientContactName.SelectedIndex];
+            contactClientId = cl.ClientId;
+            if (cbEmployeeContactName.SelectedIndex == -1)
+            {
+                try
+                {
+                    listContacts = db.GetContactsByClientId(contactClientId);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    Environment.Exit(1);
+                }
+            }
+            else
+            {
+                Employees em = listEmployee[cbEmployeeContactName.SelectedIndex];
+                contactEmployeeId = em.EmployeeId;
+                try
+                {
+                    listContacts = db.GetContactsByEmployeeAndClientId(contactEmployeeId, contactClientId); 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    Environment.Exit(1);
+                }
+            }
+            
+            dgContactsList.ItemsSource = listContacts;
+            dgContactsList.Items.Refresh();
+            
+        }
+
+        private void cbEmployeeContactName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (changeEC == false)
+            {
+                return;
+            }
+            if (cbEmployeeContactName.SelectedIndex == -1)
+            {
+                return;
+            }
+            Employees em = listEmployee[cbEmployeeContactName.SelectedIndex];
+            contactEmployeeId = em.EmployeeId;
+            if (cbClientContactName.SelectedIndex == -1)
+            {
+                
+                try
+                {
+                    listContacts = db.GetContactsByEmployeeId(contactEmployeeId);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    Environment.Exit(1);
+                }
+            }
+            else
+            {                
+                Clients cl = listClients[cbClientContactName.SelectedIndex];
+                contactClientId = cl.ClientId;
+                try
+                {
+                    listContacts = db.GetContactsByEmployeeAndClientId(contactEmployeeId, contactClientId);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    Environment.Exit(1);
+                }
+            }
+            dgContactsList.ItemsSource = listContacts;
+            dgContactsList.Items.Refresh();            
+        }
+
+        private void cbContactType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
 
         }
     }

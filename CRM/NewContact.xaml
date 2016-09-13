@@ -22,7 +22,7 @@
         <TextBox x:Name="tbContactSubject" HorizontalAlignment="Left" Height="23" Margin="158,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
         <TextBox x:Name="tbContactOutcome" HorizontalAlignment="Left" Height="23" Margin="158,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
         <TextBox x:Name="tbContactActionsToDo" HorizontalAlignment="Left" Height="55" Margin="16,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="397"/>
-        <DatePicker x:Name="dpContactDate" HorizontalAlignment="Left" Margin="158,136,0,0" VerticalAlignment="Top" Width="141" />
+        <DatePicker x:Name="dpContactDate" HorizontalAlignment="Left" Margin="158,136,0,0" VerticalAlignment="Top" Width="160" />
         <!--SelectedDateChanged="DatePicker_SelectedDateChanged"-->
         <Button x:Name="btAdd" Content="ADD" HorizontalAlignment="Left" Margin="16,365,0,0" VerticalAlignment="Top" Width="130" Foreground="#FF055905" Click="btAdd_Click" Height="39"/>
         <Button x:Name="btClose" Content="CLOSE" HorizontalAlignment="Left" Margin="281,365,0,0" VerticalAlignment="Top" Width="130" Foreground="#FFC11919" Click="btClose_Click" Height="39"/>

@@ -118,6 +118,60 @@
                         </StackPanel>
                             </TextBlock>
                         </TabItem.Header>
+                        <Grid>
+                            <Label Content="CONTACTS" HorizontalAlignment="Left" Margin="363,0,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF0E52A2"/>
+                            <Label Content="Client Name" HorizontalAlignment="Left" Margin="16,35,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Employee  Name" HorizontalAlignment="Left" Margin="400,36,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Contact Type" HorizontalAlignment="Left" Margin="16,66,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Subject" HorizontalAlignment="Left" Margin="16,136,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Outcome" HorizontalAlignment="Left" Margin="400,135,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Actions To Do" HorizontalAlignment="Left" Margin="16,163,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Contact Date" HorizontalAlignment="Left" Margin="16,100,0,0" VerticalAlignment="Top"/>
+                            <!--<TextBox x:Name="tbClientContactName" Height="23" Margin="156,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255"/>
+        <TextBox x:Name="tbEmployeeContactName" HorizontalAlignment="Left" Height="23" Margin="156,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>-->
+                            <ComboBox x:Name="cbClientContactName" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="110,39,0,0" VerticalAlignment="Top" Width="253" IsReadOnly="True" TabIndex="1" SelectionChanged="cbClientContactName_SelectionChanged" BorderBrush="#FF8B0B0B" AllowDrop="True" >
+                                <ComboBox.Background>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                        <GradientStop Color="#FFF3D6D6" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ComboBox.Background>
+                            </ComboBox>
+                            <ComboBox x:Name="cbEmployeeContactName" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="502,39,0,0" VerticalAlignment="Top" Width="253" IsReadOnly="True" TabIndex="2" SelectionChanged="cbEmployeeContactName_SelectionChanged" BorderBrush="#FF910808" >
+                                <ComboBox.Background>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                        <GradientStop Color="#FFFDDEDE" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ComboBox.Background>
+                            </ComboBox>
+                            <ComboBox x:Name="cbContactType" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="109,70,0,0" VerticalAlignment="Top" Width="253" IsReadOnly="True" TabIndex="3" SelectionChanged="cbContactType_SelectionChanged" />
+
+                            <TextBox x:Name="tbContactLocation" HorizontalAlignment="Left" Height="23" Margin="502,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="4"/>
+                            <Label Content="Location" HorizontalAlignment="Left" Margin="400,68,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="tbContactSubject" HorizontalAlignment="Left" Height="23" Margin="110,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="6"/>
+                            <TextBox x:Name="tbContactOutcome" HorizontalAlignment="Left" Height="23" Margin="502,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="7"/>
+                            <TextBox x:Name="tbContactActionsToDo" HorizontalAlignment="Left" Height="46" Margin="16,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="739" TabIndex="8"/>
+                            <DatePicker x:Name="dpContactDate" HorizontalAlignment="Left" Margin="110,103,0,0" VerticalAlignment="Top" Width="160" TabIndex="5" />
+                            <!--SelectedDateChanged="DatePicker_SelectedDateChanged"-->
+                            <Button x:Name="btAllContacts" Content="ALL CONTACTS" HorizontalAlignment="Left" Margin="16,249,0,0" VerticalAlignment="Top" Width="160" Foreground="#FF055905" Click="btAllContacts_Click" Height="39"/>
+                            <Grid>
+                                <DataGrid x:Name="dgContactsList" Margin="0,303,0,0" SelectionChanged="dgContactList_SelectionChanged" SelectionMode="Single" TabIndex="9"   >
+                                    <DataGrid.ColumnHeaderStyle>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="Background" Value="LightGray" />
+                                            <Setter Property="BorderThickness" Value="1" />
+                                            <Setter Property="BorderBrush" Value="Black" />
+                                            <Setter Property="Height" Value="25" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </DataGrid.ColumnHeaderStyle>
+                                </DataGrid>
+                            </Grid>
+
+                        </Grid>
+
                     </TabItem>
                     <TabItem Name="tabItem3">
                         <TabItem.Header>
