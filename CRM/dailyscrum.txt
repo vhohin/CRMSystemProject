@@ -1,4 +1,6 @@
+---------------------------
 September 7, 2016 - DAY01
+---------------------------
 
 Nazar
 
@@ -11,7 +13,9 @@ Valeriy
 2) Didn't finished ToolBar, Menu
 3) Finish Main Form 
 
+---------------------------
 September 8, 2016 - DAY02
+---------------------------
 
 Valeriy
 
@@ -35,7 +39,9 @@ Nazar
 3/ Ask 
 - Didn't ask Gregory how to manage conflicts in SourceTree 
 
-September 9, 2016 - DAY03
+----------------------------------------
+September 9 - 11, 2016 - DAY03 - DAY05
+----------------------------------------
 
 Valeriy
 
@@ -62,8 +68,9 @@ Nazar
 4/ Ask 
 - Didn't ask Gregory how to manage conflicts in SourceTree 
 
-
-September 12, 2016 - DAY03
+---------------------------
+September 12, 2016 - DAY06
+---------------------------
 
 Nazar
 1/ Finisned:
@@ -88,7 +95,10 @@ Valeriy
 2) Didn't finished methods GetAllServices, AddServices, GetAllContracts, AddContract to class Database.
 3) ToDo:  GetAllContracts, AddContract, form NewCotract.
 
-September 12, 2016 - DAY05
+
+---------------------------
+September 13, 2016 - DAY07
+---------------------------
 
 
 Valeriy
@@ -100,6 +110,24 @@ Valeriy
 		   - form and page Services.
 
 3) ToDo:  form and page Services, methods GetAllServices, AddServices in Database, Tasks Calendar.
+
+
+Nazar
+1/ Finisned:
+- GUI for Products and methods GetAllProducts, Update Products
+
+2/ Not Finished
+- transfer created methods into existing CRMProject
+- Add, Validation and Test Products Form 
+- load pictures for each to Products Form
+- find Tutorial on Reports - try to create some Reports, if possible 
+- find Tutorial on Calendar/Organizer for WPF - and try together with Valeriy
+
+3/ ToDoList: 
+- finish and test Products Form
+- apply some design for control items: buttons- hover, event handler, etc.
+- try ro create conflict in GitHub and resolve it properly 
+
 
 
 
