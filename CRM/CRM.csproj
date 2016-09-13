@@ -164,6 +164,48 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\08product1.jpg" />
+    <Resource Include="Resources\1370398972253981498business_user_add-1.png" />
+    <Resource Include="Resources\clients.jpg" />
+    <Resource Include="Resources\clients.png" />
+    <Resource Include="Resources\clients2.png" />
+    <Resource Include="Resources\clip-art-service.jpg" />
+    <Resource Include="Resources\Comment-add-icon.png" />
+    <Resource Include="Resources\Contact-Us.png" />
+    <Resource Include="Resources\contact2.jpg" />
+    <Resource Include="Resources\contact3.png" />
+    <Resource Include="Resources\contact4.jpg" />
+    <Resource Include="Resources\contact4.png" />
+    <Resource Include="Resources\contacts3.jpg" />
+    <Resource Include="Resources\contracts.png" />
+    <Resource Include="Resources\Custom-Icon-Design-Office-Add-1.ico" />
+    <Resource Include="Resources\customer-service.jpg" />
+    <Resource Include="Resources\DistributorIcon.png" />
+    <Resource Include="Resources\employee.png" />
+    <Resource Include="Resources\employees.png" />
+    <Resource Include="Resources\employee_icon_by_ornorm-d4wep0s.png" />
+    <Resource Include="Resources\EP_employees.png" />
+    <Resource Include="Resources\features7.jpg" />
+    <Resource Include="Resources\img.png" />
+    <Resource Include="Resources\iStock_000017677354XSmall-300x300.jpg" />
+    <Resource Include="Resources\newclient.png" />
+    <Resource Include="Resources\newcontact.png" />
+    <Resource Include="Resources\newemployee.png" />
+    <Resource Include="Resources\newtask.png" />
+    <Resource Include="Resources\nexus-products-oct2012.png" />
+    <Resource Include="Resources\Nuvola_apps_klipper.png" />
+    <Resource Include="Resources\Phone-Icon.png" />
+    <Resource Include="Resources\product2.png" />
+    <Resource Include="Resources\products.png" />
+    <Resource Include="Resources\sc-kf-integrate-business-systems.png" />
+    <Resource Include="Resources\sup.png" />
+    <Resource Include="Resources\tasks.png" />
+    <Resource Include="Resources\task_report_regular.png" />
+    <Resource Include="Resources\Task_Tracking_Software_GTD.jpg.png" />
+    <Resource Include="Resources\unnamed.jpg" />
+    <Resource Include="Resources\user_group.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
