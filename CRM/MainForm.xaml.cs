@@ -27,6 +27,7 @@ namespace CRM
         List<Departaments> listDepartments;
         List<string> listDepartmentsNames;
         //client fields
+
         string clientName = "5";
         string contactName = "";
         string address = "";
