@@ -244,15 +244,15 @@ namespace CRM
 
         private void ClearAllData()
         {
-            string nameTask = "";
-            string description = "";
+            nameTask = "";
+            description = "";
             DateTime startDate;
             DateTime endDate;
-            string informationNotes = "";
-            string status = "";
-            string taskType = "";
-            string priority = "";
-            string reminder = "";
+            informationNotes = "";
+            status = "";
+            taskType = "";
+            priority = "";
+            reminder = "";
 
         }
 
