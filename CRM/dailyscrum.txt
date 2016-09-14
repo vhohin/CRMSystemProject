@@ -129,15 +129,20 @@ Nazar
 - try ro create conflict in GitHub and resolve it properly 
 
 
+---------------------------
+September 14, 2016 - DAY08
+---------------------------
 
+Valeriy
+1) Finished - methods GetCurrentTasksByEmployeeId, GetTasksByEmployeeId;
+	    - form TaskInformation to get full information and update curent task;	   
 
+2) Didn't finished - methods Updatetask, GetAllServices, AddServices in Database;
+		   - form and page Services;
+	           - graphic forms disaign; 
 
-
-
-
-
-
-
+3) ToDo:  - fmethods Updatetask in Database, Tasks Calendar;
+	  - graphic forms disaign.
 
 
 
