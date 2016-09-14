@@ -19,9 +19,31 @@ namespace CRM
     /// </summary>
     public partial class CalendarTasks : Window
     {
+        public class DataObject
+        {
+            public string A { get; set; }
+            public string B { get; set; }
+            public string C { get; set; }
+            public string D { get; set; }
+            public string E { get; set; }
+            public string F { get; set; }           
+        }
         public CalendarTasks()
         {
             InitializeComponent();
+            var list = new List<DataObject>();
+            list.Add(new DataObject() { A = "Time-Day", B = "Mo", C = "Tu", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "8:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "9:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "10:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "11:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "12:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "13:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "14:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "15:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "16:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            list.Add(new DataObject() { A = "17:00", B = "", C = "", D = "We", E = "Th", F = "Fr" });
+            this.dataGrid1.ItemsSource = list;
         }
     }
 }

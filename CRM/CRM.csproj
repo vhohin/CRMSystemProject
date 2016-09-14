@@ -58,6 +58,9 @@
     <Compile Include="CalendarTasks.xaml.cs">
       <DependentUpon>CalendarTasks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CalendarTasks2.xaml.cs">
+      <DependentUpon>CalendarTasks2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClientInfo.xaml.cs">
       <DependentUpon>ClientInfo.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
       <DependentUpon>MainForm.xaml</DependentUpon>
     </Compile>
     <Page Include="CalendarTasks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CalendarTasks2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

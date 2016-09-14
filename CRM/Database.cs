@@ -112,7 +112,6 @@ namespace CRM
         }
         public void UpdateEmployee(Employees em)
         {
-            //throw new NotImplementedException();
             using (SqlCommand cmd = new SqlCommand("Update Employees set UserName=@userName, Password=@password, FirstName=@firstName, MiddleName=@middleName, LastName=@lastName, Address=@address,City=@city, Location=@location, Country=@country, ZipCode=@zipCode, DOB=@dob, Phone=@phone, Email=@email, HireDate=@hireDate, PositionID=@positionID, DepartmentID=@departmentID, Importance=@importance, Description=@description where EmployeeId=@id", conn))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -198,10 +197,55 @@ namespace CRM
 
         public List<Tasks> GetTasksByEmployeeId(int Id)
         {
-            //throw new NotImplementedException();
             List<Tasks> list = new List<Tasks>();
             SqlCommand cmd = new SqlCommand("Select * From Tasks WHERE EmployeeId=@emId", conn);
             cmd.Parameters.AddWithValue("@emId", Id);
+            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(reader.GetOrdinal("TaskId"));
+                        int employeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
+                        string nameTask = reader.GetString(reader.GetOrdinal("NameTask"));
+                        string description = reader.GetString(reader.GetOrdinal("Description"));
+                        DateTime startDate = reader.GetDateTime(reader.GetOrdinal("StartDate"));
+                        DateTime endDate = reader.GetDateTime(reader.GetOrdinal("EndDate"));
+                        string informationNotes = reader.GetString(reader.GetOrdinal("InformationNotes"));
+                        string status = reader.GetString(reader.GetOrdinal("Status"));
+                        string taskType = reader.GetString(reader.GetOrdinal("TaskType"));
+                        string priority = reader.GetString(reader.GetOrdinal("Priority"));
+                        string reminder = reader.GetString(reader.GetOrdinal("Reminder"));
+                        int clientId = reader.GetInt32(reader.GetOrdinal("ClientId"));
+
+                        Tasks t = new Tasks
+                        {
+                            TaskId = id,
+                            EmployeeId = employeeId,
+                            NameTask = nameTask,
+                            Description = description,
+                            StartDate = startDate,
+                            EndDate = endDate,
+                            InformationNotes = informationNotes,
+                            Status = status,
+                            TaskType = taskType,
+                            Priority = priority,
+                            Reminder = reminder,
+                            ClientId = clientId
+                        };
+                        list.Add(t);
+                    }
+                }
+            }
+            return list;
+        }
+        public List<Tasks> GetCurrentTasksByEmployeeId(int Id, DateTime d)
+        {
+            List<Tasks> list = new List<Tasks>();
+            SqlCommand cmd = new SqlCommand("Select * From Tasks WHERE EmployeeId=@emId and (@currentDate between StartDate and EndDate)", conn);
+            cmd.Parameters.AddWithValue("@emId", Id);
+            cmd.Parameters.AddWithValue("@currentDate", d);
             using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
             {
                 if (reader.HasRows)
@@ -593,24 +637,7 @@ namespace CRM
                 }
             }
             return list;
-        }
-        /*public string GetPositionsById(int Id)
-        {
-            string positionName ="";
-            SqlCommand cmd = new SqlCommand("Select * From Positions WHERE PositionId=@pId", conn);
-            cmd.Parameters.AddWithValue("@pId", Id);
-            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
-            {
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    //positionName = reader[0].ToString();
-                    positionName = reader.GetString(1);  
-                    //string clientName = reader.GetString(reader.GetOrdinal("PositiontName"));
-                }
-            }
-            return positionName;
-        }*/
+        }       
         public void AddPositions(Positions p)
         {
             using (SqlCommand cmd = new SqlCommand("Insert Into Positions (PositionName) VALUES (@positionName)"))
