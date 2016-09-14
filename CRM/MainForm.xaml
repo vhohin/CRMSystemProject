@@ -391,16 +391,17 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <WrapPanel Grid.Row="1" MinWidth="180">
-                                    <DataGrid x:Name="dgProductsList" Margin="3,3,3,3"  RenderTransformOrigin="0.5,0.5" SelectionChanged="dgProductsList_SelectionChanged" AutoGenerateColumns="False" SelectionMode="Single" HorizontalAlignment="Left" Width="180" Height="541" VerticalAlignment="Top">
+                                    <DataGrid x:Name="dgProductsList" GridLinesVisibility="None" Margin="3,3,3,3"  RenderTransformOrigin="0.5,0.5" SelectionChanged="dgProductsList_SelectionChanged" AutoGenerateColumns="False" SelectionMode="Single" HorizontalAlignment="Left" Width="180" Height="541" VerticalAlignment="Top">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" Width="172" IsReadOnly="true" />
                                         </DataGrid.Columns>
                                         <DataGrid.ColumnHeaderStyle>
                                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                                 <Setter Property="FontWeight" Value="Bold" />
-                                                <Setter Property="Background" Value="LightGray" />
+                                                <Setter Property="Background" Value="DodgerBlue" />
+                                                <Setter Property="Foreground" Value="White" />
                                                 <Setter Property="BorderThickness" Value="1" />
-                                                <Setter Property="BorderBrush" Value="Black" />
+                                                <Setter Property="BorderBrush" Value="DodgerBlue" />
                                                 <Setter Property="Height" Value="25" />
                                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
                                             </Style>
@@ -411,16 +412,16 @@
                                 <WrapPanel Grid.Row="1" Grid.Column="3" MinWidth="200">
                                     <Grid Margin="0,0,-6,0">
                                         <Label Content="PRODUCT INFORMATION" HorizontalAlignment="Left" Margin="200,0,0,0" Foreground="DodgerBlue" VerticalAlignment="Top" FontSize="16" />
-                                        <Label Content="Product Type" HorizontalAlignment="Left" Margin="16,35,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Producer Name" HorizontalAlignment="Left" Margin="299,35,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Model" HorizontalAlignment="Left" Margin="16,107,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Color" HorizontalAlignment="Left" Margin="16,157,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Weight" HorizontalAlignment="Left" Margin="170,157,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Price per item" HorizontalAlignment="Left" Margin="16,228,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Description" HorizontalAlignment="Left" Margin="16,345,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Discontinued" HorizontalAlignment="Left" Margin="16,442,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Units in stock" HorizontalAlignment="Left" Margin="322,228,0,0" VerticalAlignment="Top"/>
-                                        <Label Content="Cutomer Rating" HorizontalAlignment="Left" Margin="16,275,0,0" VerticalAlignment="Top"/>
+                                        <Label Content="Product Type" HorizontalAlignment="Left" Margin="16,35,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Producer Name" HorizontalAlignment="Left" Margin="299,35,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Model" HorizontalAlignment="Left" Margin="16,107,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Color" HorizontalAlignment="Left" Margin="16,157,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Weight" HorizontalAlignment="Left" Margin="170,157,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Price per item" HorizontalAlignment="Left" Margin="16,228,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Description" HorizontalAlignment="Left" Margin="16,345,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Discontinued" HorizontalAlignment="Left" Margin="16,442,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Units in stock" HorizontalAlignment="Left" Margin="322,228,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
+                                        <Label Content="Cutomer Rating" HorizontalAlignment="Left" Margin="16,275,0,0" VerticalAlignment="Top" Foreground="#FF1845BD"/>
                                         <TextBox x:Name="tbProductType" Height="23" Margin="16,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="255" TabIndex="1"/>
                                         <TextBox x:Name="tbProducerName" HorizontalAlignment="Left" Height="23" Margin="299,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="2"/>
                                         <TextBox x:Name="tbModel" HorizontalAlignment="Left" Height="23" Margin="16,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="3"/>
