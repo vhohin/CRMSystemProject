@@ -84,6 +84,12 @@
     <Compile Include="NewTask.xaml.cs" />
     <Compile Include="Positions.cs" />
     <Compile Include="Products.cs" />
+    <Compile Include="SplashForm.xaml.cs">
+      <DependentUpon>SplashForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskInformation.xaml.cs">
+      <DependentUpon>TaskInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tasks.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
@@ -134,6 +140,14 @@
     <Page Include="NewTask.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SplashForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TaskInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
@@ -194,7 +208,7 @@
     <Resource Include="Resources\employee_icon_by_ornorm-d4wep0s.png" />
     <Resource Include="Resources\EP_employees.png" />
     <Resource Include="Resources\features7.jpg" />
-    <Resource Include="Resources\img.png" />
+    <SplashScreen Include="Resources\img.png" />
     <Resource Include="Resources\iStock_000017677354XSmall-300x300.jpg" />
     <Resource Include="Resources\newclient.png" />
     <Resource Include="Resources\newcontact.png" />

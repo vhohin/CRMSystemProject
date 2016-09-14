@@ -129,6 +129,10 @@ namespace CRM
             UploadEmployeeDepartments();
             UploadEmployeeContactsNames();
             UploadClientsContactsNames();
+
+            Style rowStyle = new Style(typeof(DataGridRow));
+            rowStyle.Setters.Add(new EventSetter(DataGridRow.MouseDoubleClickEvent, new MouseButtonEventHandler(Row_DoubleClick)));
+            dgTasksList.RowStyle = rowStyle;
         }
         private void EnterNoBoss()
         {
@@ -341,8 +345,21 @@ namespace CRM
         //*******************************************************
         private void dgTasksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //sdafsadfsdfsdaf
+            //sdafsadfsdfsdaf  OpenTaskInformation
         }
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGridRow row = sender as DataGridRow;
+            //MessageBox.Show("OK");
+            Tasks taskInfo = dgTasksList.SelectedItem as Tasks;
+            if (taskInfo == null)
+            {
+                return;
+            }
+            TaskInformation taskWindow = new TaskInformation(taskInfo.TaskId);
+            taskWindow.Owner = this;
+            taskWindow.Show();
+        }        
         private void dgContactList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Contacts co = dgContactsList.SelectedItem as Contacts;

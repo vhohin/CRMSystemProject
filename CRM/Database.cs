@@ -194,6 +194,49 @@ namespace CRM
             }
             return list;
         }
+        public Tasks GetTaskById(int Id)
+        {
+            Tasks tsk = new Tasks();
+            SqlCommand cmd = new SqlCommand("Select * From Tasks where TaskId=@task", conn);
+            cmd.Parameters.AddWithValue("@task", Id);
+            using (SqlDataReader reader = cmd.ExecuteReader()) 
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                        int id = reader.GetInt32(reader.GetOrdinal("TaskId"));
+                        int employeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
+                        string nameTask = reader.GetString(reader.GetOrdinal("NameTask"));
+                        string description = reader.GetString(reader.GetOrdinal("Description"));
+                        DateTime startDate = reader.GetDateTime(reader.GetOrdinal("StartDate"));
+                        DateTime endDate = reader.GetDateTime(reader.GetOrdinal("EndDate"));
+                        string informationNotes = reader.GetString(reader.GetOrdinal("InformationNotes"));
+                        string status = reader.GetString(reader.GetOrdinal("Status"));
+                        string taskType = reader.GetString(reader.GetOrdinal("TaskType"));
+                        string priority = reader.GetString(reader.GetOrdinal("Priority"));
+                        string reminder = reader.GetString(reader.GetOrdinal("Reminder"));
+                        int clientId = reader.GetInt32(reader.GetOrdinal("ClientId"));
+
+                    tsk = new Tasks()
+                    {
+                        TaskId = id,
+                        EmployeeId = employeeId,
+                        NameTask = nameTask,
+                        Description = description,
+                        StartDate = startDate,
+                        EndDate = endDate,
+                        InformationNotes = informationNotes,
+                        Status = status,
+                        TaskType = taskType,
+                        Priority = priority,
+                        Reminder = reminder,
+                        ClientId = clientId
+                    };
+              
+                }
+            }
+            return tsk;
+        }
 
         public List<Tasks> GetTasksByEmployeeId(int Id)
         {
@@ -693,21 +736,7 @@ namespace CRM
                 }
             }
             return list;
-        }
-        /*public string GetDepartamentById(int Id)
-        {
-            string departamentNameName = "";
-            SqlCommand cmd = new SqlCommand("Select DepartamentName From Departaments WHERE DepartamentId=@dId", conn);
-            cmd.Parameters.AddWithValue("@dId", Id);
-            using (SqlDataReader reader = cmd.ExecuteReader()) // to escape use too mach memmory, for clean garbage
-            {
-                if (reader.HasRows)
-                {
-                    departamentNameName = reader.GetString(reader.GetOrdinal("DepartamentName"));
-                }
-            }
-            return departamentNameName;
-        }*/
+        }       
         public void AddDepartament(Departaments d)
         {
             using (SqlCommand cmd = new SqlCommand("Insert Into Department (DepartmentName) VALUES (@departmentName)"))
