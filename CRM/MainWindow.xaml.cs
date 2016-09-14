@@ -41,6 +41,11 @@ namespace CRM
 
             tbUserName.Focus();
 
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource =
+                new BitmapImage(new Uri("pack://application:,,,/Resources/crm.jpg", UriKind.Absolute));
+            this.Background = myBrush;
+
         }
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
