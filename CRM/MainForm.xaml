@@ -77,14 +77,24 @@
             </ToolBar>
         </Border>
         <Border Height="30" Background="LightSteelBlue" DockPanel.Dock="Bottom">
-            <TextBlock Background="#FFECECEC">Status</TextBlock>
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem Width="141">
+                    <TextBlock Name="lblCurrentStatusUserName" Text="" Foreground="DodgerBlue" FontSize="14" RenderTransformOrigin="1.045,0.855" Width="141" />
+                </StatusBarItem>
+                <StatusBarItem HorizontalAlignment="Left" Width="420">
+                    <TextBlock Name="lblCurrentStatusAction" FontSize="14" Text="" Foreground="#FFB60C32" RenderTransformOrigin="1.045,0.855" />
+                </StatusBarItem>
+                <StatusBarItem HorizontalAlignment="Right" Width="128">
+                    <TextBlock Name="lblStatusDateTime" Text="" Foreground="#FF102EB4" FontSize="14"  RenderTransformOrigin="1.045,0.855" />
+                </StatusBarItem>
+            </StatusBar>
         </Border>
         <Border Background="#ffffff">
             <Grid>
                 <TabControl Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  
                             Grid.RowSpan="2" TabStripPlacement="Left" SelectionChanged="TabControl_SelectionChanged">
-                    <TabItem Name="tabItem1">
-                        <TabItem.Header>
+                    <TabItem Name="tabItem1" >
+                        <TabItem.Header >
                             <TextBlock Margin="3">
                         <StackPanel Orientation="Horizontal" Width="120">
                             <Image Source="{DynamicResource ImageSource6}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
@@ -123,7 +133,7 @@
                                 <Grid Height="56" VerticalAlignment="Bottom">
                                     <Button x:Name="btCurrentPersonalTask" Content="CURRENT PERSONAL TASK" Height="35" VerticalAlignment="Bottom" Margin="8,0,0,13" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btCurrentPersonalTask_Click" />
                                     <Button x:Name="btAllPersonalTask" Content="ALL PERSONAL TASK" Height="35" VerticalAlignment="Bottom" Margin="176,0,0,13" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btAllPersonalTasks_Click"/>
-                                    <Button x:Name="btAllTask" Content="ALL TASK" Height="35" VerticalAlignment="Bottom" Margin="610,0,0,13" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btAllTasks_Click"/>
+                                    <Button x:Name="btAllTask" Content="ALL TASK" Height="35" VerticalAlignment="Bottom" Margin="605,0,0,13" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btAllTasks_Click"/>
                                 </Grid>
                             </Grid>
                         </StackPanel>

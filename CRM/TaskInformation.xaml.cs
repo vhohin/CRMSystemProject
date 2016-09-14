@@ -22,7 +22,7 @@ namespace CRM
         Database db;
 
         //int taskId;
-        int employeeId;
+        int employeeId=0;
         string nameTask = "";
         string description = "";
         DateTime startDate;
@@ -32,18 +32,23 @@ namespace CRM
         string taskType = "";
         string priority = "";
         string reminder = "";
-        int clientId;
+        int clientId=0;
+        int currentClientId=0;
+        int currentEmployeeId=0;
         Tasks taskInfo;
         List<Clients> clientList;
         List<string> clientNamesList;
         List<Employees> employeeList;
         List<string> employeeNamesList;
+        int taskId=0;      
+
         public TaskInformation(int t)
         {
             try
             {
                 db = new Database();
-                taskInfo = db.GetTaskById(t);
+                taskId = t;
+                taskInfo = db.GetTaskById(taskId);
             }
             catch (Exception e)
             {
@@ -52,12 +57,110 @@ namespace CRM
             }
             InitializeComponent();
             UploadClientNames();
-
             UploadEmployeeNames();
-
-            dpStartDate.SelectedDate = DateTime.Now;
-            dpEndDate.SelectedDate = DateTime.Now;
-           // MessageBox.Show("" + taskInfo.TaskId +  "  " + taskInfo.NameTask);
+            UploadStatus();
+            UploadPriority();
+            UploadReminder();
+            UploadTaskType();
+            dpStartDate.SelectedDate = taskInfo.StartDate;
+            dpEndDate.SelectedDate = taskInfo.EndDate;
+            tbTaskName.Text = taskInfo.NameTask;
+            tbDescription.Text = taskInfo.Description;
+           
+        }
+       
+        private void UploadTaskType()
+        {
+            List<string> type = new List<string>();
+            type.Add("");
+            type.Add("Meeting");
+            type.Add("Call");
+            type.Add("Email");
+            type.Add("Event");
+            type.Add("Note");
+            cbTaskType.ItemsSource = type;
+            cbTaskType.Items.Refresh();
+            foreach (string line in type)
+            {
+                if (line == taskInfo.TaskType)
+                {
+                    cbTaskType.SelectedItem = taskInfo.TaskType;
+                    break;
+                }
+                else
+                {
+                    cbTaskType.SelectedItem = "";
+                }
+            }
+        }
+        private void UploadReminder()
+        {
+            List<string> reminder = new List<string>();
+            reminder.Add("");
+            reminder.Add("E-mail");
+            reminder.Add("Call");
+            reminder.Add("Message");
+            cbReminder.ItemsSource = reminder;
+            cbReminder.Items.Refresh();
+            foreach (string line in reminder)
+            {
+                if (line == taskInfo.Reminder)
+                {
+                    cbReminder.SelectedItem = taskInfo.Reminder;
+                    break;
+                }
+                else
+                {
+                    cbPriority.SelectedItem = "";
+                }
+            }
+        }
+        
+        private void UploadPriority()
+        {
+            List<string> p = new List<string>();
+            p.Add("");
+            p.Add("Low");
+            p.Add("Normal");
+            p.Add("High");
+            cbPriority.ItemsSource = p;
+            cbPriority.Items.Refresh();
+            foreach (string line in p)
+            {
+                if (line == taskInfo.Priority)
+                {
+                    cbPriority.SelectedItem = line;
+                    //MessageBox.Show(cbPriority.SelectedItem.ToString());
+                    break;
+                }
+                else
+                {
+                    cbPriority.SelectedItem = "";
+                }
+            }
+        }
+        private void UploadStatus()
+        {
+            List<string> status = new List<string>();
+            status.Add("Select status");
+            status.Add("Active");
+            status.Add("Planned");
+            status.Add("In progress");
+            status.Add("Done");
+            cbStatus.ItemsSource = status;
+            cbStatus.Items.Refresh();
+            foreach (string line in status)
+            {
+                if (line == taskInfo.Status)
+                {
+                    cbStatus.SelectedItem = taskInfo.Status;
+                    break;
+                }
+                else
+                {
+                    cbStatus.SelectedItem = "";
+                }
+            }
         }
         private void UploadClientNames()
         {
@@ -72,13 +175,17 @@ namespace CRM
                 Environment.Exit(1);
             }
             clientNamesList = new List<string>();
-            foreach (Clients line in clientList)
+            for (int i=0;i<clientList.Count;i++)
             {
-                clientNamesList.Add(line.ClientName);
+                clientNamesList.Add(clientList[i].ClientName);
+                if (taskInfo.ClientId == clientList[i].ClientId)
+                {
+                    currentClientId = i;
+                }
             }
             cbClientList.ItemsSource = clientNamesList;
             cbClientList.Items.Refresh();
-            cbClientList.SelectedIndex = taskInfo.ClientId;
+            cbClientList.SelectedIndex = currentClientId;
         }
         private void UploadEmployeeNames()
         {
@@ -96,48 +203,45 @@ namespace CRM
             foreach (Employees line in employeeList)
             {
                 employeeNamesList.Add(line.FirstName + " " + line.LastName);
+                if (taskInfo.EmployeeId == line.EmployeeId)
+                {
+                    currentEmployeeId = line.EmployeeId;
+                }
+            }
+            for (int i = 0; i < employeeList.Count; i++)
+            {
+                clientNamesList.Add(employeeList[i].FirstName + " " + employeeList[i].LastName);
+                if (taskInfo.ClientId == employeeList[i].EmployeeId)
+                {
+                    currentEmployeeId = i;
+                }
             }
             cbEmployeeList.ItemsSource = employeeNamesList;
             cbEmployeeList.Items.Refresh();
-            cbEmployeeList.SelectedIndex = taskInfo.EmployeeId;
+            cbEmployeeList.SelectedIndex = currentEmployeeId;
         }
+        //************************
+        //
+        //**************************
+       
         private void cbTaskType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = ((ComboBoxItem)cbTaskType.SelectedItem).Content;
-            if (item == null)
-            {
-                return;
-            }
-
+           
         }
 
         private void cbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = ((ComboBoxItem)cbStatus.SelectedItem).Content;
-            if (item == null)
-            {
-                return;
-            }
-
+            
         }
 
         private void cbPriority_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = ((ComboBoxItem)cbPriority.SelectedItem).Content;
-            if (item == null)
-            {
-                return;
-            }
-
+            
         }
 
         private void cbReminder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = ((ComboBoxItem)cbReminder.SelectedItem).Content;
-            if (item == null)
-            {
-                return;
-            }
+           
 
         }
 
@@ -153,7 +257,7 @@ namespace CRM
             }
 
 
-        } // end cbClientList_SelectionChanged
+        } 
 
         private void cbEmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -163,12 +267,10 @@ namespace CRM
             }
             Employees employee = employeeList[cbEmployeeList.SelectedIndex];
             employeeId = employee.EmployeeId;
-            //MessageBox.Show("employ id is " + employee.EmployeeId);
-
-        } // end cbEmployeeList_SelectionChanged
-
-
-
+        }
+        //***********************************
+        //
+        //*********************************************
 
         private bool ValidateData()
         {
@@ -193,33 +295,10 @@ namespace CRM
                 return false;
             }
 
-            taskType = ((ComboBoxItem)cbTaskType.SelectedItem).Content.ToString();
-            if (taskType == "--Select option--")
-            {
-                MessageBox.Show("Invalid input. Please select a task type", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
-                return false;
-            }
-
-            status = ((ComboBoxItem)cbStatus.SelectedItem).Content.ToString();
-            if (status == "--Select option--")
-            {
-                MessageBox.Show("Invalid input. Please select a status", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
-                return false;
-            }
-
-            priority = ((ComboBoxItem)cbPriority.SelectedItem).Content.ToString();
-            if (priority == "--Select option--")
-            {
-                MessageBox.Show("Invalid input. Please select a priority", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
-                return false;
-            }
-
-            reminder = ((ComboBoxItem)cbReminder.SelectedItem).Content.ToString();
-            /*if (reminder == "--Select option--")
-            {
-                MessageBox.Show("Invalid input. Please select a reminder", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
-                return false;
-            }*/
+            reminder = cbReminder.SelectedValue.ToString();
+            status = cbStatus.SelectedValue.ToString();
+            taskType = cbTaskType.SelectedValue.ToString();
+            priority = cbPriority.SelectedValue.ToString();           
 
             if (tbDescription.Text.Length > 0)
             {
@@ -229,6 +308,27 @@ namespace CRM
             return true;
         }
 
+        private void btUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            if (ValidateData() == true)
+            {
+
+                Tasks task = new Tasks() {TaskId=taskId, EmployeeId = employeeId, NameTask = nameTask, Description = description, StartDate = startDate, EndDate = endDate, InformationNotes = "", Status = status, TaskType = taskType, Priority = priority, Reminder = reminder, ClientId = clientId };
+                try
+                {
+                    db.UpdateTask(task);
+                    MessageBoxResult result = MessageBox.Show("The Task was succesfully updaded", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ClearAllData();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    // TODO: write details of the exception to log text file
+                    Environment.Exit(1);
+                }               
+            }
+        }
         private void ClearAllData()
         {
             nameTask = "";
@@ -240,23 +340,6 @@ namespace CRM
             taskType = "";
             priority = "";
             reminder = "";
-
-        }
-
-        private void ClearForm()
-        {
-
-            cbClientList.Text = "--Select option--";
-            cbEmployeeList.Text = "--Select option--";
-            tbTaskName.Text = "";
-            dpStartDate.SelectedDate = DateTime.Now;
-            dpEndDate.SelectedDate = DateTime.Now;
-            tbDescription.Text = "";
-            cbTaskType.SelectedIndex = 0;
-            cbStatus.SelectedIndex = 0;
-            cbPriority.SelectedIndex = 0;
-            cbReminder.SelectedIndex = 0;
-
 
         }
     }

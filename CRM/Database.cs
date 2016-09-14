@@ -349,6 +349,26 @@ namespace CRM
                 cmd.ExecuteNonQuery();
             }
         }
+        public void UpdateTask(Tasks t)
+        {
+            using (SqlCommand cmd = new SqlCommand("Update Tasks set EmployeeId=@employeeId, NameTask=@nameTask, Description=@description, StartDate=@startDate, EndDate=@endDate, InformationNotes=@informationNotes, Status=@status, TaskType=@taskType, Priority=@priority, Reminder=@reminder, ClientId=@clientId where TaskId=@id", conn))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", t.TaskId);
+                cmd.Parameters.AddWithValue("@employeeId", t.EmployeeId);
+                cmd.Parameters.AddWithValue("@nameTask", t.NameTask);
+                cmd.Parameters.AddWithValue("@description", t.Description);
+                cmd.Parameters.AddWithValue("@startDate", t.StartDate);
+                cmd.Parameters.AddWithValue("@endDate", t.EndDate);
+                cmd.Parameters.AddWithValue("@informationNotes", t.InformationNotes);
+                cmd.Parameters.AddWithValue("@status", t.Status);
+                cmd.Parameters.AddWithValue("@taskType", t.TaskType);
+                cmd.Parameters.AddWithValue("@priority", t.Priority);
+                cmd.Parameters.AddWithValue("@reminder", t.Reminder);
+                cmd.Parameters.AddWithValue("@clientId", t.ClientId);
+                cmd.ExecuteNonQuery();
+            }
+        }
         //**************************************************************************
         //      Clients
         //****************************************************************************

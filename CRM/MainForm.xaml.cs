@@ -133,6 +133,10 @@ namespace CRM
             Style rowStyle = new Style(typeof(DataGridRow));
             rowStyle.Setters.Add(new EventSetter(DataGridRow.MouseDoubleClickEvent, new MouseButtonEventHandler(Row_DoubleClick)));
             dgTasksList.RowStyle = rowStyle;
+
+            lblStatusDateTime.Text = DateTime.Today.ToString(@"dd/MM/yyyy");
+            lblCurrentStatusUserName.Text = user;
+            lblCurrentStatusAction.Text = "Page: Current Task";
         }
         private void EnterNoBoss()
         {
@@ -1041,7 +1045,28 @@ namespace CRM
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            string tabItem = ((sender as TabControl).SelectedItem as TabItem).Name as string;
 
+            switch (tabItem)
+            {
+                case "tabItem1":
+                    lblCurrentStatusAction.Text = "In progress:  Tasks list";
+                    break;
+                case "tabItem2":
+                    lblCurrentStatusAction.Text = "In progress:  Contact list";
+                    break;
+                case "tabItem3":
+                    lblCurrentStatusAction.Text = "In progress:  Clients list";
+                    break;
+                case "tabItem4":
+                    lblCurrentStatusAction.Text = "In progress:  Employees list";
+                    break;
+                case "tabItem5":
+                    lblCurrentStatusAction.Text = "In progress:  Products list";
+                    break;
+                default:
+                    return;
+            }
         }
 
         private bool ValidateProductData()
