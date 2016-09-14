@@ -144,6 +144,24 @@ Valeriy
 3) ToDo:  - fmethods Updatetask in Database, Tasks Calendar;
 	  - graphic forms disaign.
 
+Nazar
+1/ Finisned:
+- transfer created methods into existing CRMProject
+- Add, Validation and Test Products Form
+- finish and test Products Form
+- try ro create conflict in GitHub and resolve it properly 
+
+
+2/ Not Finished
+- apply some design for control items: buttons- hover, event handler, etc.
+
+
+3/ ToDoList: 
+- load pictures for each to Products Form or Grathic forms design
+- find Tutorial on Reports - try to create some Reports, if possible 
+
+
+
 
 
 
