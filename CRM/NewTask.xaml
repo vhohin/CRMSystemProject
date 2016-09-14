@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRM"
         mc:Ignorable="d"
-        Title="NewTask" Height="380" Width="800" WindowStartupLocation="CenterOwner" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize">
+        Title="NewTask" Height="380" Width="800" WindowStartupLocation="CenterScreen" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize">
     <Grid>
         <Label Content="NEW   TASK" HorizontalAlignment="Left" Margin="348,2,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF0E52A2"/>
         <Label Content="Client" HorizontalAlignment="Left" Margin="39,28,0,0" VerticalAlignment="Top" Width="42"/>
@@ -58,7 +58,6 @@
 
         <Label Content="Description" HorizontalAlignment="Left" Margin="482,105,0,0" VerticalAlignment="Top" Width="70"/>
         <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="147" Margin="482,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277"/>
-        <Button x:Name="btClear" Content="CLEAR" HorizontalAlignment="Left" Margin="155,296,0,0" VerticalAlignment="Top" Width="75" Foreground="#FFC11919" RenderTransformOrigin="0.653,0.455" Height="32" Click="btClear_Click"/>
         <Label x:Name="label" Content="*" HorizontalAlignment="Left" Margin="86,28,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16"/>
         <Label x:Name="label_Copy" Content="*" HorizontalAlignment="Left" Margin="107,92,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16" RenderTransformOrigin="1.423,2.518"/>
         <Label x:Name="label_Copy1" Content="*" HorizontalAlignment="Left" Margin="343,28,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16" RenderTransformOrigin="1.423,2.518"/>

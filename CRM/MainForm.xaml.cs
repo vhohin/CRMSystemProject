@@ -113,9 +113,9 @@ namespace CRM
             lblEmployeeUserName.Visibility = Visibility.Hidden;
             lblEmployeePassword.Visibility = Visibility.Hidden;
             if (importance == 0)
-                {
-                    EnterNoBoss();
-                }
+            {
+                EnterNoBoss();
+            }
             UpdateGridListTasksCurrentById();
             UpdateGridListContacts();
             UploadContactType();
@@ -466,7 +466,7 @@ namespace CRM
             cbContactType.Items.Refresh();
         }
         private void UploadEmployeeContactsNames()
-        {           
+        {
             listEmployeesNames = new List<string>();
             foreach (Employees line in listEmployee)
             {
@@ -1310,7 +1310,7 @@ namespace CRM
             UpdateGridListProducts();
         }
 
-    }  
+    
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
             CalendarTasks newTaskWindow = new CalendarTasks();
@@ -1329,6 +1329,6 @@ namespace CRM
             //newTaskWindow.Owner = this;
             newTaskWindow.Show();
         }
-    }
 
+    }
 }

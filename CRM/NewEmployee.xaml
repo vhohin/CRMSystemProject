@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRM"
         mc:Ignorable="d"
-        Title="NewEmployee" Height="567.857" Width="590.11" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+        Title="NewEmployee" Height="567.857" Width="590.11" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Label Content="NEW  EMPLOYEE" HorizontalAlignment="Left" Margin="189,0,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF0E52A2"/>
         <Label Content="First Name" HorizontalAlignment="Left" Margin="16,35,0,0" VerticalAlignment="Top"/>
@@ -38,7 +38,6 @@
         <DatePicker x:Name="dpEmployeeHireDate" HorizontalAlignment="Left" Margin="413,443,0,0" VerticalAlignment="Top" Width="141" />
         <DatePicker x:Name="dpEmployeeDOB" HorizontalAlignment="Left" Margin="109,445,0,-1" VerticalAlignment="Top" Width="141" />
         <Button x:Name="btEmployeeUpdate" Content="ADD" Height="35" VerticalAlignment="Top" Margin="16,483,0,-33" HorizontalAlignment="Left" Width="160" Click="btEmployeeAdd_Click" Foreground="#FF102EB4"/>
-        <Button x:Name="btEmployeeClear" Content="CLEAR" Height="35" VerticalAlignment="Top" Margin="205,483,189,-33" Width="160"  Click="btEmployeeClear_Click" Foreground="#FF9C1313"/>
         <Button x:Name="btEmployeeDelete" Content="CLOSE" Height="35" VerticalAlignment="Top" Margin="394,483,0,-33" Width="160"  Click="btEmployeeClose_Click" Foreground="#FF9C1313"/>
         <TextBox x:Name="tbEmployeeUserName" HorizontalAlignment="Left" Height="23" Margin="90,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
         <TextBox x:Name="tbEmployeePassword" HorizontalAlignment="Left" Height="23" Margin="364,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>

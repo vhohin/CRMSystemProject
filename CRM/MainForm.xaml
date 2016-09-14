@@ -15,38 +15,65 @@
         <BitmapImage x:Key="ImageSource10" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Resources/contact4.png"/>
         <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Resources/newclient.png"/>
         <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Resources/newemployee.png"/>
+        <BitmapImage x:Key="ImageSource13" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Resources/products.png"/>
 
     </Window.Resources>
 
     <DockPanel Grid.Column="1" Grid.ColumnSpan="2">
-        <Border Height="60" Background="#FFD5D8D8" DockPanel.Dock="Top">
-            <ToolBar Height="60">
-                <Button x:Name="btNewTasks" Width="60" Height="50" Margin="10 0 10 0" BorderBrush="#FFCDCECF" Background="Transparent" FontSize="14" Click="btNewTasks_Click">
+        <Border Height="65" Background="#FFD5D8D8" DockPanel.Dock="Top">
+            <ToolBar Height="65">
+                <Button x:Name="btNewTasks" Width="60" Height="60" Margin="10 0 10 0" BorderBrush="#FFCDCECF" Background="Transparent" FontSize="14" Click="btNewTasks_Click">
                     <StackPanel Orientation="Horizontal" Width="50">
                         <Image Source="{DynamicResource ImageSource9}" Width="50" Height="50" HorizontalAlignment="Left" />
                     </StackPanel>
+                    <Button.ToolTip>
+                        <ToolTip>
+                            New Task
+                        </ToolTip>
+                    </Button.ToolTip>
                 </Button>
-                <Button x:Name="btNewContact" Width="60" Height="50" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewContact_Click">
+                <Button x:Name="btNewContact" Width="60" Height="60" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewContact_Click">
                     <StackPanel Orientation="Horizontal" Width="50">
                         <Image Source="{DynamicResource ImageSource10}" Width="50" Height="50" HorizontalAlignment="Left"  />
                     </StackPanel>
+                    <Button.ToolTip>
+                        <ToolTip>
+                            New Contact
+                        </ToolTip>
+                    </Button.ToolTip>
                 </Button>
-                <Button x:Name="btNewClient" Width="60" Height="50" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewClient_Click">
+                <Button x:Name="btNewProduct" Width="60" Height="60" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewProduct_Click">
+                    <StackPanel Orientation="Horizontal" Width="50">
+                        <Image Source="{DynamicResource ImageSource13}" Width="50" Height="50" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.56"/>
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <ToolTip>
+                            New Product
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button x:Name="btNewClient" Width="60" Height="60" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewClient_Click">
                     <StackPanel Orientation="Horizontal" Width="50">
                         <Image Source="{DynamicResource ImageSource11}" Width="50" Height="50" HorizontalAlignment="Left"  />
                     </StackPanel>
+                    <Button.ToolTip>
+                        <ToolTip>
+                            New Client
+                        </ToolTip>
+                    </Button.ToolTip>
                 </Button>
-                <Button x:Name="btNewEmployee" Width="60" Height="50" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewEmployee_Click">
+                <Button x:Name="btNewEmployee" Width="60" Height="60" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewEmployee_Click">
                     <StackPanel Orientation="Horizontal" Width="50">
                         <Image Source="{DynamicResource ImageSource12}" Width="50" Height="50" HorizontalAlignment="Left"/>
                     </StackPanel>
+                    <Button.ToolTip>
+                        <ToolTip>
+                            New Employee
+                        </ToolTip>
+                    </Button.ToolTip>
                 </Button>
 
-                <Button x:Name="btNewProduct" Width="60" Height="50" Margin="10 0 10 0" Background="Transparent" BorderBrush="#FFCDCECF" FontSize="14" Click="btNewProduct_Click">
-                    <StackPanel Orientation="Horizontal" Width="50">
-                        <Image Source="{DynamicResource ImageSource7}" Width="50" Height="50" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.56"/>
-                    </StackPanel>
-                </Button>
+
             </ToolBar>
         </Border>
         <Border Height="30" Background="LightSteelBlue" DockPanel.Dock="Bottom">
@@ -71,7 +98,7 @@
                                 <TextBlock Text="   Current Tasks" FontSize="16" Margin="0,12,280,14" Height="30" HorizontalAlignment="Right" Width="128" />
                             </Grid>
                             <Grid Height="490">
-                                <DataGrid x:Name="dgTasksList" SelectionChanged="dgTasksList_SelectionChanged" SelectionMode="Single" Height="440" VerticalAlignment="Top"   >
+                                <DataGrid x:Name="dgTasksList" SelectionChanged="dgTasksList_SelectionChanged" SelectionMode="Single" Height="430" VerticalAlignment="Top"   >
                                     <DataGrid.ColumnHeaderStyle>
                                         <Style TargetType="{x:Type DataGridColumnHeader}">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -84,9 +111,9 @@
                                     </DataGrid.ColumnHeaderStyle>
                                 </DataGrid>
                                 <Grid Height="56" VerticalAlignment="Bottom">
-                                    <Button x:Name="btCurrentPersonalTask" Content="CURRENT PERSONAL TASK" Height="35" VerticalAlignment="Bottom" Margin="8,0,0,7" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btCurrentPersonalTask_Click" />
-                                    <Button x:Name="btAllPersonalTask" Content="ALL PERSONAL TASK" Height="35" VerticalAlignment="Bottom" Margin="176,0,0,7" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btAllPersonalTasks_Click"/>
-                                    <Button x:Name="btAllTask" Content="ALL TASK" Height="35" VerticalAlignment="Bottom" Margin="610,0,0,7" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btAllTasks_Click"/>
+                                    <Button x:Name="btCurrentPersonalTask" Content="CURRENT PERSONAL TASK" Height="35" VerticalAlignment="Bottom" Margin="8,0,0,13" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btCurrentPersonalTask_Click" />
+                                    <Button x:Name="btAllPersonalTask" Content="ALL PERSONAL TASK" Height="35" VerticalAlignment="Bottom" Margin="176,0,0,13" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btAllPersonalTasks_Click"/>
+                                    <Button x:Name="btAllTask" Content="ALL TASK" Height="35" VerticalAlignment="Bottom" Margin="610,0,0,13" HorizontalAlignment="Left" Width="160"  Foreground="#FF102EB4" TabIndex="17" Click="btAllTasks_Click"/>
                                 </Grid>
                             </Grid>
                         </StackPanel>
@@ -231,22 +258,8 @@
                             </Grid>
                         </Grid>
                     </TabItem>
-                    <TabItem Name="tabItem4">
-                        <TabItem.Header>
-                            <TextBlock Margin="3">   
-                        <StackPanel Orientation="Horizontal" Width="120">
-                            <Image Source="{DynamicResource ImageSource4}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
-                            <TextBlock Text="Contracts" VerticalAlignment="Center" HorizontalAlignment="Right" Width="65" />
-                        </StackPanel>
-                            </TextBlock>
-                        </TabItem.Header>
-                        <Grid>
-                            <Button x:Name="btCalendar1" Content="Button" Height="50" Width="75" Margin="54,41,0,0" Click="Button1_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <Button x:Name="btCalendar2" Content="Button" Height="50" Width="75" Margin="54,91,0,0" Click="Button2_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <Button x:Name="btCalendar3" Content="Button" Height="50" Width="75" Margin="54,141,0,0" Click="Button3_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        </Grid>
-                    </TabItem>
-                    <TabItem x:Name="tabItem5" >
+                    
+                    <TabItem x:Name="tabItem4" >
                         <TabItem.Header>
                             <TextBlock Margin="3">
                         <StackPanel Orientation="Horizontal" Width="120">
@@ -325,18 +338,8 @@
                       VerticalAlignment="Stretch" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1,0"></GridSplitter>
                             </Grid>
                         </Grid>
-                    </TabItem>
-                    <TabItem Name="tabItem6">
-                        <TabItem.Header>
-                            <TextBlock Margin="3"> 
-                        <StackPanel Orientation="Horizontal" Width="120">
-                            <Image Source="{DynamicResource ImageSource8}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
-                            <TextBlock Text="Services" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                        </StackPanel>
-                            </TextBlock>
-                        </TabItem.Header>
-                    </TabItem>
-                    <TabItem Name="tabItem7" MouseLeftButtonDown="tabItem7_MouseLeftButtonDown">
+                    </TabItem>                    
+                    <TabItem Name="tabItem5" MouseLeftButtonDown="tabItem7_MouseLeftButtonDown">
                         <TabItem.Header>
                             <TextBlock Margin="3">
                         <StackPanel Orientation="Horizontal" Width="120">
@@ -407,7 +410,31 @@
                             </Grid>
                         </Grid>
                     </TabItem>
-
+                    <TabItem Name="tabItem6">
+                        <TabItem.Header>
+                            <TextBlock Margin="3">   
+                        <StackPanel Orientation="Horizontal" Width="120">
+                            <Image Source="{DynamicResource ImageSource4}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
+                            <TextBlock Text="Contracts" VerticalAlignment="Center" HorizontalAlignment="Right" Width="65" />
+                        </StackPanel>
+                            </TextBlock>
+                        </TabItem.Header>
+                        <Grid>
+                            <Button x:Name="btCalendar1" Content="Button" Height="50" Width="75" Margin="54,41,0,0" Click="Button1_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Button x:Name="btCalendar2" Content="Button" Height="50" Width="75" Margin="54,91,0,0" Click="Button2_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Button x:Name="btCalendar3" Content="Button" Height="50" Width="75" Margin="54,141,0,0" Click="Button3_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </Grid>
+                    </TabItem>
+                    <!--<TabItem Name="tabItem7">
+                        <TabItem.Header>
+                            <TextBlock Margin="3"> 
+                        <StackPanel Orientation="Horizontal" Width="120">
+                            <Image Source="{DynamicResource ImageSource8}" Width="50" Height="50" HorizontalAlignment="Left" Margin="0 0 5 0 "/>
+                            <TextBlock Text="Services" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                        </StackPanel>
+                            </TextBlock>
+                        </TabItem.Header>
+                    </TabItem>-->
                 </TabControl>
             </Grid>
         </Border>

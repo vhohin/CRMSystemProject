@@ -61,9 +61,6 @@
     <Compile Include="CalendarTasks2.xaml.cs">
       <DependentUpon>CalendarTasks2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClientInfo.xaml.cs">
-      <DependentUpon>ClientInfo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Clients.cs" />
     <Compile Include="Contacts.cs" />
     <Compile Include="Database.cs" />
@@ -99,10 +96,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CalendarTasks2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ClientInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
