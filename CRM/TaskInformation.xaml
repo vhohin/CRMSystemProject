@@ -8,36 +8,35 @@
         Title="CRM System" Height="356.044" Width="560.439" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
         <Label Content="TASK INFORMATION" HorizontalAlignment="Left" Margin="194,-3,0,0" VerticalAlignment="Top" FontSize="16" Foreground="DodgerBlue" Width="156"/>
-        <Label Content="Client" HorizontalAlignment="Left" Margin="17,28,0,0" VerticalAlignment="Top" Width="42"/>
-        <ComboBox x:Name="cbClientList" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="17,54,0,0" VerticalAlignment="Top" Width="157" SelectionChanged="cbClientList_SelectionChanged" >
+        <Label Content="Client" HorizontalAlignment="Left" Margin="372,29,0,0" VerticalAlignment="Top" Width="42" Foreground="#FF1845BD"/>
+        <ComboBox x:Name="cbClientList" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="372,55,0,0" VerticalAlignment="Top" Width="157" SelectionChanged="cbClientList_SelectionChanged" Height="19" >
 
         </ComboBox>
-        <Label Content="Task name" HorizontalAlignment="Left" Margin="372,29,0,0" VerticalAlignment="Top" Width="68"/>
-        <TextBox x:Name="tbTaskName" HorizontalAlignment="Left" Height="23" Margin="372,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157"/>
-        <Label Content="Start Time" HorizontalAlignment="Left" Margin="17,78,0,0" VerticalAlignment="Top" Width="64"/>
+        <Label Content="Task name" HorizontalAlignment="Left" Margin="194,30,0,0" VerticalAlignment="Top" Width="68" Foreground="#FF1845BD"/>
+        <TextBox x:Name="tbTaskName" HorizontalAlignment="Left" Height="23" Margin="194,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
+        <Label Content="Start Time" HorizontalAlignment="Left" Margin="17,78,0,0" VerticalAlignment="Top" Width="64" Foreground="#FF1845BD"/>
         <DatePicker x:Name="dpStartDate"  SelectedDateFormat="Short" HorizontalAlignment="Left" Margin="17,105,0,0" VerticalAlignment="Top" Width="157"/>
         <DatePicker x:Name="dpEndDate" SelectedDateFormat="Short" HorizontalAlignment="Left" Margin="194,105,0,0" VerticalAlignment="Top" Width="156"/>
         <Button x:Name="btUpdate" Content="UPDATE" HorizontalAlignment="Left" Margin="17,268,0,0" VerticalAlignment="Top" Width="157" Foreground="#FF055905" Height="32" Click="btUpdate_Click" />
-        <Label Content="Ends" HorizontalAlignment="Left" Margin="194,78,0,0" VerticalAlignment="Top" Width="42"/>
-        <Label Content="Employee" HorizontalAlignment="Left" Margin="194,28,0,0" VerticalAlignment="Top" Width="65"/>
-        <ComboBox x:Name="cbEmployeeList" IsEditable="True" StaysOpenOnEdit="True"  HorizontalAlignment="Left" Margin="194,54,0,0" VerticalAlignment="Top" Width="156" SelectionChanged="cbEmployeeList_SelectionChanged"/>
+        <Label Content="Ends" HorizontalAlignment="Left" Margin="194,78,0,0" VerticalAlignment="Top" Width="42" Foreground="#FF1845BD"/>
+        <Label Content="Employee" HorizontalAlignment="Left" Margin="17,30,0,0" VerticalAlignment="Top" Width="65" Foreground="#FF1845BD"/>
+        <TextBox x:Name="tbEmployeeName" HorizontalAlignment="Left" Height="23" Margin="17,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157" IsReadOnly="True" Foreground="#FF870D0D" ForceCursor="True"/>
 
 
-        <Label Content="Task Type" HorizontalAlignment="Left" Margin="372,79,0,0" VerticalAlignment="Top" Width="65"/>
+        <Label Content="Task Type" HorizontalAlignment="Left" Margin="372,79,0,0" VerticalAlignment="Top" Width="65" Foreground="#FF1845BD"/>
         <ComboBox x:Name="cbTaskType" HorizontalAlignment="Left" Margin="372,105,0,0" VerticalAlignment="Top" Width="157" SelectionChanged="cbTaskType_SelectionChanged">
         </ComboBox>
-        <Label Content="Status" HorizontalAlignment="Left" Margin="17,127,0,0" VerticalAlignment="Top" Width="48"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="17,127,0,0" VerticalAlignment="Top" Width="48" Foreground="#FF1845BD"/>
         <ComboBox x:Name="cbStatus" HorizontalAlignment="Left" Margin="17,153,0,0" VerticalAlignment="Top" Width="157" SelectionChanged="cbStatus_SelectionChanged">
         </ComboBox>
-        <Label Content="Priority" HorizontalAlignment="Left" Margin="194,127,0,0" VerticalAlignment="Top" Width="48"/>
+        <Label Content="Priority" HorizontalAlignment="Left" Margin="194,127,0,0" VerticalAlignment="Top" Width="48" Foreground="#FF1845BD"/>
         <ComboBox x:Name="cbPriority" HorizontalAlignment="Left" Margin="194,153,0,0" VerticalAlignment="Top" Width="156" SelectionChanged="cbPriority_SelectionChanged">
         </ComboBox>
-        <Label Content="Reminder" HorizontalAlignment="Left" Margin="372,127,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Reminder" HorizontalAlignment="Left" Margin="372,127,0,0" VerticalAlignment="Top" Width="120" Foreground="#FF1845BD"/>
         <ComboBox x:Name="cbReminder" HorizontalAlignment="Left" Margin="372,153,0,0" VerticalAlignment="Top" Width="157" SelectionChanged="cbReminder_SelectionChanged">
         </ComboBox>
-        <Label Content="Description" HorizontalAlignment="Left" Margin="17,175,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="17,175,0,0" VerticalAlignment="Top" Width="70" Foreground="#FF1845BD"/>
         <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="48" Margin="17,201,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="512"/>
-        <Label x:Name="label_Copy5" Content="" HorizontalAlignment="Left" Margin="557,105,0,0" VerticalAlignment="Top" Foreground="#FFD40C0C" FontSize="16" RenderTransformOrigin="1.423,2.518"/>
 
     </Grid>
 </Window>

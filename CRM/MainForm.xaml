@@ -16,7 +16,38 @@
         <BitmapImage x:Key="ImageSource11" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Resources/newclient.png"/>
         <BitmapImage x:Key="ImageSource12" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Resources/newemployee.png"/>
         <BitmapImage x:Key="ImageSource13" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Resources/products.png"/>
-
+        <Style TargetType="Button">
+            <Style.Setters>
+                <!--<Setter Property="Button.Background" Value="White" />
+                
+                <Setter Property="Button.FontFamily" Value="Verdana" />
+                <Setter Property="Button.Margin" Value="10" />-->
+                <Setter Property="Button.Background" Value="White" />
+                <Setter Property="Foreground" Value="White" />
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Button.Background" Value="DodgerBlue" />
+                    <Setter Property="FontSize" Value="13" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="DataGridRow">
+            <Style.Setters>
+                <!--<Setter Property="Button.Background" Value="Black" />
+                <Setter Property="Button.Foreground" Value="White" />
+                <Setter Property="Button.FontFamily" Value="Verdana" />
+                <Setter Property="Button.Margin" Value="10" />-->
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontSize" Value="12" />
+                    <Setter Property="Background" Value="DodgerBlue" />
+                    <Setter Property="Foreground" Value="Yellow" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <DockPanel Grid.Column="1" Grid.ColumnSpan="2">
@@ -84,8 +115,12 @@
                 <StatusBarItem HorizontalAlignment="Left" Width="420">
                     <TextBlock Name="lblCurrentStatusAction" FontSize="14" Text="" Foreground="#FFB60C32" RenderTransformOrigin="1.045,0.855" />
                 </StatusBarItem>
-                <StatusBarItem HorizontalAlignment="Right" Width="128">
-                    <TextBlock Name="lblStatusDateTime" Text="" Foreground="#FF102EB4" FontSize="14"  RenderTransformOrigin="1.045,0.855" />
+                <StatusBarItem HorizontalAlignment="Right" Width="236">
+                    <TextBlock Name="lblStatusTime" Text="" Foreground="#FF102EB4" FontSize="14"  RenderTransformOrigin="1.045,0.855" />
+                </StatusBarItem>
+                <StatusBarItem HorizontalAlignment="Right" Width="107" BorderThickness="1" BorderBrush="#FF102EB4" Background="White">
+                    
+                    <TextBlock Name="lblStatusDateTime" HorizontalAlignment="Right" Text="" Foreground="#FF102EB4" FontSize="14"  RenderTransformOrigin="1.045,0.855" Width="97" TextAlignment="Center" />
                 </StatusBarItem>
             </StatusBar>
         </Border>
@@ -442,7 +477,7 @@
                             </Grid>
                         </Grid>
                     </TabItem>
-                    <TabItem Name="tabItem6">
+                  <!--  <TabItem Name="tabItem6">
                         <TabItem.Header>
                             <TextBlock Margin="3">   
                         <StackPanel Orientation="Horizontal" Width="120">
@@ -456,7 +491,7 @@
                             <Button x:Name="btCalendar2" Content="Button" Height="50" Width="75" Margin="54,91,0,0" Click="Button2_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                             <Button x:Name="btCalendar3" Content="Button" Height="50" Width="75" Margin="54,141,0,0" Click="Button3_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         </Grid>
-                    </TabItem>
+                    </TabItem>-->
                     <!--<TabItem Name="tabItem7">
                         <TabItem.Header>
                             <TextBlock Margin="3"> 

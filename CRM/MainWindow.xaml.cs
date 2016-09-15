@@ -101,7 +101,7 @@ namespace CRM
 
         private void EnterToSystem()
         {
-             /* if (EnterCheck() == true)
+            /*  if (EnterCheck() == true)
                        {
                            MainForm taskWindow = new MainForm(employee, employeeId, importance);
                            taskWindow.Show();

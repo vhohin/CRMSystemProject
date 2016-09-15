@@ -25,8 +25,8 @@ namespace CRM
         int employeeId=0;
         string nameTask = "";
         string description = "";
-        DateTime startDate;
-        DateTime endDate;
+        DateTime startDate=DateTime.Now;
+        DateTime endDate = DateTime.Now;
         string informationNotes = "";
         string status = "";
         string taskType = "";
@@ -62,6 +62,7 @@ namespace CRM
             UploadPriority();
             UploadReminder();
             UploadTaskType();
+            //tbEmployeeName.Text = 
             dpStartDate.SelectedDate = taskInfo.StartDate;
             dpEndDate.SelectedDate = taskInfo.EndDate;
             tbTaskName.Text = taskInfo.NameTask;
@@ -111,7 +112,7 @@ namespace CRM
                 }
                 else
                 {
-                    cbPriority.SelectedItem = "";
+                    cbReminder.SelectedItem = "";
                 }
             }
         }
@@ -196,29 +197,17 @@ namespace CRM
             catch (Exception ex)
             {
                 MessageBox.Show("Unable to fetch records from database." + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Stop);
-                // TODO: write details of the exception to log text file
                 Environment.Exit(1);
             }
             employeeNamesList = new List<string>();
             foreach (Employees line in employeeList)
-            {
-                employeeNamesList.Add(line.FirstName + " " + line.LastName);
+            {                
                 if (taskInfo.EmployeeId == line.EmployeeId)
                 {
+                    tbEmployeeName.Text = line.FirstName + " " + line.LastName;
                     currentEmployeeId = line.EmployeeId;
                 }
-            }
-            for (int i = 0; i < employeeList.Count; i++)
-            {
-                clientNamesList.Add(employeeList[i].FirstName + " " + employeeList[i].LastName);
-                if (taskInfo.ClientId == employeeList[i].EmployeeId)
-                {
-                    currentEmployeeId = i;
-                }
-            }
-            cbEmployeeList.ItemsSource = employeeNamesList;
-            cbEmployeeList.Items.Refresh();
-            cbEmployeeList.SelectedIndex = currentEmployeeId;
+            }                
         }
         //************************
         //
@@ -247,7 +236,6 @@ namespace CRM
 
         private void cbClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             foreach (Clients line in clientList)
             {
                 if (cbClientList.SelectedItem == line.ClientName)
@@ -255,19 +243,9 @@ namespace CRM
                     clientId = line.ClientId;
                 }
             }
-
-
         } 
 
-        private void cbEmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cbEmployeeList.SelectedIndex == -1)
-            {
-                return;
-            }
-            Employees employee = employeeList[cbEmployeeList.SelectedIndex];
-            employeeId = employee.EmployeeId;
-        }
+        
         //***********************************
         //
         //*********************************************
@@ -294,12 +272,10 @@ namespace CRM
                 MessageBox.Show("End date must be greater than Start date", "Error entering data", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return false;
             }
-
+            priority = cbPriority.SelectedValue.ToString();
             reminder = cbReminder.SelectedValue.ToString();
             status = cbStatus.SelectedValue.ToString();
-            taskType = cbTaskType.SelectedValue.ToString();
-            priority = cbPriority.SelectedValue.ToString();           
-
+            taskType = cbTaskType.SelectedValue.ToString();  
             if (tbDescription.Text.Length > 0)
             {
                 description = tbDescription.Text;
@@ -313,7 +289,7 @@ namespace CRM
             if (ValidateData() == true)
             {
 
-                Tasks task = new Tasks() {TaskId=taskId, EmployeeId = employeeId, NameTask = nameTask, Description = description, StartDate = startDate, EndDate = endDate, InformationNotes = "", Status = status, TaskType = taskType, Priority = priority, Reminder = reminder, ClientId = clientId };
+                Tasks task = new Tasks() {TaskId=taskId, EmployeeId = currentEmployeeId, NameTask = nameTask, Description = description, StartDate = startDate, EndDate = endDate, InformationNotes = informationNotes, Status = status, TaskType = taskType, Priority = priority, Reminder = reminder, ClientId = clientId };
                 try
                 {
                     db.UpdateTask(task);
@@ -333,14 +309,15 @@ namespace CRM
         {
             nameTask = "";
             description = "";
-            DateTime startDate;
-            DateTime endDate;
+            DateTime startDate = DateTime.Now;
+            DateTime endDate = DateTime.Now;
             informationNotes = "";
             status = "";
             taskType = "";
             priority = "";
             reminder = "";
-
         }
-    }
+        
+
+   }
 }
