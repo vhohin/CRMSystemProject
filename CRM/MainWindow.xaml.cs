@@ -101,7 +101,7 @@ namespace CRM
 
         private void EnterToSystem()
         {
-            /*  if (EnterCheck() == true)
+              if (EnterCheck() == true)
                        {
                            MainForm taskWindow = new MainForm(employee, employeeId, importance);
                            taskWindow.Show();
@@ -113,10 +113,13 @@ namespace CRM
                            tbUserName.Text = "";
                            pbPsw.Password = "";
                            return;
-                       }*/
-            MainForm taskWindow = new MainForm("Valeriy Hohin",2, 1);
+                       }
+          /*  MainForm taskWindow = new MainForm("Valeriy Hohin",2, 1);
             taskWindow.Show();
-            this.Close();
+            this.Close();*/
+            /*Window3 taskWindow = new Window3();
+           taskWindow.Show();
+           this.Close();*/
         }
     }
 
