@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM
 {
-    class Contacts
+    public class Contacts
     {
         public int ContactId { get; set; }
         public int EmployeeId { get; set; }

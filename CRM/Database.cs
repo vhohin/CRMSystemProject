@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 namespace CRM
 {
 
-    class Database
+    public class Database
     {
         //Data Source=ipd8.database.windows.net;Initial Catalog=crm;Integrated Security=False;User ID=ipd8abbott;Password=Abbott2000;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
         const string CONN_STRING = @"Data Source=ipd8vs.database.windows.net;Initial Catalog=crm;Integrated Security=False;User ID=sqladmin;Password=IPD8rocks!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
